@@ -19,13 +19,25 @@ recipes slot into a machine program without being rewritten from scratch.
 ## Layout
 
 - `schema/recipe-v1.schema.json` — JSON Schema for a recipe file.
-- `recipes/*.yaml` — one recipe per file, validated against the schema.
+- `recipes/*.yaml` — one recipe per file, validated against the schema. Only
+  reviewed, trustworthy recipes live here.
+- `recipes/_drafts/` — normalized-but-unreviewed recipes, awaiting the review
+  checklist in `docs/ingestion.md`. Not part of the collection yet.
+- `inbox/` — raw captures (URLs, photos, social captions/transcripts, pasted
+  text) feeding the ingestion pipeline, one folder per candidate recipe.
 - `docs/roadmap.md` — phased plan from "cookbook" to "companion app driving the
   machine."
+- `docs/ingestion.md` — how recipes get in: capture → normalize → draft →
+  review → promote, across every input type (URL, document, Instagram,
+  TikTok, pasted text), with the quality bar for promotion.
+- `docs/data-sources.md` — verified licensing terms for recipe APIs/datasets
+  considered as bulk sources (what's safe to store vs. live-lookup-only).
 - `docs/joyoung-cj-a9u-notes.md` — what's publicly known about the CJ-A9U's
   modes/hardware, gathered before any hands-on reverse engineering starts.
-- `tools/` — validator/scripts (empty for now).
+- `tools/validate_recipes.py` — schema validator; `--drafts` checks
+  `recipes/_drafts/` instead of the main collection.
 
 ## Status
 
-Phase 0: schema + a few example recipes. No app, no hardware work yet.
+Phase 0: schema, ingestion pipeline, and a first example recipe. No app, no
+hardware work yet.

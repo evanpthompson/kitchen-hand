@@ -14,8 +14,10 @@ def main():
     schema = json.loads((ROOT / "schema" / "recipe-v1.schema.json").read_text())
     validator = Draft202012Validator(schema)
 
+    target_dir = ROOT / "recipes" / "_drafts" if "--drafts" in sys.argv else ROOT / "recipes"
+
     ok = True
-    for recipe_path in sorted((ROOT / "recipes").glob("*.yaml")):
+    for recipe_path in sorted(target_dir.glob("*.yaml")):
         data = yaml.safe_load(recipe_path.read_text())
         errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
         if errors:

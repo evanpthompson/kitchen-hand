@@ -19,7 +19,40 @@
     },
     "source": {
       "type": "string",
-      "description": "Attribution or origin of the recipe, if adapted from somewhere."
+      "description": "Short human-readable attribution, if adapted from somewhere."
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Structured capture record for recipes brought in through the ingestion pipeline (docs/ingestion.md). Omitted for hand-written recipes.",
+      "required": ["input_type", "creator", "captured_date"],
+      "additionalProperties": false,
+      "properties": {
+        "input_type": {
+          "type": "string",
+          "enum": ["url", "document", "instagram", "tiktok", "pasted-text", "other"]
+        },
+        "source_url": { "type": "string" },
+        "creator": {
+          "type": "string",
+          "description": "Person/account/publication credited, e.g. '@handle' or 'Grandma's recipe card'."
+        },
+        "captured_date": {
+          "type": "string",
+          "description": "YYYY-MM-DD the raw material was captured, not when the recipe was authored."
+        },
+        "raw_capture_path": {
+          "type": "string",
+          "description": "Path under inbox/ where the original raw capture is kept for audit."
+        },
+        "transcribed": {
+          "type": "boolean",
+          "description": "True if any part of this recipe came from audio/video transcription rather than written text."
+        },
+        "extraction_notes": {
+          "type": "string",
+          "description": "What was ambiguous, missing, or inferred during normalization. Empty string if extraction was unambiguous."
+        }
+      }
     },
     "servings": { "type": "integer", "minimum": 1 },
     "mode": {
