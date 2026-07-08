@@ -29,7 +29,7 @@
       "properties": {
         "input_type": {
           "type": "string",
-          "enum": ["url", "document", "instagram", "tiktok", "pasted-text", "other"]
+          "enum": ["url", "document", "instagram", "tiktok", "youtube", "pasted-text", "other"]
         },
         "source_url": { "type": "string" },
         "creator": {

@@ -36,6 +36,8 @@ recipes slot into a machine program without being rewritten from scratch.
   modes/hardware, gathered before any hands-on reverse engineering starts.
 - `tools/validate_recipes.py` — schema validator; `--drafts` checks
   `recipes/_drafts/` instead of the main collection.
+- `tools/fetch_youtube.py` — captures a YouTube video's title/description/
+  transcript into `inbox/` via `markitdown` (transcript API, no scraping).
 
 ## Status
 

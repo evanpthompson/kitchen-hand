@@ -1,2 +1,3 @@
 pyyaml
 jsonschema
+markitdown[youtube-transcription]
