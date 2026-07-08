@@ -32,6 +32,9 @@ recipes slot into a machine program without being rewritten from scratch.
   TikTok, pasted text), with the quality bar for promotion.
 - `docs/data-sources.md` — verified licensing terms for recipe APIs/datasets
   considered as bulk sources (what's safe to store vs. live-lookup-only).
+- `docs/app-spec.md` — spec for the ingestion workflow app (Python/FastAPI
+  backend, Flutter frontend) that turns the manual pipeline into a real
+  inbox/review/promote UI.
 - `docs/joyoung-cj-a9u-notes.md` — what's publicly known about the CJ-A9U's
   modes/hardware, gathered before any hands-on reverse engineering starts.
 - `tools/validate_recipes.py` — schema validator; `--drafts` checks
@@ -41,5 +44,6 @@ recipes slot into a machine program without being rewritten from scratch.
 
 ## Status
 
-Phase 0: schema, ingestion pipeline, and a first example recipe. No app, no
-hardware work yet.
+Phase 0: schema, ingestion pipeline, and a first example recipe, plus a
+spec for the ingestion workflow app (`docs/app-spec.md`). App not built yet;
+no hardware work yet.
