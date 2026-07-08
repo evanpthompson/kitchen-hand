@@ -1,0 +1,66 @@
+id: kung-pao-chicken
+title: Kung Pao Chicken
+cuisine: Sichuan
+tags: [chicken, spicy, weeknight]
+servings: 3
+mode: stir-fry
+
+ingredients:
+  - id: chicken
+    name: Boneless chicken thigh
+    quantity: 450g
+    prep: diced 2cm
+  - id: marinade
+    name: Marinade (soy sauce, shaoxing wine, cornstarch)
+    quantity: 1 tbsp each
+  - id: aromatics
+    name: Garlic, ginger, scallion whites
+    quantity: 3 cloves / 1 tbsp / 2 stalks
+    prep: minced
+  - id: dried-chili
+    name: Dried whole chilies
+    quantity: 8-10
+  - id: sichuan-peppercorn
+    name: Sichuan peppercorns
+    quantity: 1 tsp
+  - id: peanuts
+    name: Roasted peanuts
+    quantity: 1/2 cup
+  - id: sauce
+    name: Sauce (soy sauce, black vinegar, sugar, cornstarch slurry)
+    quantity: to taste
+
+phases:
+  - name: Marinate
+    instruction: Toss diced chicken with marinade, let sit 15 minutes at room temperature (done off-machine, before loading the pot).
+    add_ingredients: [chicken, marinade]
+  - name: Bloom aromatics
+    instruction: Heat oil until shimmering, add dried chilies and Sichuan peppercorns, stir until fragrant but not burnt.
+    add_ingredients: [dried-chili, sichuan-peppercorn]
+    duration_sec: 30
+    heat_level: null
+    stir_speed: medium
+    lid: open
+  - name: Sear chicken
+    instruction: Add marinated chicken, stir-fry until edges whiten and mostly cooked through.
+    duration_sec: 180
+    heat_level: null
+    stir_speed: high
+    lid: open
+  - name: Aromatics + sauce
+    instruction: Add garlic, ginger, scallion whites; stir until fragrant, then add sauce and toss to coat.
+    add_ingredients: [aromatics, sauce]
+    duration_sec: 60
+    stir_speed: medium
+    lid: open
+  - name: Finish
+    instruction: Add peanuts, toss to combine, plate immediately.
+    add_ingredients: [peanuts]
+    duration_sec: 20
+    stir_speed: low
+    lid: open
+
+notes: >
+  temp_c and heat_level left null throughout — no measured values exist yet
+  for the CJ-A9U's stir-fry preset. Fill in once Phase 1 reverse-engineering
+  work in docs/joyoung-cj-a9u-notes.md produces real numbers.

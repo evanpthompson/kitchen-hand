@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stirfry-companion/schema/recipe-v1.schema.json",
+  "title": "Recipe v1",
+  "type": "object",
+  "required": ["id", "title", "servings", "ingredients", "phases"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Slug, unique across the collection. Matches the filename minus extension."
+    },
+    "title": { "type": "string" },
+    "cuisine": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source": {
+      "type": "string",
+      "description": "Attribution or origin of the recipe, if adapted from somewhere."
+    },
+    "servings": { "type": "integer", "minimum": 1 },
+    "mode": {
+      "type": "string",
+      "enum": ["stir-fry", "braise", "soup", "hotpot", "fry", "manual"],
+      "description": "Which CJ-A9U preset this recipe targets, if any. 'manual' means stovetop/no machine mode intended."
+    },
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Referenced by phases[].add_ingredients to mark when this goes in."
+          },
+          "name": { "type": "string" },
+          "quantity": { "type": "string" },
+          "prep": {
+            "type": "string",
+            "description": "e.g. 'diced 1cm', 'minced', 'sliced thin'"
+          }
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Ordered cooking steps. Every phase must have a human instruction; machine fields are optional and filled in as CJ-A9U reverse engineering progresses.",
+      "items": {
+        "type": "object",
+        "required": ["name", "instruction"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "instruction": {
+            "type": "string",
+            "description": "Plain-language instruction, sufficient to cook this phase by hand with no machine."
+          },
+          "add_ingredients": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Ingredient ids (from ingredients[].id) added at the start of this phase."
+          },
+          "duration_sec": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Expected duration of this phase, if timed."
+          },
+          "heat_level": {
+            "type": ["string", "null"],
+            "description": "Machine heat setting for this phase, once known (e.g. a named level or measured temp_c). Null/omitted until confirmed."
+          },
+          "temp_c": {
+            "type": ["number", "null"],
+            "description": "Target temperature in Celsius, once measured/confirmed on hardware."
+          },
+          "stir_speed": {
+            "type": ["string", "null"],
+            "enum": ["off", "low", "medium", "high", null],
+            "description": "Machine stir speed for this phase, once known."
+          },
+          "lid": {
+            "type": ["string", "null"],
+            "enum": ["open", "closed", null]
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}
