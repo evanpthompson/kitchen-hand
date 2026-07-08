@@ -1,0 +1,233 @@
+id: chengdu-tomato-egg-noodles
+title: Chengdu Tomato & Egg Noodles
+cuisine: Sichuan
+tags: [noodles, soup, tomato, egg, pork, sichuan]
+servings: 3
+mode: manual
+
+source: "Chinese Cooking Demystified — Chengdu Tomato & Egg Noodles"
+
+provenance:
+  input_type: youtube
+  source_url: "https://www.youtube.com/watch?v=ulhKFEKXIEI"
+  creator: "Chinese Cooking Demystified (Chris & Steph)"
+  captured_date: "2026-07-08"
+  raw_capture_path: "inbox/chengdu-tomato-egg-noodles/youtube.md"
+  transcribed: true
+  extraction_notes: >
+    Several gaps, all left as-is rather than guessed — needs a human pass
+    before promotion: (1) the video description links a full written recipe
+    on the creators' Substack, but the URL is truncated
+    ("chinesecookingdemystified.sub...") in the captured description — worth
+    fetching the real link and cross-checking this draft against it before
+    trusting quantities. (2) The soup's seasoning list is shown on-screen as
+    text overlay ("the seasoning, up here on the screen") but is never
+    spoken, so it's entirely missing from this transcript-only capture —
+    only water/stock quantity made it in. (3) "Crack two eggs" is stated
+    once, but it's unclear whether that's per serving or for the whole
+    3-serving batch — treated as ambiguous, not assumed. (4) The creators
+    give three tomato-quantity options (all-fresh, all-canned, or a mix);
+    this draft uses the mix they said they personally preferred, with the
+    other two noted in the tomato-fresh ingredient's prep field. (5) Several
+    times in the video are given as ranges ("15 or maybe even 20 minutes",
+    "20-30 seconds") — kept as ranges in the instruction text rather than
+    collapsed to one number, since picking one would invent precision the
+    source doesn't have.
+
+ingredients:
+  - id: tomato-fresh
+    name: Fresh tomato
+    quantity: 450g
+    prep: >
+      blanched and peeled. Alternatives from the source: all-fresh (650g,
+      no canned) or all-canned (350g canned tomato + sauce, 1.5 cups water
+      instead of the 1/2 cup below) — this draft uses the creators' stated
+      favorite, the fresh+canned mix.
+  - id: tomato-canned
+    name: Canned tomato, with its sauce
+    quantity: 175g
+    prep: crushed by hand
+  - id: tomato-water
+    name: Water
+    quantity: 1/2 cup
+    prep: for blending with the tomato
+  - id: tomato-salt
+    name: Salt
+    quantity: 1/4 tsp
+    prep: in the tomato blend
+  - id: shaoxing-wine
+    name: Shaoxing wine
+    quantity: 1 tbsp
+    prep: in the tomato blend
+  - id: pork-belly
+    name: Fatty pork belly
+    quantity: 300g
+    prep: sliced into thin strips
+  - id: pork-salt
+    name: Salt
+    quantity: 1/8 tsp
+    prep: pork marinade
+  - id: pork-msg
+    name: MSG
+    quantity: 1/8 tsp
+    prep: pork marinade
+  - id: pork-soy
+    name: Soy sauce
+    quantity: 1/2 tsp
+    prep: pork marinade
+  - id: pork-oil
+    name: Oil
+    quantity: 3 tbsp
+    prep: mixed into the pork before rendering
+  - id: scallion
+    name: Scallions, white part
+    quantity: 4 stalks
+    prep: minced (reserve the greens for garnish)
+  - id: ginger
+    name: Ginger
+    quantity: 1 inch piece
+    prep: minced
+  - id: garlic
+    name: Garlic
+    quantity: 4 cloves
+    prep: minced
+  - id: garlic-paste-salt
+    name: Salt
+    quantity: 1/8 tsp
+    prep: "optional: pounded with the minced garlic into a paste"
+  - id: tomato-paste
+    name: Tomato paste
+    quantity: 1 tbsp
+  - id: chili-powder
+    name: Red chili powder (Kashmiri or Gochugaru)
+    quantity: 1 tsp
+    prep: optional
+  - id: stock-water
+    name: Water or stock
+    quantity: 2 cups
+  - id: sugar
+    name: Sugar
+    quantity: 1/2 tsp
+    prep: to taste, if the tomatoes are on the sour side
+  - id: white-pepper
+    name: White pepper
+    quantity: a good sprinkle, to taste
+  - id: eggs
+    name: Eggs
+    quantity: "2"
+    prep: >
+      quantity as stated in source — unclear if per serving or for the full
+      3-serving batch, see extraction_notes
+  - id: egg-lard
+    name: Reserved lard (from rendering the pork)
+    quantity: 1/2 cup
+    prep: for frying the eggs
+  - id: soup-lard
+    name: Reserved lard (from rendering the pork)
+    quantity: 4 tbsp
+    prep: for frying the aromatics/soup base
+  - id: chili-oil-chilis
+    name: Fresh spicy chilis (Heaven Facing or Thai bird's eye)
+    quantity: 15g
+    prep: finely minced — for the optional chili oil topping
+  - id: chili-oil-garlic
+    name: Garlic
+    quantity: 3 cloves
+    prep: finely minced — for the optional chili oil topping
+  - id: chili-oil-oil
+    name: Oil
+    quantity: 1.5 tbsp
+    prep: for the optional chili oil topping
+  - id: chili-oil-vinegar
+    name: Rice vinegar (or white vinegar)
+    quantity: 1/2 tbsp
+    prep: for the optional chili oil topping
+  - id: noodles
+    name: Dried Sichuan-style alkaline noodles
+    quantity: 100g per serving
+    prep: or 150g fresh noodles per serving
+  - id: scallion-greens
+    name: Scallion greens (reserved from the scallions above)
+    quantity: a good sprinkle
+    prep: garnish
+
+phases:
+  - name: Prep tomato base
+    instruction: >
+      Blend the fresh and canned tomato with the water, salt, and Shaoxing
+      wine until smooth. Set aside. (This is off-heat prep, not yet in the
+      cooking vessel.)
+  - name: Render lard from pork belly
+    instruction: >
+      Toss the sliced pork belly with salt, MSG, and soy sauce, then mix in
+      the oil. Add to a cool pot/wok and render over medium flame until the
+      pork is browned, dry, and crispy — about 15, maybe 20 minutes. Remove
+      the pork to a paper-towel-lined plate (reserve as a crispy topping)
+      and reserve the rendered lard.
+    add_ingredients: [pork-belly, pork-salt, pork-msg, pork-soy, pork-oil]
+    stir_speed: null
+    heat_level: null
+  - name: Fry aromatics
+    instruction: >
+      In the reserved lard, fry the minced scallion whites, ginger, and
+      garlic (optionally pounded first with the salt into a paste) over
+      medium flame until fragrant, about one minute.
+    add_ingredients: [soup-lard, scallion, ginger, garlic, garlic-paste-salt]
+    duration_sec: 60
+  - name: Bloom tomato paste and chili powder
+    instruction: >
+      Add the tomato paste and fry to stain the oil. Optionally add the red
+      chili powder and fry that in too.
+    add_ingredients: [tomato-paste, chili-powder]
+  - name: Add tomato base and reduce
+    instruction: >
+      Pour in the blended tomato mixture from the prep phase. If it's
+      frothy, boil on medium-high until the froth subsides.
+    add_ingredients: [tomato-fresh, tomato-canned, tomato-water, tomato-salt, shaoxing-wine]
+  - name: Simmer the soup
+    instruction: >
+      Add the water/stock, mix well, and simmer together for at least half
+      an hour. (Source shows an on-screen seasoning list here that isn't
+      captured in this transcript — see extraction_notes.)
+    add_ingredients: [stock-water]
+    duration_sec: 1800
+  - name: Season to taste
+    instruction: >
+      Taste and adjust — add sugar if the tomatoes are on the sour side,
+      and finish with a good sprinkle of white pepper.
+    add_ingredients: [sugar, white-pepper]
+  - name: Fry the eggs (separate pan/wok)
+    instruction: >
+      Heat the reserved lard in a wok until smoking, then pour in the eggs
+      carefully to keep the yolks intact. Let them puff and set, swirling
+      the wok and basting with hot oil over the yolk. Flip once set and
+      cook 20-30 seconds on the other side, flip again for even browning,
+      then drain on a paper-towel-lined plate.
+    add_ingredients: [eggs, egg-lard]
+  - name: Make chili oil topping (optional, separate step)
+    instruction: >
+      Finely mince the chilis and garlic together. Fry in oil over medium
+      flame until just past fragrant or slightly dried, about two minutes.
+      Mix in the rice vinegar, then remove from heat.
+    add_ingredients: [chili-oil-chilis, chili-oil-garlic, chili-oil-oil, chili-oil-vinegar]
+  - name: Cook noodles (separate pot)
+    instruction: >
+      Cook the noodles separately per package/type, then place in a serving
+      bowl.
+    add_ingredients: [noodles]
+  - name: Assemble
+    instruction: >
+      Ladle the tomato soup over the noodles, top with the fried egg, a
+      generous handful of the crispy pork, the reserved scallion greens,
+      and optionally the chili oil topping.
+    add_ingredients: [scallion-greens]
+
+notes: >
+  Multi-track recipe (soup base, fried eggs, optional chili oil, and noodles
+  are each handled separately, then assembled) — set to mode: manual rather
+  than one of the CJ-A9U's single-pot presets, since no single preset covers
+  rendering lard, frying eggs, and simmering soup as one continuous machine
+  program. Revisit mode once Phase 1 reverse-engineering clarifies whether
+  the machine could realistically run just the soup-base portion (render →
+  aromatics → simmer) as a "braise" or "soup" program, with eggs/noodles/
+  chili oil handled by hand alongside it.
