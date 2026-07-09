@@ -1,0 +1,78 @@
+id: bechamel-sauce
+title: Béchamel Sauce
+cuisine: French
+tags: [sauce, mother-sauce, mvp-target]
+servings: 4
+mode: manual
+
+source: "Classic technique — one of the five French mother sauces, not adapted from a single source."
+
+ingredients:
+  - id: butter
+    name: Unsalted butter
+    quantity: 3 tbsp
+  - id: flour
+    name: All-purpose flour
+    quantity: 3 tbsp
+    prep: for the roux, whisked into the melted butter
+  - id: milk
+    name: Whole milk
+    quantity: 2 cups
+    prep: warmed separately (not cold) before adding to the roux
+  - id: salt
+    name: Salt
+    quantity: to taste
+  - id: white-pepper
+    name: White pepper
+    quantity: to taste
+  - id: nutmeg
+    name: Nutmeg, grated
+    quantity: a pinch
+
+phases:
+  - name: Melt butter
+    instruction: >
+      Melt the butter over medium-low heat. Don't let it brown.
+    add_ingredients: [butter]
+    stir_speed: low
+  - name: Make the roux
+    instruction: >
+      Whisk in the flour. Cook 2-3 minutes over medium heat, stirring
+      constantly, until the raw-flour smell is gone and it smells
+      slightly nutty — the roux must stay pale, not browned. This is
+      the step most sensitive to heat control: too hot and it scorches
+      before the flour is actually cooked.
+    add_ingredients: [flour]
+    duration_sec: 150
+    stir_speed: high
+  - name: Incorporate milk
+    instruction: >
+      Add the warmed milk gradually, a ladle at a time, whisking
+      constantly. Let each addition thicken and start to bubble before
+      adding the next — dumping it all in at once is what causes lumps.
+      Keep the heat at medium; too high risks catching and burning.
+    add_ingredients: [milk]
+    stir_speed: high
+  - name: Simmer to nappe consistency
+    instruction: >
+      Simmer gently, stirring constantly, until the sauce coats the
+      back of a spoon (nappe) — usually 15-20 minutes. Scrape the
+      bottom/corners of the pot regularly; that's where scorching
+      starts first.
+    duration_sec: 1050
+    stir_speed: high
+  - name: Season
+    instruction: >
+      Off heat, season with salt, white pepper, and a pinch of nutmeg
+      to taste.
+    add_ingredients: [salt, white-pepper, nutmeg]
+    stir_speed: low
+
+notes: >
+  MVP target for Track A (docs/roadmap.md, docs/open-rig-hardware.md) —
+  see docs/mvp-bechamel.md for why this recipe specifically and what
+  "flawless" means as an acceptance test. heat_level/temp_c are left null
+  throughout: no calibrated mapping from the induction burner's controls
+  to actual temperatures exists yet. stir_speed uses the schema's
+  low/medium/high enum descriptively for now, not a calibrated StirMATE
+  dial position.

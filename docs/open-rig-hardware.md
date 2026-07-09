@@ -107,6 +107,10 @@ hardware yet. Rough shape of the problem, not yet researched in depth:
 
 ## Suggested order of attack
 
+Concrete MVP target for all of this: `docs/mvp-bechamel.md` — an unattended,
+flawless béchamel (`recipes/bechamel-sauce.yaml`). It's the acceptance test
+for steps 1–3 below, not just an abstract "get it working" goal.
+
 1. Get basic programmatic control of the StirMATE via servo-on-the-dial
    (cheapest, fastest win, proves the "external actuator on a dumb device"
    pattern before committing to it for the burner too).
@@ -114,7 +118,11 @@ hardware yet. Rough shape of the problem, not yet researched in depth:
    same way (servo/solenoid on its buttons), before attempting the SSR+PID
    bypass.
 3. Only then start the SSR + temp-probe closed-loop heat control — the
-   highest-payoff but also highest-risk (mains AC) piece.
-4. Ingredient dispensing research + prototyping — biggest scope item,
-   tackle once heat+stir are both under real programmatic control so
-   there's an actual rig to dispense *into*.
+   highest-payoff but also highest-risk (mains AC) piece. Béchamel's roux
+   stage is a good real-world test of whether this is actually necessary
+   or whether button-actuation heat control is precise enough.
+4. A single peristaltic pump for milk — the béchamel MVP's only dispensing
+   need, and a much smaller wedge into Step 2 than the full multi-hopper
+   dispensing problem below.
+5. Ingredient dispensing research + prototyping beyond that single pump —
+   biggest scope item, tackle once heat+stir (and the MVP) are proven.

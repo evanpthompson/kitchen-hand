@@ -26,6 +26,14 @@ the same heat/stir/ingredient-timing problems.
 
 ## Track A — Open rig (induction burner + StirMATE + pans + future dispenser)
 
+**MVP target: an unattended, flawless béchamel sauce** — see
+`docs/mvp-bechamel.md` for why this recipe specifically and what
+"flawless" means as an acceptance test. `recipes/bechamel-sauce.yaml` is
+the reference recipe. Chosen because it stress-tests exactly Step 1's two
+capabilities (sustained precise heat, continuous stirring) without needing
+Step 2's full dispensing problem solved — at most one liquid (milk) needs
+automated dispensing, which is a natural, much smaller wedge into Step 2.
+
 See `docs/open-rig-hardware.md` for full detail. Summary:
 
 - **Step 1 — instrument & control each component.** StirMATE and the

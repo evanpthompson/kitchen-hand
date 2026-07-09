@@ -8,7 +8,8 @@ dispenser), and (B) a reverse-engineered **Joyoung CJ-A9U** ("Intelligent
 Fully Automatic Stir-Fry Machine Robot") as a second, harder target and a
 reference for how a sealed commercial unit solves the same problems. See
 `docs/roadmap.md` for the full plan and `docs/open-rig-hardware.md` for the
-feature-parity checklist against Posha/Nosh.
+feature-parity checklist against Posha/Nosh. Track A's concrete MVP: an
+unattended, flawless béchamel sauce — see `docs/mvp-bechamel.md`.
 
 ## Why this shape
 
@@ -48,6 +49,8 @@ rewritten from scratch.
 - `docs/open-rig-hardware.md` — the open-rig track: StirMATE/induction
   burner control options, the Posha/Nosh feature-parity checklist, and the
   ingredient-dispensing gap.
+- `docs/mvp-bechamel.md` — Track A's concrete MVP definition and acceptance
+  criteria; `recipes/bechamel-sauce.yaml` is the reference recipe.
 - `tools/validate_recipes.py` — schema validator; `--drafts` checks
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
