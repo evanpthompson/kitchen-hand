@@ -1,20 +1,26 @@
 # Kitchen Hand
 
-A recipe collection and cooking-instruction format that starts as a plain human
-cookbook and is structured so it can later drive an automatic cooking machine —
-specifically a reverse-engineered **Joyoung CJ-A9U** ("Intelligent Fully
-Automatic Stir-Fry Machine Robot").
+An open-source alternative to all-in-one cooking robots like Posha and Nosh:
+a recipe collection/ingestion pipeline plus two parallel hardware tracks —
+(A) an open rig built from separately-controlled off-the-shelf components
+(induction burner, pans, a StirMATE stirrer, eventually an ingredient
+dispenser), and (B) a reverse-engineered **Joyoung CJ-A9U** ("Intelligent
+Fully Automatic Stir-Fry Machine Robot") as a second, harder target and a
+reference for how a sealed commercial unit solves the same problems. See
+`docs/roadmap.md` for the full plan and `docs/open-rig-hardware.md` for the
+feature-parity checklist against Posha/Nosh.
 
 ## Why this shape
 
-The CJ-A9U cooks via discrete phases (heat, stir, hold, add-ingredient cues)
-rather than free-form stovetop technique. Recipes here are written as an
-ordered list of **phases** from day one — each phase has a human-readable
-instruction *and* the parameters (temperature/heat level, stir speed, duration,
-lid state) a machine program would need for that same step. Nothing forces you
-to fill in the machine fields now; a recipe with only `instruction` text is
-still valid. But when the reverse-engineering work is further along, existing
-recipes slot into a machine program without being rewritten from scratch.
+Both hardware tracks cook via discrete phases (heat, stir, hold,
+add-ingredient cues) rather than free-form stovetop technique. Recipes here
+are written as an ordered list of **phases** from day one — each phase has a
+human-readable instruction *and* the parameters (temperature/heat level,
+stir speed, duration, lid state) a machine program would need for that same
+step. Nothing forces you to fill in the machine fields now; a recipe with
+only `instruction` text is still valid. But as either hardware track comes
+online, existing recipes slot into a machine program without being
+rewritten from scratch.
 
 ## Layout
 
@@ -37,8 +43,11 @@ recipes slot into a machine program without being rewritten from scratch.
   inbox/review/promote UI.
 - `docs/joyoung-cj-a9u-notes.md` — what's publicly known about the CJ-A9U's
   modes/hardware, gathered before any hands-on reverse engineering starts.
-- `docs/hardware-sensors-research.md` — sensor survey for Phase 1/2
+- `docs/hardware-sensors-research.md` — sensor survey for the CJ-A9U track
   (current/thermal/vibration/audio/RF), tiered by how invasive each is.
+- `docs/open-rig-hardware.md` — the open-rig track: StirMATE/induction
+  burner control options, the Posha/Nosh feature-parity checklist, and the
+  ingredient-dispensing gap.
 - `tools/validate_recipes.py` — schema validator; `--drafts` checks
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
