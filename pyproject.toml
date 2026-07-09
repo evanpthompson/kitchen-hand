@@ -1,7 +1,7 @@
 [project]
-name = "stirfry-companion"
+name = "kitchen-hand"
 version = "0.1.0"
-description = "Add your description here"
+description = "Recipe collection and ingestion tooling for Kitchen Hand"
 requires-python = ">=3.12"
 dependencies = [
     "jsonschema>=4.26.0",

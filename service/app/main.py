@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from .routers import drafts, inbox, recipes, schema_routes
 
 app = FastAPI(
-    title="Stirfry Companion — Ingestion API",
+    title="Kitchen Hand — Ingestion API",
     description=(
         "Backend for the recipe ingestion workflow app: browse inbox "
         "captures, review/edit drafts, promote to the trusted collection. "

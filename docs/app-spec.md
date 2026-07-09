@@ -131,7 +131,7 @@ Nothing new — this app operates on what already exists:
   judgment rather than auto-merge either way. Worth prototyping against the
   couple of recipes that exist today before trusting it on a larger corpus.
 - **Where this app lives** — recommend a new top-level directory inside
-  `stirfry-companion` (e.g. `service/` for the FastAPI backend,
+  `kitchen-hand` (e.g. `service/` for the FastAPI backend,
   `app/` for the Flutter frontend) rather than a separate repo, since the
   entire point is operating directly on this repo's files.
 - **Remote access** — out of scope for v1 (local-only), but if this is ever

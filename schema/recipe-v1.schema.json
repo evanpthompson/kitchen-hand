@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://stirfry-companion/schema/recipe-v1.schema.json",
+  "$id": "https://kitchen-hand/schema/recipe-v1.schema.json",
   "title": "Recipe v1",
   "type": "object",
   "required": ["id", "title", "servings", "ingredients", "phases"],

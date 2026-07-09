@@ -1,4 +1,4 @@
-# Stirfry Companion
+# Kitchen Hand
 
 A recipe collection and cooking-instruction format that starts as a plain human
 cookbook and is structured so it can later drive an automatic cooking machine —

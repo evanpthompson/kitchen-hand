@@ -1,7 +1,7 @@
 [project]
-name = "stirfry-companion-service"
+name = "kitchen-hand-service"
 version = "0.1.0"
-description = "Add your description here"
+description = "Ingestion workflow API backend for Kitchen Hand"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.139.0",
