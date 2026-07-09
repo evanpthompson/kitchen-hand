@@ -37,6 +37,8 @@ recipes slot into a machine program without being rewritten from scratch.
   inbox/review/promote UI.
 - `docs/joyoung-cj-a9u-notes.md` — what's publicly known about the CJ-A9U's
   modes/hardware, gathered before any hands-on reverse engineering starts.
+- `docs/hardware-sensors-research.md` — sensor survey for Phase 1/2
+  (current/thermal/vibration/audio/RF), tiered by how invasive each is.
 - `tools/validate_recipes.py` — schema validator; `--drafts` checks
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/

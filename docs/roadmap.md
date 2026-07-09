@@ -17,6 +17,10 @@
   app + cloud pairing — check before assuming it's fully closed).
 - Record findings in `docs/joyoung-cj-a9u-notes.md` as they're confirmed,
   separating "official spec" from "measured/inferred."
+- `docs/hardware-sensors-research.md` surveys sensors for this phase —
+  starts with non-invasive RF sniffing (check for an existing BLE/Wi-Fi
+  interface before anything else) and non-invasive instrumentation
+  (current, thermal, vibration, audio) before any board-level work.
 
 ## Phase 2 — Map recipes to machine programs
 - Once real control parameters are known, translate the `machine_program`
