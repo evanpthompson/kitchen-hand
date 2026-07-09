@@ -41,9 +41,24 @@ recipes slot into a machine program without being rewritten from scratch.
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
   transcript into `inbox/` via `markitdown` (transcript API, no scraping).
+- `service/` — the ingestion workflow app's FastAPI backend (Phase A of
+  `docs/app-spec.md`). Own `pyproject.toml`/`uv.lock`, separate from the
+  root tooling.
+
+## Development
+
+Dependency management is `uv` throughout — `pyproject.toml` + `uv.lock`,
+no `requirements.txt`. Two separate projects:
+
+- **Root** (`tools/`): `uv run tools/validate_recipes.py [--drafts]`,
+  `uv run tools/fetch_youtube.py <slug> <url>`.
+- **`service/`** (the API backend): from `service/`, `uv run uvicorn
+  app.main:app --reload` to serve it, `uv run pytest` to test, `uv run
+  ruff check .` to lint.
 
 ## Status
 
 Phase 0: schema, ingestion pipeline, and a first example recipe, plus a
-spec for the ingestion workflow app (`docs/app-spec.md`). App not built yet;
-no hardware work yet.
+spec for the ingestion workflow app (`docs/app-spec.md`). Phase A of the app
+(the FastAPI backend in `service/`) is built and tested. Flutter frontend
+(Phase B) and hardware work not started yet.
