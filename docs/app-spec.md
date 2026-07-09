@@ -92,12 +92,17 @@ Nothing new — this app operates on what already exists:
    the raw capture — caption, transcript, screenshot, whatever's there — so
    you can read it side by side while doing the normalize step in a Claude
    session.
-2. **Draft review** — the core screen. Renders the draft as a normal recipe
-   (ingredients, phases) with a prominent panel for
-   `provenance.extraction_notes` and any live schema validation errors.
-   Fields are editable inline — this is where an ambiguous-egg-count-style
-   gap gets fixed without hand-editing YAML. Surfaces dedup candidates from
-   the promote check. "Promote" and "Discard" actions.
+2. **Draft review** — the core screen. Surfaces `provenance.extraction_notes`
+   and any live schema validation errors in prominent panels above the
+   editor. **v1 implementation note:** editing is a single JSON text editor
+   over the whole draft, not per-field/per-ingredient form widgets — this is
+   where an ambiguous-egg-count-style gap gets fixed, just as parsed JSON
+   rather than structured inputs. Chosen over per-field forms to avoid
+   building bespoke UI for arbitrary nested ingredient/phase arrays before
+   there's real usage to learn from; still means never touching a terminal
+   or hand-editing YAML. Revisit if this proves clunky in practice. Surfaces
+   dedup candidates from the promote check (blocking dialog, "promote
+   anyway" re-submits with `force=true`). "Promote" and "Discard" actions.
 3. **Collection browser** — list/grid of `recipes/*.yaml`, filterable by
    tag/cuisine/mode, read-only detail view. Not a cooking mode — just a way
    to sanity-check what's already in the trusted collection.

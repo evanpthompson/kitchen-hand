@@ -59,6 +59,16 @@ no `requirements.txt`. Two separate projects:
 ## Status
 
 Phase 0: schema, ingestion pipeline, and a first example recipe, plus a
-spec for the ingestion workflow app (`docs/app-spec.md`). Phase A of the app
-(the FastAPI backend in `service/`) is built and tested. Flutter frontend
-(Phase B) and hardware work not started yet.
+spec for the ingestion workflow app (`docs/app-spec.md`). Phase A (FastAPI
+backend in `service/`) and Phase B (Flutter frontend in `app/` — inbox
+queue, draft review, collection browser) are both built and tested. Phase C
+(raw-paste capture screen) and hardware work not started yet.
+
+## License
+
+Code (schema, `tools/`, `service/`, `app/`) is MIT-licensed — see `LICENSE`.
+That covers the software, not the recipe content: recipes brought in through
+the ingestion pipeline retain whatever attribution/rights apply to their
+original source (see each recipe's `provenance`/`source` field and
+`docs/data-sources.md`) — MIT on this repo doesn't relicense someone else's
+recipe or transcript as your own.

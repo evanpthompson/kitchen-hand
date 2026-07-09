@@ -3,6 +3,7 @@ name = "kitchen-hand"
 version = "0.1.0"
 description = "Recipe collection and ingestion tooling for Kitchen Hand"
 requires-python = ">=3.12"
+license = "MIT"
 dependencies = [
     "jsonschema>=4.26.0",
     "markitdown[youtube-transcription]>=0.1.6",
