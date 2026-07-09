@@ -44,17 +44,26 @@ recipes slot into a machine program without being rewritten from scratch.
 - `service/` — the ingestion workflow app's FastAPI backend (Phase A of
   `docs/app-spec.md`). Own `pyproject.toml`/`uv.lock`, separate from the
   root tooling.
+- `app/` — the ingestion workflow app's Flutter frontend (Phase B):
+  inbox queue, draft review, collection browser, talking to `service/`
+  over REST.
 
 ## Development
 
-Dependency management is `uv` throughout — `pyproject.toml` + `uv.lock`,
-no `requirements.txt`. Two separate projects:
+Dependency management is `uv` (Python) — `pyproject.toml` + `uv.lock`,
+no `requirements.txt`. Three separate projects:
 
 - **Root** (`tools/`): `uv run tools/validate_recipes.py [--drafts]`,
   `uv run tools/fetch_youtube.py <slug> <url>`.
 - **`service/`** (the API backend): from `service/`, `uv run uvicorn
   app.main:app --reload` to serve it, `uv run pytest` to test, `uv run
   ruff check .` to lint.
+- **`app/`** (the Flutter frontend): from `app/`, `flutter run -d macos`
+  (or your platform), `flutter test`, `flutter analyze`.
+
+See `CONTRIBUTING.md` for the full contribution workflow, including how
+recipe contributions go through the ingestion pipeline rather than a
+direct PR into `recipes/`.
 
 ## Status
 
