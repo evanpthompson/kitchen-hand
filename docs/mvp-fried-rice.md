@@ -82,7 +82,7 @@ twice — same bar as `docs/mvp-bechamel.md`.
 
 - Cooking rice from raw (water dispensing, doneness judgment) — future MVP.
 - Cooking chicken from raw (temp-verified food safety) — future MVP, likely
-  needs a food-contact probe thermometer per `docs/perception-sensors.md`
-  discussion (not yet written up as its own doc).
+  needs a food-safety-grade internal-temperature probe, flagged as
+  out-of-scope-for-now in `docs/perception-sensors.md`.
 - Any camera/CV doneness check — Phase 3 territory, not needed here since
   pre-cooked inputs make "doneness" a non-issue for this version.
