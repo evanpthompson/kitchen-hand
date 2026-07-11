@@ -1,0 +1,97 @@
+id: chicken-fried-rice
+title: Chicken Fried Rice
+cuisine: Chinese-American
+tags: [stir-fry, weeknight, mvp-target]
+servings: 4
+mode: stir-fry
+
+source: "Standard technique — day-old/pre-cooked rice fried with egg, chicken, and aromatics."
+
+ingredients:
+  - id: cooked-rice
+    name: Cooked long-grain rice (day-old, cold)
+    quantity: 4 cups
+    prep: >
+      pre-cooked and chilled before this recipe starts — this version does
+      not cook the rice itself, see notes
+  - id: chicken
+    name: Boneless chicken thigh or breast
+    quantity: 1 lb
+    prep: diced 1.5cm, pre-cooked or par-cooked before this recipe starts
+  - id: egg
+    name: Eggs
+    quantity: "3"
+    prep: beaten
+  - id: oil
+    name: Neutral oil (peanut or vegetable)
+    quantity: 3 tbsp
+  - id: garlic
+    name: Garlic
+    quantity: 2 cloves
+    prep: minced
+  - id: scallion
+    name: Scallion
+    quantity: "3"
+    prep: sliced, whites and greens separated
+  - id: peas-carrots
+    name: Frozen peas and diced carrots
+    quantity: 1 cup
+    prep: no need to thaw
+  - id: soy-sauce
+    name: Soy sauce
+    quantity: 3 tbsp
+  - id: sesame-oil
+    name: Toasted sesame oil
+    quantity: 1 tsp
+  - id: white-pepper
+    name: White pepper
+    quantity: to taste
+
+phases:
+  - name: Scramble egg
+    instruction: >
+      Heat 1 tbsp oil over high heat. Add the beaten egg and scramble
+      quickly to soft curds, just barely set. Remove from the pan and set
+      aside — it finishes cooking later, don't overcook it here.
+    add_ingredients: [oil, egg]
+    duration_sec: 60
+    stir_speed: high
+  - name: Sear chicken and aromatics
+    instruction: >
+      Add the remaining oil, then the garlic and scallion whites. Stir
+      briefly until fragrant, then add the chicken and toss to heat
+      through and pick up color. Chicken is already cooked/par-cooked —
+      this step is about searing and reheating, not cooking through.
+    add_ingredients: [garlic, scallion, chicken]
+    duration_sec: 120
+    stir_speed: high
+  - name: Add rice and vegetables
+    instruction: >
+      Add the cold rice, breaking up any clumps as it goes in, along with
+      the frozen peas and carrots. High heat is critical here — the rice
+      needs to fry and pick up wok hei, not steam. Toss continuously so it
+      doesn't stick or scorch on the bottom.
+    add_ingredients: [cooked-rice, peas-carrots]
+    duration_sec: 240
+    stir_speed: high
+  - name: Season and finish
+    instruction: >
+      Push everything to one side, pour the soy sauce directly onto the
+      hot surface so it sizzles, then toss to distribute evenly. Fold in
+      the reserved scrambled egg and scallion greens. Finish with sesame
+      oil and white pepper, toss once more, and serve immediately.
+    add_ingredients: [soy-sauce, sesame-oil, white-pepper, scallion]
+    duration_sec: 60
+    stir_speed: high
+
+notes: >
+  Second MVP target for Track A (docs/roadmap.md, docs/open-rig-hardware.md)
+  — see docs/mvp-fried-rice.md for why this recipe specifically and what
+  "flawless" means as an acceptance test. This version deliberately uses
+  pre-cooked rice and pre-cooked chicken as inputs rather than cooking
+  either from raw — cooking raw rice (water ratio, timing, doneness) and
+  cooking raw chicken safely (temp verification) are both harder problems
+  saved for a later revision once high-heat stir-fry control is proven.
+  heat_level/temp_c are left null throughout, same reasoning as
+  bechamel-sauce.yaml: no calibrated mapping from the induction burner's
+  controls to actual temperatures exists yet.
