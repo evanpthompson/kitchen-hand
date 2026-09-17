@@ -37,6 +37,11 @@ rewritten from scratch.
 - `docs/ingestion.md` — how recipes get in: capture → normalize → draft →
   review → promote, across every input type (URL, document, Instagram,
   TikTok, pasted text), with the quality bar for promotion.
+- `docs/telegram-ingest-spec.md` — spec for a one-tap phone capture path: a
+  Telegram bot you share a Reel to, which becomes an `inbox/` capture. Not
+  built. Chosen over WhatsApp because it needs no public webhook, and over an
+  iCloud queue file because Telegram holds messages server-side until
+  collected.
 - `docs/data-sources.md` — verified licensing terms for recipe APIs/datasets
   considered as bulk sources (what's safe to store vs. live-lookup-only).
 - `docs/app-spec.md` — spec for the ingestion workflow app (Python/FastAPI
