@@ -16,13 +16,24 @@ provenance:
   transcribed: false
   extraction_notes: >
     The most complete of this batch — a full ingredient list with quantities
-    and a full ordered method. Four things still need a human decision:
+    and a full ordered method. One ambiguity has been resolved by the reviewer
+    (1), three remain open (2-4):
 
-    (1) "½ green onions" is almost certainly wrong as written. Half a spring
-    onion is not a plausible quantity for 6-8 servings, and every other
-    volume in the list is a cup measure, so "½ cup green onions" is the
-    likely intent. Recorded verbatim as the source wrote it rather than
-    silently corrected — fix it against the original post before promoting.
+    (1) RESOLVED BY REVIEWER, NOT BY THE SOURCE. The caption reads "½ green
+    onions" with no unit. Checked against the canonical Tasty recipe and two
+    independent mirrors on 2026-09-17: every one of them reproduces "½ green
+    onions" verbatim, unitless. The ambiguity originates with Tasty and has
+    propagated unchanged, so no amount of further searching will resolve it —
+    the published recipe simply has an empty unit field.
+
+    Evan read it as half a bunch and that is what this draft records. It is a
+    human judgement on an ambiguous source, not a recovered fact, and it is
+    marked as such on the ingredient. The competing reading was ½ cup, on the
+    grounds that every other volume in the list is a cup measure.
+
+    (tasty.co disallows ClaudeBot, Claude-Web and anthropic-ai in robots.txt,
+    so its page was read only through search results and mirrors, never
+    fetched directly.)
 
     (2) Servings are given as a range, "6-8". The schema requires a single
     integer, so the lower bound is used. Nothing was invented: 6 is stated in
@@ -67,10 +78,11 @@ ingredients:
     prep: chopped into small pieces — variety not specified in source
   - id: green-onions
     name: Green onions
-    quantity: "1/2"
+    quantity: 1/2 bunch
     prep: >
-      chopped. Source reads "½ green onions" with no unit; likely "½ cup" —
-      see extraction_notes, do not cook from this as written
+      chopped. REVIEWER'S READING, not the source's: the source and every
+      mirror read "½ green onions" with no unit at all — see
+      extraction_notes
   - id: pepper
     name: Pepper
     quantity: 1 teaspoon
