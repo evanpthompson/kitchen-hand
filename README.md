@@ -55,12 +55,28 @@ rewritten from scratch.
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
   transcript into `inbox/` via `markitdown` (transcript API, no scraping).
+- `tools/triage_inbox.py` — scores every capture on how much of a recipe its
+  text holds and sorts them into `strong` / `weak` / `food-no-text` /
+  `not-food`. What makes a bulk import workable. A **report, never a gate**:
+  it reads `inbox/` and writes nothing to it. `--bucket NAME` prints bare
+  slugs for piping; `--out DIR` writes one file per bucket.
+- `tools/import_instagram_saved.py` — turns an Instagram "Download Your
+  Information" export into `inbox/<slug>/` captures: `url.txt`, `meta.txt`
+  (handle, permalink, hashtags, dates) and `caption.txt`. No Meta API returns
+  saved posts; the JSON export is the only route, and it carries the caption
+  text, so an imported post needs no pasting. `--list-collections` and
+  `--collection NAME` filter to a curated saved collection. Repairs the
+  Latin-1 mojibake Instagram writes into captions, and refuses to report
+  success on a partial import. Re-runnable: dedups on permalink, never
+  overwrites a file.
 - `service/` — the ingestion workflow app's FastAPI backend (Phase A of
   `docs/app-spec.md`). Own `pyproject.toml`/`uv.lock`, separate from the
   root tooling.
-- `app/` — the ingestion workflow app's Flutter frontend (Phase B):
-  inbox queue, draft review, collection browser, talking to `service/`
-  over REST.
+- `app/` — the ingestion workflow app's Flutter frontend (Phases B and C):
+  capture, inbox queue, draft review, collection browser, talking to
+  `service/` over REST. The capture screen is a queue worker for the captures
+  that still need text by hand — carousel posts whose steps are in the images,
+  TikToks, documents, pasted text.
 
 ## Development
 
@@ -68,7 +84,10 @@ Dependency management is `uv` (Python) — `pyproject.toml` + `uv.lock`,
 no `requirements.txt`. Three separate projects:
 
 - **Root** (`tools/`): `uv run tools/validate_recipes.py [--drafts]`,
-  `uv run tools/fetch_youtube.py <slug> <url>`.
+  `uv run tools/fetch_youtube.py <slug> <url>`,
+  `uv run tools/import_instagram_saved.py <export> [--dry-run]`,
+  `uv run tools/triage_inbox.py [--bucket NAME]`.
+  `uv run pytest` runs the root tool tests.
 - **`service/`** (the API backend): from `service/`, `uv run uvicorn
   app.main:app --reload` to serve it, `uv run pytest` to test, `uv run
   ruff check .` to lint.
@@ -82,10 +101,10 @@ direct PR into `recipes/`.
 ## Status
 
 Phase 0: schema, ingestion pipeline, and a first example recipe, plus a
-spec for the ingestion workflow app (`docs/app-spec.md`). Phase A (FastAPI
-backend in `service/`) and Phase B (Flutter frontend in `app/` — inbox
-queue, draft review, collection browser) are both built and tested. Phase C
-(raw-paste capture screen) and hardware work not started yet.
+spec for the ingestion workflow app (`docs/app-spec.md`). Phases A (FastAPI
+backend in `service/`), B (Flutter frontend in `app/` — inbox queue, draft
+review, collection browser) and C (raw-paste capture screen) are built and
+tested. Hardware work not started yet.
 
 ## License
 
