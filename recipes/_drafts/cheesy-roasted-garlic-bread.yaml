@@ -1,0 +1,106 @@
+id: cheesy-roasted-garlic-bread
+title: Cheesy Roasted Garlic Bread
+tags: [baking, cheese]
+servings: 4
+mode: manual
+
+source: "@iramsfoodstory on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C5n_aMWAOwe/"
+  creator: "@iramsfoodstory (Iram Mansoor)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/cheesy-roasted-garlic-bread/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    The cleanest capture in this batch: a complete ingredient list, a complete
+    ordered method, and both oven temperatures and both bake times stated.
+    Nothing here is reconstructed.
+
+    SERVINGS SET BY REVIEWER: 4. The source states no yield - it is one
+    baguette split lengthwise into two halves, a definite amount of food but
+    not a stated number of people. Evan set it to 4.
+
+    Smaller points, all left as the source has them:
+
+    (1) Garlic is "8-10 garlic cloves", a range. Kept as a range rather than
+    collapsed to one number.
+
+    (2) Salt is "to taste", with no quantity.
+
+    (3) The roasting oil is 1/2 cup olive oil, used to confit the garlic. The
+    source never says what happens to it afterwards - it is not in the butter
+    mixture as written, and it is not discarded either. Recorded as its own
+    ingredient with that gap noted rather than silently folded into the
+    spread.
+
+    (4) Parsley appears twice, 1/4 cup chopped in the butter mixture and again
+    as a garnish, with no split given. Recorded once with the double use noted.
+
+    (5) Oven temperature is 400°F, recorded as 204°C.
+
+ingredients:
+  - id: butter
+    name: Unsalted butter
+    quantity: 1/2 cup (1 stick)
+    prep: softened
+  - id: garlic
+    name: Garlic cloves
+    quantity: 8-10
+    prep: whole, for roasting
+  - id: olive-oil
+    name: Olive oil
+    quantity: 1/2 cup
+    prep: >
+      for roasting the garlic in - the source does not say whether it goes
+      into the spread afterwards, see extraction_notes
+  - id: chilli-flakes
+    name: Red chilli flakes
+    quantity: 1 teaspoon
+  - id: salt
+    name: Salt
+    prep: to taste - quantity not given in source
+  - id: mozzarella
+    name: Fresh mozzarella
+    quantity: 1/2 cup
+  - id: baguette
+    name: Baguette
+    quantity: "1"
+  - id: parsley
+    name: Fresh parsley
+    quantity: 1/4 cup
+    prep: >
+      chopped - used both in the butter mixture and as a garnish, the source
+      does not split the quantity
+
+phases:
+  - name: Roast the garlic
+    instruction: >
+      Heat the oven to 400°F (204°C). Put the garlic cloves and the olive oil
+      in an oven-safe bowl and bake for 30-35 minutes, until the garlic is
+      soft.
+    add_ingredients: [garlic, olive-oil]
+    temp_c: 204
+    duration_sec: 1800
+  - name: Make the garlic butter
+    instruction: >
+      In another bowl, combine the softened butter, the roasted garlic cloves,
+      the chilli flakes, salt and parsley. Mix until smooth.
+    add_ingredients: [butter, chilli-flakes, salt, parsley]
+  - name: Assemble
+    instruction: >
+      Slice the baguette in half lengthways. Spread a good amount of the
+      garlic mixture on both cut sides and top with the mozzarella.
+    add_ingredients: [baguette, mozzarella]
+  - name: Bake
+    instruction: >
+      Bake both halves until toasty, about 15-20 minutes. Garnish with more
+      parsley.
+    temp_c: 204
+
+notes: >
+  Oven-baked, so mode is manual and neither hardware track applies. The garlic
+  confit phase is the interesting one for the open rig later - 30-35 minutes
+  of low unattended oil at a held temperature is exactly the kind of thing a
+  temperature-holding appliance does better than a person.

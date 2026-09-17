@@ -1,0 +1,117 @@
+id: sheet-pan-honey-garlic-chicken-thighs
+title: Sheet Pan Honey Garlic Chicken Thighs
+tags: [chicken, weeknight, meal-prep]
+servings: 4
+mode: manual
+
+source: "@olivia.adriance on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C5o4CRiubxP/"
+  creator: "@olivia.adriance"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/sheet-pan-honey-garlic-chicken-thighs/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete and unambiguous: every ingredient has a quantity, the method is
+    fully ordered, and all three times and the oven temperature are stated.
+    Nothing below is reconstructed or inferred.
+
+    SERVINGS SET BY REVIEWER: 4. The source states no yield - 1 1/2 lbs of
+    chicken thighs served over rice. Evan set it to 4.
+
+    (1) The serving ingredients - prepared rice, sliced green onions, fresh
+    lime juice, chopped cilantro - are listed together under "For serving"
+    with no quantities. Recorded individually without quantities rather than
+    estimated.
+
+    (2) Oven temperature is written as "Preheat your oven to 400" with no
+    scale. 400°F is the only reading that makes sense for 25 minutes of
+    chicken thighs; 400°C is not a domestic oven setting. Recorded as 204°C.
+    This is the one inference in the file and it is noted rather than silent.
+
+    (3) The marinade is reused as the sauce: the chicken is lifted out of it,
+    and the marinade is then boiled and simmered 5-7 minutes to thicken.
+    Boiling is what makes that safe, and it is in the source - kept explicit
+    in the instruction so nobody shortens that phase.
+
+ingredients:
+  - id: chicken
+    name: Chicken thighs
+    quantity: 1 1/2 lbs
+  - id: avocado-oil
+    name: Avocado oil
+    quantity: 1/4 cup
+  - id: honey
+    name: Honey
+    quantity: 1/4 cup
+  - id: tamari
+    name: Tamari
+    quantity: 2 tbsp
+  - id: garlic
+    name: Garlic cloves
+    quantity: "4"
+    prep: minced
+  - id: vinegar
+    name: Apple cider vinegar
+    quantity: 1 tbsp
+  - id: paprika
+    name: Paprika
+    quantity: 1 1/2 tsp
+  - id: onion-powder
+    name: Onion powder
+    quantity: 1 tsp
+  - id: rice
+    name: Rice
+    prep: prepared, to serve - quantity not given in source
+  - id: green-onions
+    name: Green onions
+    prep: sliced, to serve - quantity not given in source
+  - id: lime
+    name: Lime juice
+    prep: fresh, to serve - quantity not given in source
+  - id: cilantro
+    name: Cilantro
+    prep: chopped, to serve - quantity not given in source
+
+phases:
+  - name: Mix the marinade
+    instruction: >
+      Whisk the avocado oil, honey, tamari, minced garlic, apple cider
+      vinegar, paprika and onion powder together in a small bowl.
+    add_ingredients:
+      [avocado-oil, honey, tamari, garlic, vinegar, paprika, onion-powder]
+  - name: Flash-marinate
+    instruction: >
+      Put the chicken thighs in a bowl with a lid or a zip-lock bag, pour the
+      marinade over, seal, and let them marinate while they come to room
+      temperature - 20-30 minutes.
+    add_ingredients: [chicken]
+    duration_sec: 1200
+  - name: Roast the chicken
+    instruction: >
+      Preheat the oven to 400°F (204°C). Lift the chicken out of the marinade
+      and keep the marinade. Put the thighs on a parchment-lined baking sheet
+      and roast for 25 minutes.
+    temp_c: 204
+    duration_sec: 1500
+  - name: Reduce the marinade into a sauce
+    instruction: >
+      While the chicken roasts, put the reserved marinade in a small saucepan
+      and bring it to a boil. Reduce to a simmer and simmer for 5-7 minutes
+      until thickened, stirring often. Bringing it to a boil is what makes the
+      used marinade safe to serve.
+    duration_sec: 300
+  - name: Serve
+    instruction: >
+      Serve the chicken over prepared rice and baste generously with the
+      sauce. Finish with sliced green onions, fresh lime juice and chopped
+      cilantro.
+    add_ingredients: [rice, green-onions, lime, cilantro]
+
+notes: >
+  Sheet-pan oven recipe, so mode is manual and neither hardware track covers
+  the chicken. The sauce reduction is a candidate for the open rig: a small
+  volume held at a simmer with frequent stirring for a fixed time, which is
+  the same control problem as bechamel-sauce with a lower stakes failure mode.

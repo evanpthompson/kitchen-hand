@@ -1,0 +1,143 @@
+id: garlic-butter-chicken-mac-and-cheese
+title: Garlic Butter Chicken Mac n Cheese
+tags: [chicken, pasta, sauce, cheese, weeknight]
+servings: 4
+mode: manual
+
+source: "@dinner_at_hols on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C7mUi_iIwe-/"
+  creator: "@dinner_at_hols"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/garlic-butter-chicken-mac-and-cheese/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    One of the few captures in this corpus that states its own yield -
+    "Recipe serves 4" - so servings is sourced, not decided.
+
+    The method is a single continuous paragraph rather than numbered steps,
+    but it is complete and ordered, and every ingredient in the list appears
+    in it. Split into phases here without reordering anything.
+
+    (1) The pasta is never explicitly cooked. The method says "add in the
+    cooked pasta", so a cook-the-pasta phase is implied by the 300g uncooked
+    weight in the ingredient list and is recorded as such. This is the same
+    shape as the potato gap in garlic-butter-chicken-creamy-potatoes, but far
+    less consequential: boiling pasta to packet instructions is not a method
+    anyone needs told, whereas an air fryer versus a pan changes the dish.
+
+    (2) "Season to taste" appears in both the ingredient list and the method,
+    with no quantity. Recorded as an ingredient without one.
+
+    (3) "Add some pasta water if needed" - conditional, no quantity. Kept in
+    the instruction rather than made an ingredient.
+
+    (4) Cheese is "120g cheese - I used a mix of extra mature cheddar, and
+    mozzarella", with no split between the two. Recorded as one 120g entry
+    with the mix named.
+
+    (5) The chicken seasoning is a named commercial product
+    (@justspices_uk chicken seasoning). Preserved as attribution, not a
+    requirement.
+
+    (6) Macros are given (604 cal, 50.1g protein) plus UK Slimming World
+    "Syns" values, neither of which the schema holds. Noted here only.
+
+ingredients:
+  - id: pasta
+    name: Pasta
+    quantity: 300g
+    prep: uncooked weight
+  - id: chicken
+    name: Chicken breast
+    quantity: 500g
+  - id: chicken-seasoning
+    name: Chicken seasoning
+    quantity: 1 tbs
+    prep: source uses @justspices_uk
+  - id: garlic-granules
+    name: Garlic granules
+    quantity: 1 tbs
+  - id: parsley
+    name: Parsley
+    quantity: 1/2 tbs
+  - id: butter
+    name: Butter
+    quantity: 2 tbs
+  - id: garlic
+    name: Garlic cloves
+    quantity: "4"
+    prep: finely grated
+  - id: flour
+    name: Plain flour
+    quantity: 2 tbs
+  - id: stock
+    name: Chicken stock
+    quantity: 200ml
+    prep: hot
+  - id: milk
+    name: Milk
+    quantity: 300ml
+    prep: warmed
+  - id: mustard
+    name: English mustard
+    quantity: 1 tsp
+    prep: optional
+  - id: cheese
+    name: Cheese
+    quantity: 120g
+    prep: source used a mix of extra mature cheddar and mozzarella
+  - id: seasoning
+    name: Salt and pepper
+    prep: to taste - quantity not given in source
+  - id: parsley-garnish
+    name: Parsley
+    prep: to garnish, optional - quantity not given in source
+
+phases:
+  - name: Cook the pasta
+    instruction: >
+      Cook the pasta. The source does not give a method, only referring later
+      to "the cooked pasta" - cook to packet instructions and reserve some of
+      the water.
+    add_ingredients: [pasta]
+  - name: Season and fry the chicken
+    instruction: >
+      Season the chicken with the chicken seasoning, garlic granules and
+      parsley. Fry until cooked through and browned.
+    add_ingredients: [chicken, chicken-seasoning, garlic-granules, parsley]
+  - name: Add butter and garlic
+    instruction: >
+      Add the butter and the grated garlic to the pan and cook for a few
+      minutes. Remove the chicken from the pan and set it aside, leaving the
+      garlic butter behind.
+    add_ingredients: [butter, garlic]
+  - name: Make the roux and sauce
+    instruction: >
+      Add the flour to the butter and mix well. Add the hot stock and warmed
+      milk slowly, bit by bit, stirring continuously until you have a thick
+      sauce.
+    add_ingredients: [flour, stock, milk]
+  - name: Melt in the cheese
+    instruction: >
+      Add the mustard if using, then the cheese, and mix until the cheese has
+      melted.
+    add_ingredients: [mustard, cheese]
+  - name: Combine
+    instruction: >
+      Add the cooked pasta and season to taste. Add some pasta water if the
+      sauce needs loosening. Return the chicken to the pan.
+    add_ingredients: [seasoning]
+  - name: Serve
+    instruction: Garnish with parsley and serve.
+    add_ingredients: [parsley-garnish]
+
+notes: >
+  The third roux-then-liquid sauce in this collection, after
+  creamy-pan-fried-chicken and meatball-stroganoff. All three share the same
+  machine-relevant shape: fat plus flour cooked out, liquid added gradually
+  with a continuous stir, thickened to a target. That is one program with
+  three sets of parameters, and it is the strongest candidate so far for
+  something the open rig could actually run.

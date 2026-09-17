@@ -1,0 +1,158 @@
+id: sweet-potato-breakfast-bowls
+title: Sweet Potato Breakfast Meal Prep Bowls
+tags: [breakfast, meal-prep, high-protein, potatoes, egg]
+servings: 6
+mode: manual
+
+source: "@doosifit, reposted by @proteinrecipesdaily on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/p/C4834GvIBLr/"
+  creator: "@doosifit, via @proteinrecipesdaily"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/sweet-potato-breakfast-bowls/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Servings are sourced and unusually explicit: "Servings: 6 bowls (video
+    only shows 3 servings)". Prep and cook times are also stated - 15 and 30
+    minutes. Third repost in this corpus, credited to @doosifit.
+
+    Three components, and the source documents them unevenly:
+
+    (1) **Only the sweet potatoes have a method.** "bake 400 degrees, 30
+    minutes (monitor closely, don't overcrowd tray, do multiple trays if
+    necessary)" - complete, and recorded with the temperature converted to
+    204°C.
+
+    (2) **The turkey sausage has no method.** The ingredients are exact and
+    the yield is specified - "Turkey sausage (36 mini discs)", 2 lb ground
+    turkey with seasonings and 2 tbsp lite syrup - but nothing says how the
+    discs are formed or cooked. Pan? Oven? Air fryer? What temperature, how
+    long? None of it is stated, and none is guessed. This is the largest gap
+    in the file.
+
+    (3) **The eggs have no method either.** 736g egg beaters with salt and
+    pepper, and nothing about how they are cooked. Scrambled is the obvious
+    reading for a meal-prep bowl but the source does not say it.
+
+    (4) "736g egg beaters" is oddly precise for a liquid egg product. Recorded
+    verbatim - it is likely a carton weight. Egg Beaters is a US brand of
+    liquid egg substitute; a fresh-egg equivalent is not given.
+
+    (5) The sweet potatoes are given both as a count and a weight, "4 sweet
+    potatoes, peeled and chopped (~600g without skin)". Both kept.
+
+ingredients:
+  - id: ground-turkey
+    name: Ground turkey
+    quantity: 2 lb
+    prep: formed into 36 mini discs - the source does not say how
+  - id: sausage-salt
+    name: Salt
+    quantity: 2 tsp
+    prep: in the turkey sausage
+  - id: sausage-garlic-powder
+    name: Garlic powder
+    quantity: 2 tsp
+    prep: in the turkey sausage
+  - id: sausage-paprika
+    name: Paprika
+    quantity: 2 tsp
+    prep: in the turkey sausage
+  - id: sausage-pepper
+    name: Black pepper
+    quantity: 1 tsp
+    prep: in the turkey sausage
+  - id: sausage-syrup
+    name: Lite syrup
+    quantity: 2 tbsp
+    prep: in the turkey sausage
+  - id: sausage-oil
+    name: Olive oil
+    quantity: 1 tsp
+    prep: for the turkey sausage
+  - id: sweet-potatoes
+    name: Sweet potatoes
+    quantity: "4"
+    prep: peeled and chopped - about 600g without skin
+  - id: potato-oil
+    name: Olive oil
+    quantity: 1/2 tbsp
+    prep: for the sweet potatoes
+  - id: potato-salt
+    name: Salt
+    quantity: 2 tsp
+    prep: on the sweet potatoes
+  - id: potato-paprika
+    name: Paprika
+    quantity: 2 tsp
+    prep: on the sweet potatoes
+  - id: potato-garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+    prep: on the sweet potatoes
+  - id: eggs
+    name: Egg beaters
+    quantity: 736g
+    prep: liquid egg product, as the source specifies
+  - id: egg-salt
+    name: Salt
+    quantity: 1/2 tsp
+    prep: in the eggs
+  - id: egg-pepper
+    name: Black pepper
+    quantity: 1/2 tsp
+    prep: in the eggs
+
+phases:
+  - name: Make the turkey sausage discs
+    instruction: >
+      Mix the ground turkey with the salt, garlic powder, paprika, black
+      pepper and lite syrup, form into 36 mini discs, and cook with the olive
+      oil. **The source gives no cooking method, temperature or time for
+      this** - see extraction_notes.
+    add_ingredients:
+      [
+        ground-turkey,
+        sausage-salt,
+        sausage-garlic-powder,
+        sausage-paprika,
+        sausage-pepper,
+        sausage-syrup,
+        sausage-oil,
+      ]
+    heat_level: null
+    temp_c: null
+    notes: Method missing from the source. Needs a cook to establish.
+  - name: Roast the sweet potatoes
+    instruction: >
+      Toss the peeled, chopped sweet potatoes with the olive oil, salt,
+      paprika and garlic powder. Bake at 400°F (204°C) for 30 minutes. The
+      source warns to monitor closely and not to overcrowd the tray - use
+      multiple trays if needed.
+    add_ingredients:
+      [sweet-potatoes, potato-oil, potato-salt, potato-paprika, potato-garlic-powder]
+    temp_c: 204
+    duration_sec: 1800
+  - name: Cook the eggs
+    instruction: >
+      Season the egg beaters with salt and pepper and cook. **The source gives
+      no method** - scrambled is the obvious reading for a meal-prep bowl but
+      is not stated. See extraction_notes.
+    add_ingredients: [eggs, egg-salt, egg-pepper]
+    heat_level: null
+    temp_c: null
+    notes: Method missing from the source.
+  - name: Assemble the bowls
+    instruction: >
+      Divide the sausage discs, roasted sweet potatoes and eggs between 6
+      bowls - 6 discs per bowl.
+
+notes: >
+  Meal prep across six containers. Stated prep time 15 minutes, cook time 30
+  minutes, though the 30 covers only the sweet potatoes since the other two
+  components have no method.
+
+  mode is manual: three components, at least one oven tray, and no single
+  vessel.

@@ -1,0 +1,172 @@
+id: mongolian-beef-noodles
+title: Mongolian Beef Noodles
+tags: [beef, noodles, sauce, meal-prep, high-protein]
+servings: 4
+mode: stir-fry
+
+source: "@jalalsamfit, reposted by @mouthwateringfoodiee on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C2Fc_CXA6M8/"
+  creator: "@jalalsamfit, via @mouthwateringfoodiee"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/mongolian-beef-noodles/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Servings are sourced: "Macros per serving (4 total)" and "Ingredients
+    (4 servings)".
+
+    Attribution: posted by @mouthwateringfoodiee, which credits "By
+    jalalsamfit !" in the body. That is the same creator as
+    garlic-butter-chicken-creamy-potatoes, already promoted in this
+    collection - a second repost pattern in this corpus, after
+    meatball-stroganoff. Credited to jalalsamfit with the reposting account
+    named.
+
+    (1) **The captured caption has lost its line breaks in one place**, so
+    three ingredients and a section header are jammed into one line: "Green
+    Onion/Scallion (the white and green parts used seperately) - 4-5 Garlic
+    Cloves Chopped - 1/2 Red Onion Sliced For the Sauce - 40ml Dark & Light
+    Soy Sauce". "For the Sauce" is a header, not part of the red onion. Split
+    here on that reading, which is the only one that parses. Worth checking
+    against the original post.
+
+    (2) **Many quantities are ranges** - 700-800g beef, 20-30ml soy, 2-3 tsp
+    olive oil, 5-10g cornflour for the slurry, 4-5 garlic cloves. All kept as
+    ranges rather than collapsed.
+
+    (3) **The method is partial.** The "Important Cooking Notes" cover the
+    marinade time, the beef sear, the sauce thickening and the noodles, but
+    never say when the aromatics (garlic, red onion, scallion whites) are
+    cooked or when the noodles meet the sauce. Those phases are ordered on the
+    conventional stir-fry sequence and flagged in the instructions rather than
+    presented as the source's.
+
+    (4) Green onion is split white/green by the source but with no quantity at
+    all for either part.
+
+    (5) The cornflour appears twice for different jobs - 20g to coat the beef
+    ("optional", for crispness) and 5-10g as a slurry for the sauce. Recorded
+    as two entries so the phases can reference the right one.
+
+    (6) Baking soda at 1/2 tsp is a tenderiser, and the source is explicit
+    about the 30 minute marinade being what makes it work. Kept in the
+    instruction.
+
+ingredients:
+  - id: beef
+    name: Lean beef steak
+    quantity: 700-800g
+    prep: cut into thin strips - source uses topside
+  - id: marinade-soy
+    name: Light soy sauce
+    quantity: 20-30ml
+    prep: for the marinade
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 2 tsp
+  - id: black-pepper
+    name: Black pepper
+    quantity: 2 tsp
+  - id: baking-soda
+    name: Baking soda
+    quantity: 1/2 tsp
+    prep: tenderiser
+  - id: olive-oil
+    name: Olive oil
+    quantity: 2-3 tsp
+  - id: beef-cornflour
+    name: Cornflour
+    quantity: 20g
+    prep: to coat the beef - optional, for crispness
+  - id: noodles
+    name: Egg noodles
+    quantity: 220g
+    prep: uncooked
+  - id: scallion-white
+    name: Green onion, white parts
+    prep: quantity not given in source
+  - id: scallion-green
+    name: Green onion, green parts
+    prep: quantity not given in source
+  - id: garlic
+    name: Garlic cloves
+    quantity: 4-5
+    prep: chopped
+  - id: red-onion
+    name: Red onion
+    quantity: 1/2
+    prep: sliced
+  - id: dark-soy
+    name: Dark soy sauce
+    quantity: 20ml
+    prep: for the sauce
+  - id: light-soy
+    name: Light soy sauce
+    quantity: 20ml
+    prep: for the sauce
+  - id: oyster-sauce
+    name: Oyster sauce
+    quantity: 50g
+  - id: sauce-water
+    name: Water
+    quantity: 1/2 cup
+  - id: sauce-cornflour
+    name: Cornflour
+    quantity: 5-10g
+    prep: mixed with 15ml water, as a slurry
+  - id: chilli-flakes
+    name: Chilli flakes
+    prep: garnish - quantity not given in source
+  - id: sesame-seeds
+    name: Sesame seeds
+    prep: garnish - quantity not given in source
+
+phases:
+  - name: Marinate the beef
+    instruction: >
+      Toss the beef strips with the light soy sauce, garlic powder, black
+      pepper and baking soda. Marinate for 30 minutes - the source is explicit
+      that this is what lets the baking soda tenderise.
+    add_ingredients: [beef, marinade-soy, garlic-powder, black-pepper, baking-soda]
+    duration_sec: 1800
+  - name: Sear the beef
+    instruction: >
+      Optionally coat the marinated beef in cornflour for crispness. Use
+      cooking spray on the pan and sear the beef for 2-3 minutes - the source
+      warns explicitly against overcooking it. Remove and set aside.
+    add_ingredients: [olive-oil, beef-cornflour]
+    duration_sec: 150
+  - name: Cook the aromatics
+    instruction: >
+      Fry the chopped garlic, sliced red onion and the white parts of the
+      green onion. The source never states this step - it lists the
+      ingredients but gives no timing for them. See extraction_notes.
+    add_ingredients: [garlic, red-onion, scallion-white]
+  - name: Make the sauce
+    instruction: >
+      Add the dark and light soy sauces, oyster sauce and water. Let it come
+      to a bubble before adding the cornflour slurry, then let it thicken for
+      2-3 minutes.
+    add_ingredients: [dark-soy, light-soy, oyster-sauce, sauce-water, sauce-cornflour]
+    duration_sec: 150
+  - name: Cook the noodles
+    instruction: >
+      Cook the noodles to the packet instructions - the source cooked theirs
+      5-6 minutes in boiling water on a very low heat.
+    add_ingredients: [noodles]
+  - name: Combine
+    instruction: >
+      Return the beef to the thickened sauce, then add the noodles and toss.
+      The source does not state when the noodles go in - see extraction_notes.
+  - name: Garnish
+    instruction: Finish with chilli flakes, sesame seeds and the green onion tops.
+    add_ingredients: [chilli-flakes, sesame-seeds, scallion-green]
+
+notes: >
+  The first recipe in this collection set to mode stir-fry rather than manual.
+  Everything after the noodles are boiled happens in one pan in sequence -
+  sear, aromatics, sauce, recombine - which is exactly the shape a CJ-A9U
+  program takes. Worth revisiting during Phase 1 as a stir-fry preset
+  candidate, with the noodles handled separately.

@@ -1,0 +1,170 @@
+id: honey-butter-garlic-chicken
+title: Honey Butter Garlic Chicken
+tags: [chicken, meal-prep, high-protein]
+servings: 4
+mode: manual
+
+source: "@_aussiefitness on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C9j4r8jSXJH/"
+  creator: "@_aussiefitness (Dez Cerimagic)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/honey-butter-garlic-chicken/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Servings are sourced: "Per Serve - 4 Total". Quantities are complete and
+    unusually precise. The method is not - the caption gives an ingredient
+    list and an "Important Notes" section about the chicken only, so the
+    sauce phases below are ordered from the ingredient list rather than from
+    any stated procedure.
+
+    (1) **The chicken method is partial but real.** The notes describe
+    coating in potato starch, spraying evenly with light cooking oil spray,
+    air frying, and flipping halfway with another spray on dry areas. So air
+    frying is the source's, not inferred. **No temperature and no time are
+    given**, and neither is guessed.
+
+    (2) **The sauce method is entirely absent.** Nothing in the caption says
+    how the butter, diced garlic, soy, water, brown sugar stevia, cornstarch
+    slurry and honey become a sauce. The phases below put them in the order
+    the ingredient list gives, which is the conventional order for this kind
+    of glaze - melt butter, fry garlic, add liquids and sweetener, thicken
+    with the slurry, finish with honey - but the source does not state it.
+    Treat that ordering as a proposal, not a record.
+
+    (3) The potato starch is explicitly partly unused: "100g Potato Starch
+    (not all of this gets used - approximately 1/2 sticks to the chicken in
+    total)". Recorded at 100g with that note, since the amount that adheres
+    is not a measurable input.
+
+    (4) The marinade versus coating split is unstated. 30ml soy sauce, pepper,
+    5g minced garlic and 5g minced ginger are listed before the potato starch,
+    which implies they season the chicken before coating, but the caption
+    never says so.
+
+    (5) Brands are named throughout (Kikkoman salt-reduced soy, Nuttelex Light
+    butter, Natvia Gold brown sugar stevia, Capilano hot chilli honey).
+    Preserved as attribution, not requirements. The source does note that
+    reduced-salt soy matters here, since 105ml of soy goes in overall.
+
+    (6) Macros are given twice, with and without rice (539 and 318 kcal per
+    serve). Noted here only; the schema has no field for them.
+
+ingredients:
+  - id: chicken
+    name: Chicken breast, diced
+    quantity: 700g
+    prep: skinless and boneless, raw weight
+  - id: marinade-soy
+    name: Soy sauce
+    quantity: 30ml
+    prep: >
+      salt-reduced (source uses Kikkoman) - on the chicken, though the source
+      does not explicitly say when
+  - id: pepper
+    name: White and black pepper
+    quantity: 1 tsp
+  - id: minced-garlic
+    name: Garlic, minced
+    quantity: 5g
+  - id: minced-ginger
+    name: Ginger, minced
+    quantity: 5g
+  - id: potato-starch
+    name: Potato starch
+    quantity: 100g
+    prep: >
+      for coating - the source notes only about half of this actually sticks
+      to the chicken
+  - id: oil-spray
+    name: Light cooking oil spray
+    prep: >
+      sprayed evenly over the coated chicken, and again on dry areas after
+      flipping - quantity not given in source
+  - id: butter
+    name: Light butter
+    quantity: 35g
+    prep: source uses Nuttelex Light
+  - id: sauce-garlic
+    name: Garlic cloves
+    quantity: "4"
+    prep: diced, for the sauce
+  - id: sauce-soy
+    name: Soy sauce
+    quantity: 75ml
+    prep: for the sauce
+  - id: sauce-water
+    name: Water
+    quantity: 75ml
+  - id: brown-sugar-stevia
+    name: Brown sugar stevia
+    quantity: 30g
+    prep: source uses Natvia Gold
+  - id: chilli-flakes
+    name: Red chilli flakes
+    prep: optional - quantity not given in source
+  - id: cornstarch-slurry
+    name: Cornstarch
+    quantity: 1 tsp
+    prep: mixed with cold water, to thicken the sauce
+  - id: honey
+    name: Honey
+    quantity: 45g
+    prep: source uses Capilano Hot Chilli Honey
+  - id: rice
+    name: Cooked white rice
+    quantity: 700g
+    prep: 175g per serving across 4 servings
+
+phases:
+  - name: Season the chicken
+    instruction: >
+      Toss the diced chicken with the soy sauce, pepper, minced garlic and
+      minced ginger. The source lists these before the coating but does not
+      state this step - see extraction_notes.
+    add_ingredients: [chicken, marinade-soy, pepper, minced-garlic, minced-ginger]
+  - name: Coat and air fry
+    instruction: >
+      Coat the chicken in potato starch, then spray evenly with light cooking
+      oil spray - the source is explicit that the starch is what makes it
+      crisp in an air fryer, and that an even spray matters. Air fry, flipping
+      halfway and spraying any dry areas again. No temperature or time is
+      given in the source.
+    add_ingredients: [potato-starch, oil-spray]
+    heat_level: null
+    temp_c: null
+    notes: >
+      Air frying is the source's. Temperature and time are missing and need a
+      cook to establish.
+  - name: Build the sauce
+    instruction: >
+      Melt the butter and fry the diced garlic in it, then add the soy sauce,
+      water, brown sugar stevia and chilli flakes if using. **The source gives
+      no method for the sauce at all** - this ordering follows the ingredient
+      list and is a proposal, not a record. See extraction_notes.
+    add_ingredients:
+      [butter, sauce-garlic, sauce-soy, sauce-water, brown-sugar-stevia, chilli-flakes]
+    heat_level: null
+  - name: Thicken and finish
+    instruction: >
+      Stir in the cornstarch slurry to thicken, then the honey. Taste and
+      adjust - the source warns the sauce can be too salty if full-salt soy
+      is used.
+    add_ingredients: [cornstarch-slurry, honey]
+  - name: Combine and serve
+    instruction: >
+      Toss the air-fried chicken through the sauce and serve over the rice,
+      about 175g per portion.
+    add_ingredients: [rice]
+
+notes: >
+  The second air fryer recipe in this collection after
+  garlic-butter-chicken-creamy-potatoes, and the second with no air fryer
+  temperature or time. That is turning into a pattern worth noting: air
+  fryer recipes on Instagram routinely omit both, presumably because the
+  video shows the setting.
+
+  mode is manual - air fryer plus a separate pan for the sauce, which neither
+  hardware track covers.

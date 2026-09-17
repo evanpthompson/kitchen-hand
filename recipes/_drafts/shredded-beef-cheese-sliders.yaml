@@ -1,0 +1,130 @@
+id: shredded-beef-cheese-sliders
+title: Shredded Beef and Cheese Sliders
+tags: [beef, cheese, bbq]
+mode: manual
+
+source: "@kingshawaiian on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C48lcb5JJEe/"
+  creator: "@kingshawaiian"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/shredded-beef-cheese-sliders/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    A brand account's recipe, numbered and ordered, with all three
+    temperatures stated - but with two real gaps in the ingredient list.
+
+    QUESTION FOR REVIEW: servings. No yield is stated. A 4-5 lb chuck roast
+    and 6 slices of Swiss on an unstated number of rolls.
+
+    (1) **The rolls have no quantity.** "King's Hawaiian Original Hawaiian
+    Sweet Rolls" is listed with no number of rolls or packs, and the whole
+    recipe is sliders. Left without a quantity. Note that 6 slices of Swiss
+    is the only countable topping, which may or may not imply 6 sliders.
+
+    (2) **Garlic paste is in the method but not the ingredient list.** Step 4
+    builds a garlic mayo from "mayo, garlic paste, Worcestershire sauce, fresh
+    thyme". Mayo, Worcestershire and thyme are all listed; garlic paste is
+    not, and no quantity exists for it anywhere. Recorded as an ingredient
+    with no quantity so it is not lost, and flagged here.
+
+    (3) **The Worcestershire is used twice and split only once.** 2 tablespoons
+    is listed. It goes into the braising liquid in step 3 and into the garlic
+    mayo in step 4, with no split given. Recorded as one entry used in both
+    phases.
+
+    (4) The seasoning is "3 tablespoons salt, pepper and garlic blend
+    seasoning" in the list, but step 1 says "salt, pepper, and garlic powder"
+    and step 3 says "additional salt, pepper, and garlic seasoning" with no
+    quantity. Treated as one blend used across both, which is what the
+    ingredient list implies.
+
+    (5) Temperatures: smoke at 250°F (121°C) to an internal 175°F (79°C), then
+    braise at 350°F (177°C) to fork-tender with no time given, then bake the
+    assembled sliders at 350°F for 15 minutes. All converted from the source's
+    Fahrenheit; the braise has a doneness target rather than a duration, which
+    is kept as the source has it.
+
+ingredients:
+  - id: rolls
+    name: King's Hawaiian Original Hawaiian Sweet Rolls
+    prep: quantity not given in source - see extraction_notes
+  - id: chuck-roast
+    name: Chuck roast
+    quantity: 4-5 pound
+  - id: olive-oil
+    name: Olive oil
+    quantity: 2 tablespoons
+  - id: seasoning
+    name: Salt, pepper and garlic blend seasoning
+    quantity: 3 tablespoons
+    prep: used both on the roast and in the braising pan
+  - id: onions
+    name: Onions
+    quantity: "2"
+    prep: sliced
+  - id: swiss
+    name: Swiss cheese
+    quantity: 6 slices
+  - id: mayo
+    name: Mayonnaise
+    quantity: 1/2 cup
+  - id: worcestershire
+    name: Worcestershire sauce
+    quantity: 2 tablespoons
+    prep: >
+      used both in the braising liquid and in the garlic mayo - the source
+      does not split the quantity
+  - id: garlic-paste
+    name: Garlic paste
+    prep: >
+      in the garlic mayo. Named in the method but absent from the source's
+      ingredient list, so no quantity exists - see extraction_notes
+  - id: thyme
+    name: Fresh thyme
+    quantity: 1 tablespoon
+  - id: beef-broth
+    name: Beef broth
+    quantity: 2 cups
+
+phases:
+  - name: Season the roast
+    instruction: >
+      Coat the chuck roast with the olive oil and the salt, pepper and garlic
+      seasoning.
+    add_ingredients: [chuck-roast, olive-oil, seasoning]
+  - name: Smoke
+    instruction: >
+      Smoke the chuck roast at 250°F (121°C) until it reaches an internal
+      temperature of 175°F (79°C). No time is given.
+    temp_c: 121
+  - name: Braise until shreddable
+    instruction: >
+      Put the roast in a roasting pan with the sliced onions, beef broth and
+      Worcestershire sauce, and season with additional salt, pepper and garlic
+      seasoning. Cover with aluminium foil and bake at 350°F (177°C) until the
+      beef is fork tender and shreds apart. No time is given.
+    add_ingredients: [onions, beef-broth, worcestershire]
+    temp_c: 177
+    lid: closed
+  - name: Make the garlic mayo
+    instruction: >
+      Mix the mayonnaise with the garlic paste, Worcestershire sauce and fresh
+      thyme.
+    add_ingredients: [mayo, garlic-paste, thyme]
+  - name: Assemble and bake
+    instruction: >
+      Spread the garlic mayo on the bottoms of the sweet rolls, add the
+      shredded beef and the Swiss cheese, put the top buns on, and bake at
+      350°F (177°C) for 15 minutes.
+    add_ingredients: [rolls, swiss]
+    temp_c: 177
+    duration_sec: 900
+
+notes: >
+  Three appliances - smoker, oven, oven again - so mode is manual and nothing
+  here is a machine candidate. Kept for the collection as a weekend cook
+  rather than a weeknight one: the smoke-then-braise stage has no stated
+  duration and will run for hours.
