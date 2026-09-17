@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @406_bbq
+creator_name: Stephen Kina
+source_url: https://www.instagram.com/reel/DdUAT-KsyVA/
+captured_date: 2026-09-17
+saved_on: 2026-09-16
+post_date: unknown
+hashtags: #kalbi #crockpot #chuckroast #koreanbbq #hawaiistagram
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

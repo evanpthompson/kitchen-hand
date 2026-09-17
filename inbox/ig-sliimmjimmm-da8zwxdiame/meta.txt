@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @sliimmjimmm
+creator_name: Slim Jim
+source_url: https://www.instagram.com/reel/DA8zwXDIame/
+captured_date: 2026-09-17
+saved_on: 2024-10-30
+post_date: unknown
+hashtags: #fypã· #explorepageâ¨ #memes #follow #videogames #humor #funnyvideos #memesdaily #schoolmemes #explore #fypage #funnymemes #funnyshit #funny #fyp #funnyskits
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

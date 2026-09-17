@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @moodymedia
+creator_name: Julia ð 
+source_url: https://www.instagram.com/p/yRYw6Vxo2R/
+captured_date: 2026-09-17
+saved_on: 2018-06-25
+post_date: unknown
+hashtags: #pancakesunday #leckerschmecker #appetite #njamnjam #griffins #sweetsin #pancakesyrup #theamericantaste #goodmood #sweettooth #tasty #healthyeating #eat #yum #goodmorning #enjoy #pancakes #sunday #breakfast #homemade #love #happy #formytaste
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

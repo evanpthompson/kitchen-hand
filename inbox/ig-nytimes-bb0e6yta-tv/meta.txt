@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @nytimes
+creator_name: The New York Times
+source_url: https://www.instagram.com/p/Bb0e6YTA-TV/
+captured_date: 2026-09-17
+saved_on: 2017-11-23
+post_date: unknown
+collection: Tasty recipes
+hashtags: #thanksgiving #potatoes
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

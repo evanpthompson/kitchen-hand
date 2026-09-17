@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @_aussiefitness
+creator_name: AUSSIE FITNESS ð¦ðºðªð¼ | Dez Cerimagic
+source_url: https://www.instagram.com/reel/C9j4r8jSXJH/
+captured_date: 2026-09-17
+saved_on: 2024-08-05
+post_date: unknown
+collection: Tasty recipes
+hashtags: #asianfood #chickenrecipes #fakeaway #highproteinmeals #healthyrecipes #friedchicken #highprotein #weightloss #chicken #honeygarlic #fatloss #lowcalorie #foodie #gymfood #easyrecipes
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

@@ -1,0 +1,45 @@
+Vercel charges $20/seat/month.
+Netlify charges $20/month.
+Heroku killed its free tier entirely.
+
+And if you go over your bandwidth? Surprise bills. Sometimes thousands of dollars.
+
+There is an open-source alternative to all three. For $0.
+
+It is called Coolify. 53,000+ stars on GitHub.
+
+You install it on any server you own. A $5 VPS. A Raspberry Pi. An old laptop. Anything with SSH.
+
+Then you deploy everything:
+- Static sites
+- Full-stack apps
+- Databases
+- APIs
+- 280+ one-click services (WordPress, Ghost, Plausible, n8n, Supabase, and more)
+
+Here's the wildest part:
+
+It does things the paid platforms charge extra for.
+
+- Free SSL certificates, auto-renewed
+- Automatic database backups to S3
+- Pull request preview deployments
+- Real-time server terminal in your browser
+- Push-to-deploy from GitHub, GitLab, Bitbucket
+- Server monitoring with Discord/Telegram/email alerts
+
+No vendor lock-in. All your configs live on your server. If you stop using Coolify, everything still runs.
+
+The $20/month you pay Vercel? That is per seat. A 5-person team pays $100-500/month depending on usage.
+
+With Coolify on a $5 Hetzner VPS, that same team pays $5/month. Total.
+
+Apache-2.0 licensed. Self-hosted. Free forever.
+
+100% Open Source.
+
+Link 🔗 : https://github.com/coollabsio/coolify
+
+Follow @codingknowledge For More ❤️ 
+
+#tech #coding #ai #programming #codingknowledge

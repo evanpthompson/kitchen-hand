@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @_aussiefitness
+creator_name: AUSSIE FITNESS ð¦ðºðªð¼ | Dez Cerimagic
+source_url: https://www.instagram.com/reel/C7Bq7U7v6Yo/
+captured_date: 2026-09-17
+saved_on: 2024-05-18
+post_date: unknown
+collection: Tasty recipes
+hashtags: #breakfast #fakeaway #highproteinmeals #healthyrecipes #mealprep #highprotein #weightloss #bagel #fatloss #lowcalorie #bagels #foodie #bagelsandwich #gymfood #easyrecipes #breakfastideas
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

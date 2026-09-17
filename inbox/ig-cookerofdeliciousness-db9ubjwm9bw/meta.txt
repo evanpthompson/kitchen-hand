@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @cookerofdeliciousness
+creator_name: Matt Ramsey
+source_url: https://www.instagram.com/reel/Db9UBJWM9BW/
+captured_date: 2026-09-17
+saved_on: 2026-08-13
+post_date: unknown
+hashtags: #easydinner #bubblebake
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

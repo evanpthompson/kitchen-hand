@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @jocooks
+creator_name: Joanna Cismaru | JoCooks
+source_url: https://www.instagram.com/reel/DbTMieAEtv_/
+captured_date: 2026-09-17
+saved_on: 2026-08-25
+post_date: unknown
+hashtags: #beefrecipes #easyweeknightdinner #ramenrecipes #jocooks #takeoutfakeout #mongolianbeef
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

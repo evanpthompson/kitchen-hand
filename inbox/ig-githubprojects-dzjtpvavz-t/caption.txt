@@ -1,0 +1,12 @@
+Qdrant is a production-ready vector search engine and database built in Rust, designed for high-performance similarity search with extended filtering support.
+
+- Written in Rust for speed and reliability under high load.
+
+- RESTful API with convenient client libraries for Go, Python, and more.
+
+- Supports advanced filtering, quantization, sharding, and hybrid search.
+
+- Available as a self-hosted Docker image or fully managed cloud service with a free tier.
+
+Explore it here:
+https://osp.fyi/qdrant

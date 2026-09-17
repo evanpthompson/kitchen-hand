@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @dinner_at_hols
+creator_name: Hollie Wood | Solving the 5pm dinner panic
+source_url: https://www.instagram.com/reel/C7mUi_iIwe-/
+captured_date: 2026-09-17
+saved_on: 2024-06-01
+post_date: unknown
+collection: Tasty recipes
+hashtags: #spaghetti #recipeideas #caloriecountedmeals #spaghettið #slimmingworldinspiration #healthymeals #healthyeating #dinnerinspiration #lowcalorierecipes #easyrecipes #easymealideas #dinnerrecipes #lowcaloriemeals #pastarecipe
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

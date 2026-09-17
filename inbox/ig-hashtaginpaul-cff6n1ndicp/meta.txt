@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @hashtaginpaul
+creator_name: Paul âHAVOKâ Smith
+source_url: https://www.instagram.com/reel/CfF6n1nDicp/
+captured_date: 2026-09-17
+saved_on: 2022-06-22
+post_date: unknown
+hashtags: #itsbananas #ohthecalories #allthegoodgood #hashtaginpaul #mightbeasinofthechurch #reelsinstagram #havoksworld #reels #banana #tuesday #dessertlover #tacotuesday #tacos #dessert #whippedcream #waffles
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @simple.home.edit
+creator_name: Nicole Maguire
+source_url: https://www.instagram.com/reel/C4zyO2Luq5V/
+captured_date: 2026-09-17
+saved_on: 2024-05-01
+post_date: unknown
+collection: Tasty recipes
+hashtags: #ecomonicalmeals #easycooking #easy #roastedchicken #lessthan #butter #recipeideas #familydinnerideas #recipeshare #easymeals #recipe #garlic #dinner #onabudget #chicken #homecook #simplecooking #homecooking #dinnerideas #weeknightdinner
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

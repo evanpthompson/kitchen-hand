@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @lungisalwaysbaking
+creator_name: Lungi â¨
+source_url: https://www.instagram.com/reel/DTqVg_PDdxa/
+captured_date: 2026-09-17
+saved_on: 2026-01-20
+post_date: unknown
+hashtags: #addstolist
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

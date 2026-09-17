@@ -1,0 +1,14 @@
+input_type: instagram
+creator: @clintonsvatos
+creator_name: Clinton Svatos
+source_url: https://www.instagram.com/reel/DD8I1NaSOkL/
+captured_date: 2026-09-17
+saved_on: 2025-01-17
+post_date: unknown
+hashtags: #poormanscomfortfood #budgetcooking #aldi #familydinner #cheapdinnerideas #easyrecipes #cheapmeals #budgetmeals
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

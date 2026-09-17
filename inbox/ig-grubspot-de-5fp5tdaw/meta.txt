@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @grubspot
+creator_name: grubspot.
+source_url: https://www.instagram.com/reel/DE-5Fp5TDAW/
+captured_date: 2026-09-17
+saved_on: 2025-01-19
+post_date: unknown
+collection: Tasty recipes
+hashtags: #grubspot
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

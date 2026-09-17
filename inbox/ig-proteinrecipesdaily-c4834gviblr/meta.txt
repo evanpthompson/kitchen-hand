@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @proteinrecipesdaily
+creator_name: RecipeLab - High Protein & Low Calorie Recipes
+source_url: https://www.instagram.com/p/C4834GvIBLr/
+captured_date: 2026-09-17
+saved_on: 2024-03-27
+post_date: unknown
+collection: Tasty recipes
+hashtags: #doosifit #suhoor #healthy #gym #breakfast #macrofriendly #easyrecipe #caloriedeficit #turkeysausage #mealprep #highprotein #recipe #food #weightloss #ramadan #sweetpotato #fatloss #eggs #nutrition #lowcalorie #doosi #easyrecipes #potatobowl
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

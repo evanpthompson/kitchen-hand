@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @gymfoodys
+creator_name: Low calorie & High protein foodð
+source_url: https://www.instagram.com/p/C-RBEOeNoW2/
+captured_date: 2026-09-17
+saved_on: 2024-08-12
+post_date: unknown
+collection: Tasty recipes
+hashtags: #gymfoodys #trackingmacros #countingcalories #nutritious #gym #fitnessfood #macrofriendly #fitfood #highproteinmeal #highproteinmeals #healthyrecipes #fitfoodie #mealprep #highprotein #protein #weightloss #fatloss #dietfood #nutrition #macros #healthyeating #lowcalorie #gymfood #lowcaloriemeals
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.

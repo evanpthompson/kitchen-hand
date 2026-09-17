@@ -1,0 +1,15 @@
+input_type: instagram
+creator: @carrollshelbyschili
+creator_name: Carroll Shelbyâs Chili & Fixinâs
+source_url: https://www.instagram.com/p/C3LHecOAUrf/
+captured_date: 2026-09-17
+saved_on: 2024-04-01
+post_date: unknown
+collection: Tasty recipes
+hashtags: #carrollshelbystacos #carrollshelbystacoseasoning #doerswanted #tacoseasoning #birria #makeitreal #jalapenopepper #birriatacos #carrollshelby #anchopepper #quesabirria #tacos #canvsdo #guajillopepper
+
+# saved_on is when you saved the post, not when it was published.
+# caption.txt is the export's own caption text, unedited. If the
+# steps are in the post's images instead, add screenshot.png.
+# This folder name is provisional - rename it to the dish slug when
+# you normalize into recipes/_drafts/.
