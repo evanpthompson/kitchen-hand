@@ -61,6 +61,52 @@ YOUTUBE_RE = re.compile(
 # --- config --------------------------------------------------------------
 
 
+def load_token() -> str:
+    token = os.environ.get(ENV_TOKEN, "").strip()
+    if not token:
+        sys.exit(f"{ENV_TOKEN} is not set. Get a token from @BotFather.")
+    return token
+
+
+def whoami(token: str) -> int:
+    """Print the sender ids of whatever is queued, and write nothing.
+
+    This exists to break a bootstrap loop: the allow-list is required before
+    the tool will run, and the only way to learn your own numeric id is to
+    read it off a getUpdates response. So this one path deliberately runs
+    without an allow-list - it is the only path that does, and it is read-only.
+    """
+    result = tg.poll.call(token, "getUpdates", {"timeout": 0}) or []
+    senders: dict[int, str] = {}
+    for update in result:
+        message = update.get("message") or update.get("channel_post") or {}
+        sender = message.get("from") or {}
+        if sender.get("id"):
+            name = " ".join(
+                filter(None, [sender.get("first_name"), sender.get("last_name")])
+            )
+            senders[sender["id"]] = (
+                f"{name} (@{sender['username']})" if sender.get("username") else name
+            )
+
+    if not senders:
+        print(
+            "No messages queued. Send your bot any message, then run this "
+            "again.\nIf you have already polled once, those updates are "
+            "consumed - send another."
+        )
+        return 1
+
+    print("Senders in the current update queue:\n")
+    for sender_id, name in senders.items():
+        print(f"  {sender_id}  {name}")
+    print(
+        f"\nYours is almost certainly the only one. Then:\n\n"
+        f"    export {ENV_ALLOWED}={','.join(str(i) for i in senders)}\n"
+    )
+    return 0
+
+
 def load_config() -> tuple[str, set[int], Path]:
     """Refuse to start on missing config, naming the key that is missing.
 
@@ -263,6 +309,14 @@ def report(summary: dict, dry_run: bool) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument(
+        "--whoami",
+        action="store_true",
+        help=(
+            "print the sender ids of queued messages and exit, so you can "
+            "fill in the allow-list. Needs only the token, writes nothing."
+        ),
+    )
+    ap.add_argument(
         "--once",
         action="store_true",
         help="drain what is queued and exit, for cron. Default is to loop.",
@@ -274,6 +328,13 @@ def main(argv: list[str] | None = None) -> int:
         help="exit 0 despite updates this does not understand",
     )
     args = ap.parse_args(argv)
+
+    if args.whoami:
+        try:
+            return whoami(load_token())
+        except tg.TelegramError as e:
+            print(f"\nerror: {e}", file=sys.stderr)
+            return 1
 
     token, allowed, state_path = load_config()
     offset = tg.load_offset(state_path)

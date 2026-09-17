@@ -371,8 +371,14 @@ fixtures are cheap.
 ## 14. Setup, for the record
 
 1. Message `@BotFather`, `/newbot`, keep the token.
-2. Message your own bot once, then read your numeric id from the first
-   `getUpdates` response.
+2. `export KITCHEN_HAND_TELEGRAM_TOKEN=...`, message your own bot once, then
+   `tools/poll_telegram.py --whoami` to read your numeric id off the queue.
+
+   That flag exists because of a bootstrap loop found while writing these
+   steps: the allow-list is required before the tool will run, and the only
+   way to learn your own id is to read it from a `getUpdates` response. So
+   `--whoami` is the one path that deliberately runs without an allow-list.
+   It is read-only, writes no captures, and does not advance the offset.
 3. Put both in the environment.
 4. Add the bot to the phone's share sheet (it is a normal chat).
 5. `uv run tools/poll_telegram.py --once` on a cron, or leave it looping.

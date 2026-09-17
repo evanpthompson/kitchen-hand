@@ -109,7 +109,7 @@ no `requirements.txt`. Three separate projects:
   `uv run tools/import_instagram_saved.py <export> [--dry-run]`,
   `uv run tools/triage_inbox.py [--bucket NAME]`,
   `uv run --extra transcribe tools/transcribe_audio.py <slug> <file>`,
-  `uv run tools/poll_telegram.py --once`.
+  `uv run tools/poll_telegram.py [--whoami|--once]`.
   `uv run pytest` runs the root tool tests.
 - **`service/`** (the API backend): from `service/`, `uv run uvicorn
   app.main:app --reload` to serve it, `uv run pytest` to test, `uv run

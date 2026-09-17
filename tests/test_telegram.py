@@ -467,6 +467,52 @@ def test_a_non_numeric_allow_list_refuses_to_start(monkeypatch):
     assert "numeric ids" in str(e.value)
 
 
+# --- --whoami: the bootstrap path ----------------------------------------
+
+
+def test_whoami_lists_senders_without_an_allow_list(monkeypatch, capsys, tmp_path):
+    """Breaks a real loop: the allow-list is required to run, and the only way
+    to learn your own id is to read it off a getUpdates response."""
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.delenv(sink.ENV_ALLOWED, raising=False)
+    monkeypatch.setattr(
+        tg.poll, "call", lambda *a, **k: [update(1, "hello", sender=ME)]
+    )
+
+    assert sink.main(["--whoami"]) == 0
+    out = capsys.readouterr().out
+    assert str(ME) in out
+    assert f"export {sink.ENV_ALLOWED}={ME}" in out
+
+
+def test_whoami_writes_nothing(inbox, monkeypatch, tmp_path):
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setenv(sink.ENV_STATE, str(tmp_path / "offset"))
+    monkeypatch.setattr(
+        tg.poll,
+        "call",
+        lambda *a, **k: [update(1, "https://www.instagram.com/reel/ABC123/")],
+    )
+
+    assert sink.main(["--whoami"]) == 0
+    assert list(inbox.iterdir()) == []
+    assert not (tmp_path / "offset").exists()
+
+
+def test_whoami_with_an_empty_queue_says_what_to_do(monkeypatch, capsys):
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setattr(tg.poll, "call", lambda *a, **k: [])
+    assert sink.main(["--whoami"]) == 1
+    assert "Send your bot any message" in capsys.readouterr().out
+
+
+def test_whoami_still_needs_a_token(monkeypatch):
+    monkeypatch.delenv(sink.ENV_TOKEN, raising=False)
+    with pytest.raises(SystemExit) as e:
+        sink.main(["--whoami"])
+    assert sink.ENV_TOKEN in str(e.value)
+
+
 def test_the_offset_advances_only_after_the_captures_are_written(
     inbox, api, configured
 ):
