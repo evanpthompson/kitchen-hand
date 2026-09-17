@@ -55,6 +55,14 @@ rewritten from scratch.
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
   transcript into `inbox/` via `markitdown` (transcript API, no scraping).
+- `tools/transcribe_audio.py` — speech-to-text for a recipe that is spoken
+  rather than written. **You supply the file**; it downloads nothing, because
+  Instagram and TikTok both disallow automated access. Runs `faster-whisper`
+  locally (free, offline) rather than markitdown's built-in
+  `recognize_google`, which uploads your audio and is weaker on exactly the
+  words that matter. Writes `inbox/<slug>/transcript.txt` with a header saying
+  the text is unverified, and lists every segment the model was unsure about
+  with its timestamp. Optional extra: `uv sync --extra transcribe`.
 - `tools/triage_inbox.py` — scores every capture on how much of a recipe its
   text holds and sorts them into `strong` / `weak` / `food-no-text` /
   `not-food`. What makes a bulk import workable. A **report, never a gate**:
@@ -87,7 +95,8 @@ no `requirements.txt`. Three separate projects:
 - **Root** (`tools/`): `uv run tools/validate_recipes.py [--drafts]`,
   `uv run tools/fetch_youtube.py <slug> <url>`,
   `uv run tools/import_instagram_saved.py <export> [--dry-run]`,
-  `uv run tools/triage_inbox.py [--bucket NAME]`.
+  `uv run tools/triage_inbox.py [--bucket NAME]`,
+  `uv run --extra transcribe tools/transcribe_audio.py <slug> <file>`.
   `uv run pytest` runs the root tool tests.
 - **`service/`** (the API backend): from `service/`, `uv run uvicorn
   app.main:app --reload` to serve it, `uv run pytest` to test, `uv run
