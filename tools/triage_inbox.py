@@ -65,11 +65,52 @@ FOOD = re.compile(
 )
 
 # A quantity is the single strongest signal that a caption is a recipe rather
-# than a photo of one. Anchored on a leading number so a bare "g" or "oz" in
-# prose does not count.
+# than a photo of one, so how a number can be written matters. The forms below
+# were taken from the 106 captures in inbox/, not guessed: recipe captions use
+# vulgar fractions as freely as ASCII ones, write decimals ("50.1g"), and
+# often omit the space entirely ("500g", "1/2tbs").
+_FRACTION = "\u00bc-\u00be\u2150-\u215e"
+_QUANTITY = (
+    rf"(?:\d+(?:[.,]\d+)?(?:\s*[/\u2044]\s*\d+)?(?:\s*[{_FRACTION}])?"
+    rf"|[{_FRACTION}])"
+)
+
+# Ingredient amounts only. Time ("30 minutes"), temperature ("250F"), macros
+# ("36gC") and yield ("6 servings") are all number-adjacent and all common in
+# these captions, and none of them says the caption lists what goes in the pan
+# - which is the only thing this signal is for. test_triage_inbox.py pins each
+# of those as a non-match.
+#
+# Longest-first in the alternation: `cups?` must win before the bare `c`, and
+# `tbsps?` before `tbs`, or the shorter form matches and leaves a dangling
+# tail.
+#
+# The \b after the unit does two jobs. It makes the bare forms safe - "2 cats"
+# cannot match `c` and "36gC" cannot match `g`, because the next character is
+# a word character - and it is also what lets the abbreviations captions
+# actually use (c. tsp. tbsp.) match, since a letter followed by "." *is* a
+# boundary. An explicit \.? was tried to consume the period and removed as
+# dead: only the match count is read, never the matched text.
+_UNIT = (
+    # volume, imperial
+    r"tablespoons?|tbsps?|tbs|teaspoons?|tsps?|cups?|c|fl\s*oz|"
+    r"quarts?|qts?|pints?|pts?|gallons?|gals?|"
+    # volume, metric
+    r"millilit(?:er|re)s?|mls?|centilit(?:er|re)s?|cls?|"
+    r"decilit(?:er|re)s?|lit(?:er|re)s?|l|"
+    # weight, imperial
+    r"ounces?|ozs?|pounds?|lbs?|"
+    # weight, metric
+    r"kilograms?|kgs?|grams?|gs?|milligrams?|mgs?|"
+    # count and container
+    r"cloves?|sticks?|cans?|jars?|packets?|packages?|pkgs?|bottles?|"
+    r"slices?|strips?|sprigs?|heads?|bunch(?:es)?|stalks?|ears?|fillets?|"
+    # informal
+    r"pinch(?:es)?|dashes|dash|handfuls?|splash(?:es)?|knobs?|drizzles?"
+)
+
 MEASURE = re.compile(
-    r"\b\d+[\s/\d]*\s*(?:tbsp|tablespoons?|tsp|teaspoons?|cups?|oz|ounces?|lbs?|"
-    r"pounds?|grams?|g|ml|cloves?|pinch|dash|quarts?|sticks?)\b",
+    rf"(?<![A-Za-z0-9]){_QUANTITY}\s*(?:{_UNIT})\b",
     re.I,
 )
 

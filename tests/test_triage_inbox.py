@@ -113,48 +113,186 @@ def test_a_non_food_post_lands_in_not_food(inbox):
 
 
 # --- quantities ----------------------------------------------------------
+#
+# The cases below are taken from the 106 captures in inbox/, not invented.
+# MEASURE is the strongest single signal in the scorer, so both directions
+# matter: a unit it cannot read costs a real recipe its ranking, and a
+# number-adjacent word it wrongly reads as a unit promotes a caption that
+# lists nothing at all.
 
 
 @pytest.mark.parametrize(
     "text",
     [
-        "grab a cup and go",
-        "a dash of style",
-        "sticks and stones",
-        "measured in grams, roughly",
-        "the g in gif is soft",
-    ],
-)
-def test_measure_requires_a_leading_number(text):
-    """A quantity is a number plus a unit. Bare unit words turn up in prose
-    constantly, and counting them would promote any chatty caption."""
-    assert not mod.MEASURE.search(text), text
-
-
-@pytest.mark.parametrize(
-    "text",
-    [
+        # volume, imperial
         "2 cups of chicken broth",
         "1 tbsp olive oil",
-        "500 g flour",
-        "1/2 cup milk",
-        "3 cloves garlic",
+        "1/4 cup Worcestershire",
+        "2 tsp garlic powder",
+        "1 quart stock",
+        "2 pints cream",
+        "8 fl oz water",
+        # volume, metric
+        "250 ml milk",
+        "500ml stock",
+        "1 litre water",
+        "2 liters of oil",
+        "5 cl vinegar",
+        # weight, imperial
         "4 oz cream cheese",
+        "1 Pound of Sausage",
+        "2 lbs ground turkey",
+        # weight, metric
+        "500g chicken breast",
+        "1.5 kg beef",
+        "8 grams yeast",
+        "2 mg saffron",
+        # count and container
+        "3 cloves garlic",
+        "4 slices of bacon",
+        "1 packet onion soup mix",
+        "1 package of instant banana pudding",
+        "1 can cream of chicken soup",
+        "2 sticks butter",
+        "16 Slices",
+        "2 stalks celery",
+        # informal
+        "a 1 pinch of salt",
+        "2 handfuls spinach",
     ],
 )
 def test_measure_matches_a_real_quantity(text):
     assert mod.MEASURE.search(text), text
 
 
-def test_bare_unit_words_do_not_push_a_post_into_strong(inbox):
-    make_capture(
-        inbox,
-        "ig-nobody-aaa1",
-        caption="Grab a cup, a dash of style, sticks and stones. Dinner vibes.",
-        handle="@nobody",
+@pytest.mark.parametrize(
+    "text, why",
+    [
+        ("2 1/2 c. AP flour", "ASCII fraction, abbreviated unit with a period"),
+        ("\u00bd c. Unsalted Butter melted", "a vulgar fraction with no ASCII digit"),
+        (
+            "1 \u00bd tbsp. Granulated sugar",
+            "a mixed number ending in a vulgar fraction",
+        ),
+        ("\u00bc tsp cayenne", "standalone vulgar fraction"),
+        ("\u2153 cup olive oil", "a fraction from the \u2150 block, not Latin-1"),
+        ("50.1g protein", "a decimal quantity"),
+        ("1,5 kg", "a decimal written with a comma"),
+        ("1tbs chicken seasoning", "no space between number and unit"),
+        ("1/2tbs parsley", "a fraction with no space before the unit"),
+        ("500g chicken breast", "metric, no space"),
+        ("2\u20133 tsp homemade steak seasoning", "an en-dash range"),
+        ("1-2 tbsp honey", "a hyphen range"),
+    ],
+)
+def test_measure_matches_the_forms_captions_actually_use(text, why):
+    """Every string here appears in inbox/. Missing `c.`, the periods and the
+    vulgar fractions undercounted one caption's six quantities as two."""
+    assert mod.MEASURE.search(text), why
+
+
+@pytest.mark.parametrize(
+    "text, why",
+    [
+        ("470 Calories", "nutrition, not an ingredient amount"),
+        ("36gC", "macro carbs - g followed by a word char, so no boundary"),
+        ("14gF", "macro fat"),
+        ("40gP", "macro protein"),
+        ("Smoke the meat at 250F for 3 hours", "temperature and time"),
+        ("cook at around 275F degrees", "temperature"),
+        ("Prep time: 15 minutes", "time"),
+        ("Cook time: 30 mins", "time"),
+        ("Servings: 6 bowls (video only shows 3 servings)", "yield"),
+        ("2 cats and 3 dogs", "`c` needs a word boundary after it"),
+        ("3 canvases", "`can` needs a word boundary after it"),
+        ("vitamin c daily", "no leading quantity"),
+        ("grab a cup and go", "no leading quantity"),
+        ("the g in gif is soft", "no leading quantity"),
+        ("sticks and stones", "no leading quantity"),
+        ("a dash of style", "no leading quantity"),
+        ("4 people", "not a unit"),
+        ("2 large eggs", "a bare count is not a unit - other signals cover it"),
+    ],
+)
+def test_measure_refuses_what_is_merely_number_adjacent(text, why):
+    """Time, temperature, macros and yield are all common in these captions
+    and all number-adjacent. None of them says the caption lists what goes
+    in the pan, which is the only thing this signal is for."""
+    assert not mod.MEASURE.search(text), why
+
+
+def test_a_macros_block_counts_only_its_one_real_gram_match():
+    """A macros block is number-dense and almost none of it is an ingredient
+    amount. "44g protein" is a legitimate g-match and is allowed to count;
+    "381 calories" and the concatenated "36gC" / "13gF" must not."""
+    block = "381 calories\n44g protein\n36gC\n13gF\n22 carb"
+    assert mod.MEASURE.findall(block) == ["44g"]
+
+
+def test_calories_line_with_a_real_macro_counts_only_the_macro():
+    """A macros block is mostly not ingredient amounts. "44g protein" is a
+    legitimate g-match; "381 calories" and "22g carb" (written 22gC) are not."""
+    assert len(mod.MEASURE.findall("381 calories\n44g protein\n36gC\n13gF")) == 1
+
+
+def test_a_real_ingredient_block_counts_every_line():
+    """From @thebuttababe, the caption that exposed the gap - two before."""
+    block = (
+        "2 1/2 c. AP flour\n"
+        "2 c. Buttermilk\n"
+        "4 tsp. Baking powder\n"
+        "1 tsp. Salt\n"
+        "1 \u00bd tbsp. Granulated sugar\n"
+        "\u00bd c. Unsalted Butter melted"
     )
-    ((score, bucket, _),) = mod.triage(inbox)
-    assert bucket != "strong", score
+    assert len(mod.MEASURE.findall(block)) == 6
+
+
+def test_a_metric_ingredient_block_counts_every_line():
+    """From @jalalsamfit - metric, no spaces, mixed with a non-unit count."""
+    block = (
+        "500g chicken breast\n"
+        "1tbs chicken seasoning\n"
+        "1tbs garlic granules\n"
+        "1/2tbs parsley\n"
+        "2tbs butter\n"
+        "4 cloves garlic"
+    )
+    assert len(mod.MEASURE.findall(block)) == 6
+
+
+def test_a_quantity_match_spans_the_whole_number():
+    """Counting alone would not notice this: without decimal support "50.1g"
+    still matches, as "1g", because "." satisfies the lookbehind. The count is
+    the same, so only asserting the span catches it - and the span is what any
+    report of *why* a caption scored would show."""
+    assert mod.MEASURE.search("50.1g protein").group() == "50.1g"
+    assert mod.MEASURE.search("1.5 kg beef").group() == "1.5 kg"
+    assert mod.MEASURE.search("1,5 kg").group() == "1,5 kg"
+    assert mod.MEASURE.search("2 1/2 c. AP flour").group() == "1/2 c"
+    assert mod.MEASURE.search("1 \u00bd tbsp. sugar").group() == "1 \u00bd tbsp"
+    assert mod.MEASURE.search("\u00bd c. Butter").group() == "\u00bd c"
+
+
+def test_longest_unit_wins_the_alternation():
+    """`cups?` must be tried before the bare `c`, and `tbsps?` before `tbs`,
+    or the short form matches and leaves a dangling tail."""
+    assert mod.MEASURE.search("2 cups").group() == "2 cups"
+    assert mod.MEASURE.search("2 tbsp").group() == "2 tbsp"
+    assert mod.MEASURE.search("2 tablespoons").group() == "2 tablespoons"
+
+
+def test_every_caption_in_the_repo_still_parses():
+    """Smoke test over whatever is actually in inbox/ - catches a pattern
+    change that throws or hangs on real text rather than fixtures."""
+    inbox = Path(__file__).resolve().parent.parent / "inbox"
+    captions = [p for p in inbox.glob("*/caption.txt")]
+    if not captions:
+        pytest.skip("no captures in inbox/")
+    total = sum(
+        len(mod.MEASURE.findall(p.read_text(errors="replace"))) for p in captions
+    )
+    assert total > len(captions), "a corpus of recipes should average >1 quantity each"
 
 
 # --- bucketing -----------------------------------------------------------
