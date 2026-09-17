@@ -1,6 +1,7 @@
 from pathlib import Path
+from typing import Annotated
 
-from fastapi import APIRouter, HTTPException, UploadFile
+from fastapi import APIRouter, Form, HTTPException, UploadFile
 from markitdown import MarkItDown
 
 from .. import core
@@ -9,6 +10,23 @@ router = APIRouter(prefix="/inbox", tags=["inbox"])
 
 # Files small/text enough to inline in the API response.
 TEXT_EXTENSIONS = {".txt", ".md", ".json"}
+
+# Allow-list of what an upload may be, by extension. A capture is a photo of a
+# recipe card, a screenshot of a carousel post, or a document — nothing else
+# belongs in inbox/, and an allow-list refuses the file type nobody has thought
+# of yet, which a deny-list cannot.
+UPLOAD_EXTENSIONS = {
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".gif",
+    ".heic",
+    ".pdf",
+    ".txt",
+    ".md",
+    ".json",
+}
 
 
 def _slug_dir(slug: str, must_exist: bool) -> Path:
@@ -90,37 +108,63 @@ def capture_youtube(slug: str, body: dict):
 @router.post("/{slug}/files")
 async def capture_files(
     slug: str,
-    caption: str | None = None,
-    transcript: str | None = None,
-    raw: str | None = None,
-    meta: str | None = None,
+    caption: Annotated[str | None, Form()] = None,
+    transcript: Annotated[str | None, Form()] = None,
+    raw: Annotated[str | None, Form()] = None,
+    meta: Annotated[str | None, Form()] = None,
     uploads: list[UploadFile] | None = None,
 ):
     """Manual capture for sources that stay paste/upload by design
     (Instagram, TikTok, documents, pasted text) — see docs/ingestion.md.
+
+    The text fields are multipart form fields, not query parameters: a recipe
+    caption runs to several paragraphs and does not fit in a URL.
+
+    Blank content is treated as "not provided" and leaves the file on disk
+    alone. That matters because tools/import_instagram_saved.py writes meta.txt
+    ahead of the paste, and a capture screen that failed to load it would
+    otherwise post an empty box over the handle and permalink.
     """
     d = _slug_dir(slug, must_exist=False)
-    d.mkdir(parents=True, exist_ok=True)
 
-    written = []
-    for field_name, content in [
+    text_files = [
         ("caption.txt", caption),
         ("transcript.txt", transcript),
         ("raw.txt", raw),
         ("meta.txt", meta),
-    ]:
-        if content is not None:
-            (d / field_name).write_text(content)
-            written.append(field_name)
+    ]
+    incoming = [(n, c) for n, c in text_files if c is not None and c.strip()]
+    safe_uploads = [_safe_upload_name(u) for u in (uploads or []) if u.filename]
 
-    for upload in uploads or []:
-        if not upload.filename:
-            continue
-        dest = d / upload.filename
-        dest.write_bytes(await upload.read())
-        written.append(upload.filename)
-
-    if not written:
+    if not incoming and not safe_uploads:
         raise HTTPException(400, "no content provided")
 
+    d.mkdir(parents=True, exist_ok=True)
+    written = []
+    for name, content in incoming:
+        (d / name).write_text(content)
+        written.append(name)
+
+    for upload, name in zip(uploads or [], [n for n in safe_uploads]):
+        (d / name).write_bytes(await upload.read())
+        written.append(name)
+
     return {"slug": slug, "captured_files": written}
+
+
+def _safe_upload_name(upload: UploadFile) -> str:
+    """Reduce a client-supplied filename to a basename on the allow-list.
+
+    Without this, an upload named ../../recipes/kung-pao-chicken.yaml would
+    write straight through the trusted collection — the capture folder is
+    chosen by the server, so the filename must never be able to leave it.
+    """
+    name = Path(upload.filename or "").name
+    if not name or name.startswith("."):
+        raise HTTPException(400, f"unusable upload filename: {upload.filename!r}")
+    if Path(name).suffix.lower() not in UPLOAD_EXTENSIONS:
+        raise HTTPException(
+            400,
+            f"upload type not allowed: {name!r}. Allowed: {', '.join(sorted(UPLOAD_EXTENSIONS))}",
+        )
+    return name

@@ -2,6 +2,8 @@
 inbox/ as they exist on disk) -- not an isolated fixture, deliberately, so
 these catch real schema/data drift, not just code paths.
 """
+
+import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -157,3 +159,146 @@ def test_promote_succeeds_for_novel_recipe_then_cleanup():
     from app import core
 
     (core.RECIPES_DIR / f"{slug}.yaml").unlink()
+
+
+# --- Manual capture (POST /inbox/{slug}/files), the Phase C backend ---
+
+
+@pytest.fixture
+def capture_slug(request):
+    """A capture folder that is removed however the test ends.
+
+    These tests run against the real inbox/ (see module docstring), and the
+    refusal paths are exactly the ones that must leave nothing behind — so
+    cleanup cannot live at the end of the test body.
+    """
+    import re
+
+    from app import core
+
+    # Node names carry underscores and [param] brackets; core.is_valid_slug
+    # accepts neither, and an invalid slug 400s before the endpoint under test
+    # is reached -- which silently turns a refusal assertion green.
+    stem = re.sub(r"[^a-z0-9]+", "-", request.node.name.lower()).strip("-")
+    slug = f"test-capture-{stem[:60].strip('-')}"
+    assert core.is_valid_slug(slug), slug
+    yield slug
+    d = core.INBOX_DIR / slug
+    if d.is_dir():
+        for f in d.iterdir():
+            f.unlink()
+        d.rmdir()
+
+
+def test_capture_accepts_a_multi_paragraph_caption_as_a_form_field(capture_slug):
+    """The reason these are Form() and not query params.
+
+    A real Instagram recipe caption runs to several KB. As a query parameter
+    it either blows the URL length limit or gets truncated by something in
+    the middle, and truncation is the bad kind of failure: a caption missing
+    its last three steps still looks like a successful capture.
+    """
+    caption = "Step one. " * 900  # ~9 KB, well past any sane URL limit
+    r = client.post(f"/inbox/{capture_slug}/files", data={"caption": caption})
+    assert r.status_code == 200
+    assert r.json()["captured_files"] == ["caption.txt"]
+
+    got = client.get(f"/inbox/{capture_slug}").json()
+    stored = next(f for f in got["files"] if f["name"] == "caption.txt")
+    assert stored["content"] == caption
+
+
+def test_blank_caption_does_not_erase_the_importers_meta(capture_slug):
+    """tools/import_instagram_saved.py writes meta.txt before the paste.
+
+    A capture screen whose meta box failed to load would post an empty string
+    over it and silently lose the handle and permalink. Blank means "not
+    provided", never "clear the file".
+    """
+    client.post(f"/inbox/{capture_slug}/files", data={"meta": "creator: @chef.mike"})
+    r = client.post(f"/inbox/{capture_slug}/files", data={"caption": "real", "meta": "   "})
+    assert r.status_code == 200
+    assert r.json()["captured_files"] == ["caption.txt"]
+
+    got = client.get(f"/inbox/{capture_slug}").json()
+    meta = next(f for f in got["files"] if f["name"] == "meta.txt")
+    assert meta["content"] == "creator: @chef.mike"
+
+
+def test_capture_with_no_content_is_refused(capture_slug):
+    from app import core
+
+    r = client.post(f"/inbox/{capture_slug}/files", data={"caption": "  "})
+    assert r.status_code == 400
+    assert not (core.INBOX_DIR / capture_slug).exists()
+
+
+def test_screenshot_upload_is_accepted_and_kept_under_the_slug(capture_slug):
+    from app import core
+
+    r = client.post(
+        f"/inbox/{capture_slug}/files",
+        data={"caption": "carousel post"},
+        files={"uploads": ("screenshot.png", b"\x89PNG\r\n\x1a\n", "image/png")},
+    )
+    assert r.status_code == 200
+    assert set(r.json()["captured_files"]) == {"caption.txt", "screenshot.png"}
+    assert (core.INBOX_DIR / capture_slug / "screenshot.png").is_file()
+
+
+# The upload-name guard has three independent layers. Each is tested on its
+# own, because a test that only asserts "some layer refused" stays green when
+# the layer it was written for is deleted -- which is how the first version of
+# this test passed with the basename reduction removed.
+
+
+def test_upload_name_reduced_to_basename_cannot_reach_a_real_repo_file(capture_slug):
+    """Isolates the basename layer.
+
+    The payload clears the other two on purpose: it does not start with '.',
+    and .json is on the extension allow-list. Joined unsanitised it resolves
+    to <repo>/schema/recipe-v1.schema.json -- the file the whole validation
+    chain depends on.
+    """
+    from app import core
+
+    victim = core.SCHEMA_PATH
+    before = victim.read_bytes()
+
+    r = client.post(
+        f"/inbox/{capture_slug}/files",
+        files={
+            "uploads": (
+                "x/../../../schema/recipe-v1.schema.json",
+                b'{"pwned": true}',
+                "application/json",
+            )
+        },
+    )
+    assert r.status_code == 200, "allowed extension, so it should be stored"
+    assert victim.read_bytes() == before, "schema was overwritten"
+    assert (core.INBOX_DIR / capture_slug / "recipe-v1.schema.json").is_file()
+
+
+@pytest.mark.parametrize(
+    "filename, reason",
+    [
+        ("payload.yaml", "not allowed"),
+        ("archive.zip", "not allowed"),
+        ("payload", "not allowed"),
+        (".hidden.png", "unusable"),
+        # Basename-reduced to kung-pao-chicken.yaml first, so this lands on
+        # the extension gate rather than the dotfile one.
+        ("../../recipes/kung-pao-chicken.yaml", "not allowed"),
+    ],
+)
+def test_upload_names_off_the_allow_list_are_refused(capture_slug, filename, reason):
+    from app import core
+
+    r = client.post(
+        f"/inbox/{capture_slug}/files",
+        files={"uploads": (filename, b"x", "application/octet-stream")},
+    )
+    assert r.status_code == 400
+    assert reason in r.json()["detail"]
+    assert not (core.INBOX_DIR / capture_slug).exists()
