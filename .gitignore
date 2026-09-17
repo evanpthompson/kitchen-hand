@@ -288,3 +288,7 @@ pip-selfcheck.json
 !app/pubspec.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/python,flutter,dart,venv
+
+### Kitchen Hand ###
+# Telegram getUpdates cursor - local state, not shared
+.telegram-offset

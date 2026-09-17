@@ -60,6 +60,13 @@ rewritten from scratch.
   `recipes/_drafts/` instead of the main collection.
 - `tools/fetch_youtube.py` — captures a YouTube video's title/description/
   transcript into `inbox/` via `markitdown` (transcript API, no scraping).
+- `tools/poll_telegram.py` + `tools/telegram_transport.py` — share a Reel to
+  your own Telegram bot and it becomes an `inbox/` capture in seconds, rather
+  than waiting days for a DYI export. Long polling, so **no public webhook** —
+  which is what ruled out WhatsApp. Downloads nobody else's media. The
+  transport half is stdlib-only and imports nothing from this repo, so it can
+  be extracted when a second project wants it; a test parses its imports to
+  keep that true. See `docs/telegram-ingest-spec.md`.
 - `tools/transcribe_audio.py` — speech-to-text for a recipe that is spoken
   rather than written. **You supply the file**; it downloads nothing, because
   Instagram and TikTok both disallow automated access. Runs `faster-whisper`
@@ -101,7 +108,8 @@ no `requirements.txt`. Three separate projects:
   `uv run tools/fetch_youtube.py <slug> <url>`,
   `uv run tools/import_instagram_saved.py <export> [--dry-run]`,
   `uv run tools/triage_inbox.py [--bucket NAME]`,
-  `uv run --extra transcribe tools/transcribe_audio.py <slug> <file>`.
+  `uv run --extra transcribe tools/transcribe_audio.py <slug> <file>`,
+  `uv run tools/poll_telegram.py --once`.
   `uv run pytest` runs the root tool tests.
 - **`service/`** (the API backend): from `service/`, `uv run uvicorn
   app.main:app --reload` to serve it, `uv run pytest` to test, `uv run

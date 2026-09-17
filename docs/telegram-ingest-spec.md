@@ -1,7 +1,7 @@
 # Telegram Ingest — Spec
 
 **Date:** 2026-09-17
-**Status:** Spec — not built
+**Status:** Phases 0 and 1 built. Phases 2 and 3 outstanding.
 **Audience:** whoever builds it (solo)
 
 A one-tap path from "I am looking at a recipe on my phone" to
@@ -340,13 +340,27 @@ fixtures are cheap.
 
 ## 13. Phases
 
-- **Phase 0 — the backfill fix.** §10, on its own, before any Telegram code.
-  Without it the two-speed pipeline does not work and Phase 1 is worth less
-  than it looks.
-- **Phase 1 — text and URLs.** Both modules, with the import-direction test
-  from the start. `getUpdates`, allow-list, offset, URL parsing, and
-  `url.txt` / `caption.txt` / `meta.txt`. This alone closes the
-  9pm-on-the-sofa gap.
+- **Phase 0 — the backfill fix.** *Built* (`573b783`). §10, on its own,
+  before any Telegram code. Without it the two-speed pipeline does not work
+  and Phase 1 is worth less than it looks.
+- **Phase 1 — text and URLs.** *Built.* Both modules, with the
+  import-direction test from the start. `getUpdates`, allow-list, offset, URL
+  parsing, and `url.txt` / `caption.txt` / `meta.txt`.
+
+  Two things came out differently from this spec, both for the better:
+
+  - **The import-direction test parses the module rather than grepping it.**
+    A grep cannot tell an import from the docstring saying not to write one,
+    and the first version of the test failed on the transport's own prose. It
+    now asserts the set of imported top-level modules is a subset of the
+    standard library, which is the actual property and also catches a
+    renamed helper.
+  - **A message carrying media is captured, not deferred.** The spec implied
+    Phase 1 would leave those for Phase 2. Instead the text and URL are
+    written now and the Telegram `file_id` is recorded in `meta.txt` as
+    `telegram_pending_media`, because a `file_id` is stable for the life of
+    the bot. Phase 2 fetches them with nothing re-sent — the same backfill
+    shape as §10.
 - **Phase 2 — media.** Photos to `screenshot.png`, voice notes through
   `transcribe_audio.py`.
 - **Phase 3 — acknowledgement.** Reply to each message with the slug it
