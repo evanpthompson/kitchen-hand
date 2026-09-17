@@ -1,0 +1,148 @@
+id: ham-cheese-korokke
+title: Japanese Ham & Cheese Croquette (Korokke)
+cuisine: Japanese
+tags: [potatoes, fried, pork, cheese]
+servings: 6
+mode: fry
+
+source: "Tasty Japan, via @buzzfeedtasty on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/p/BOlJ-hlDomV/"
+  creator: "@tastyjapan, reposted by @buzzfeedtasty"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/ham-cheese-korokke/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    The most complete of this batch — a full ingredient list with quantities
+    and a full ordered method. Four things still need a human decision:
+
+    (1) "½ green onions" is almost certainly wrong as written. Half a spring
+    onion is not a plausible quantity for 6-8 servings, and every other
+    volume in the list is a cup measure, so "½ cup green onions" is the
+    likely intent. Recorded verbatim as the source wrote it rather than
+    silently corrected — fix it against the original post before promoting.
+
+    (2) Servings are given as a range, "6-8". The schema requires a single
+    integer, so the lower bound is used. Nothing was invented: 6 is stated in
+    the source, but the recipe may serve up to 8.
+
+    (3) The cheese is unspecified. "¾ cup cheese, chopped into small pieces"
+    gives neither a variety nor a form beyond chopped. Left as-is.
+
+    (4) Frying oil and the two accompaniments (shredded green cabbage,
+    tonkatsu sauce) are listed without quantities — "Oil, for frying" and "to
+    serve". Left without a quantity rather than estimated.
+
+    Salt appears once in the ingredient list as 2 teaspoons total and is
+    split across two phases by the method ("1 teaspoon salt" with the
+    potatoes, "the other teaspoon of salt" in the mash), plus an unmeasured
+    sprinkle after frying. Split into two ingredient entries so each phase
+    can reference its own, which matches the method rather than changing it.
+
+    Fry temperature is given in both scales (350°F / 180°C), so temp_c is
+    populated from the source rather than converted by hand.
+
+ingredients:
+  - id: potatoes
+    name: Potatoes, medium
+    quantity: "8"
+    prep: peeled and cut into medium-sized chunks
+  - id: salt-boil
+    name: Salt
+    quantity: 1 teaspoon
+    prep: for the simmering water
+  - id: salt-mash
+    name: Salt
+    quantity: 1 teaspoon
+    prep: for the mash
+  - id: ham
+    name: Ham
+    quantity: 1 cup
+    prep: chopped into small pieces
+  - id: cheese
+    name: Cheese
+    quantity: 3/4 cup
+    prep: chopped into small pieces — variety not specified in source
+  - id: green-onions
+    name: Green onions
+    quantity: "1/2"
+    prep: >
+      chopped. Source reads "½ green onions" with no unit; likely "½ cup" —
+      see extraction_notes, do not cook from this as written
+  - id: pepper
+    name: Pepper
+    quantity: 1 teaspoon
+  - id: milk
+    name: Milk
+    quantity: 1 tablespoon
+  - id: flour
+    name: Flour
+    quantity: 1 cup
+    prep: for dredging
+  - id: eggs
+    name: Eggs
+    quantity: "4"
+    prep: beaten, for the egg wash
+  - id: panko
+    name: Panko bread crumbs
+    quantity: 2 cups
+  - id: frying-oil
+    name: Oil
+    prep: for frying, quantity not given in source
+  - id: cabbage
+    name: Green cabbage
+    prep: shredded, to serve — quantity not given in source
+  - id: tonkatsu-sauce
+    name: Tonkatsu sauce
+    prep: to serve — quantity not given in source
+  - id: salt-finish
+    name: Salt
+    prep: a sprinkle after frying — quantity not given in source
+
+phases:
+  - name: Simmer the potatoes
+    instruction: >
+      Heat water in a pot to a simmer, add the potatoes and 1 teaspoon of
+      salt, and stir. Cover and simmer for about 10-15 minutes, until a fork
+      pierces the potatoes easily.
+    add_ingredients: [potatoes, salt-boil]
+    lid: closed
+  - name: Dry and mash
+    instruction: >
+      Dry the potatoes on a towel, letting them steam to drive off excess
+      moisture, then transfer to a large bowl and mash until no large chunks
+      remain.
+  - name: Mix the filling
+    instruction: >
+      Add the ham, cheese, green onions, the second teaspoon of salt, the
+      pepper and the milk. Mix until evenly incorporated.
+    add_ingredients: [ham, cheese, green-onions, salt-mash, pepper, milk]
+  - name: Shape
+    instruction: Shape the potato mixture into 2-inch discs.
+  - name: Bread the croquettes
+    instruction: >
+      Put the flour, beaten eggs and panko into three separate bowls. Dredge
+      each croquette in the flour and shake off the excess, dip it into the
+      egg, then coat it evenly in the panko.
+    add_ingredients: [flour, eggs, panko]
+  - name: Fry
+    instruction: >
+      Heat oil in a pot to 350°F / 180°C. Fry 2-3 croquettes at a time until
+      golden brown, then drain on a rack or paper towels and sprinkle with
+      salt.
+    add_ingredients: [frying-oil, salt-finish]
+    temp_c: 180
+  - name: Serve
+    instruction: >
+      Let the croquettes cool, then serve with shredded green cabbage and
+      tonkatsu sauce.
+    add_ingredients: [cabbage, tonkatsu-sauce]
+
+notes: >
+  mode is fry, and this is the closest thing in the collection so far to a
+  single-preset machine candidate — but only the final phase. Everything up
+  to breading is off-heat prep, and deep frying at a held 180°C is the one
+  part a CJ-A9U-style unit could plausibly run unattended. Worth revisiting
+  during Phase 1 as a temperature-hold test case.

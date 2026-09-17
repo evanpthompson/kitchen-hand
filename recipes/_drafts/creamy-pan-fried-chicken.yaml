@@ -1,0 +1,149 @@
+id: creamy-pan-fried-chicken
+title: Creamy Pan Fried Chicken
+tags: [chicken, sauce, weeknight]
+mode: manual
+
+source: "@cookinginthemidwest on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/Czd-TB3gO2c/"
+  creator: "@cookinginthemidwest (Luke Brown)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/creamy-pan-fried-chicken/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    **This draft is deliberately invalid: `servings` is absent because the
+    source never states it.** The caption gives 1 lb of chicken breast,
+    butterflied, and no yield. Rather than guess 2, 3 or 4, the required
+    field is left out so schema validation fails loudly and a human has to
+    decide. Fill it in before promoting.
+
+    Other gaps, none of them guessed:
+
+    (1) The chicken seasoning is "Salt, pepper, and garlic powder" with no
+    quantities, used twice — once directly on the meat and once mixed into
+    the dredging flour ("a little bit more"). Both are recorded without
+    quantities.
+
+    (2) The sauce seasonings are unambiguous by contrast: 1/2 tsp each of
+    salt and pepper, 1 tsp each of garlic powder, smoked paprika and onion
+    powder. The ingredient list and the instructions name those three in a
+    different order, which is not a contradiction, only a restatement.
+
+    (3) No timings are given for any phase. Doneness for the chicken is
+    stated as an internal temperature of at least 165°F (74°C) and as "both
+    sides golden brown"; both are kept in the instruction. temp_c is left
+    null on the phase because 74°C is a doneness target for the meat, not a
+    pan or machine setting, and putting it in the machine field would
+    misrepresent it.
+
+    (4) Butter and olive oil are given as 2 tbsp each with no pan size.
+
+ingredients:
+  - id: chicken
+    name: Chicken breast
+    quantity: 1 lb
+    prep: butterfly cut
+  - id: chicken-seasoning
+    name: Salt, pepper and garlic powder
+    prep: >
+      for seasoning both sides of the chicken — quantities not given in
+      source
+  - id: dredge-flour
+    name: Flour
+    quantity: 1 cup
+    prep: for dredging
+  - id: dredge-seasoning
+    name: Salt, pepper and garlic powder
+    prep: >
+      "a little bit more", mixed into the dredging flour — quantities not
+      given in source
+  - id: butter
+    name: Butter
+    quantity: 2 tbsp
+  - id: olive-oil
+    name: Olive oil
+    quantity: 2 tbsp
+  - id: minced-garlic
+    name: Garlic, minced
+    quantity: 2 tbsp
+  - id: roux-flour
+    name: Flour
+    quantity: 2 tbsp
+    prep: for the pan sauce, separate from the dredging flour
+  - id: chicken-broth
+    name: Chicken broth
+    quantity: 1 cup
+  - id: heavy-cream
+    name: Heavy whipping cream
+    quantity: 1 cup
+  - id: sauce-salt
+    name: Salt
+    quantity: 1/2 tsp
+    prep: in the sauce
+  - id: sauce-pepper
+    name: Pepper
+    quantity: 1/2 tsp
+    prep: in the sauce
+  - id: sauce-garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+    prep: in the sauce
+  - id: sauce-smoked-paprika
+    name: Smoked paprika
+    quantity: 1 tsp
+    prep: in the sauce
+  - id: sauce-onion-powder
+    name: Onion powder
+    quantity: 1 tsp
+    prep: in the sauce
+
+phases:
+  - name: Season and dredge the chicken
+    instruction: >
+      Butterfly the chicken breasts and season both sides with salt, pepper
+      and garlic powder. In a container, combine the 1 cup of flour with a
+      little more salt, pepper and garlic powder, then dredge the chicken in
+      the seasoned flour.
+    add_ingredients: [chicken, chicken-seasoning, dredge-flour, dredge-seasoning]
+  - name: Fry the chicken
+    instruction: >
+      Heat a skillet over medium heat and melt the butter with the olive oil.
+      Fry the chicken until both sides are golden brown and it reaches an
+      internal temperature of at least 165°F (74°C). Remove the chicken from
+      the skillet. No time is given in the source.
+    add_ingredients: [butter, olive-oil]
+    heat_level: null
+    temp_c: null
+  - name: Start the pan sauce
+    instruction: >
+      In the hot skillet, combine the minced garlic and the 2 tbsp of flour.
+      Stir until it thickens.
+    add_ingredients: [minced-garlic, roux-flour]
+  - name: Build and season the sauce
+    instruction: >
+      Add the chicken broth and heavy cream, stirring continuously. Add the
+      salt and pepper, then the garlic powder, smoked paprika and onion
+      powder, stirring constantly until smooth.
+    add_ingredients:
+      [
+        chicken-broth,
+        heavy-cream,
+        sauce-salt,
+        sauce-pepper,
+        sauce-garlic-powder,
+        sauce-smoked-paprika,
+        sauce-onion-powder,
+      ]
+  - name: Serve
+    instruction: Pour the sauce over the chicken and serve.
+
+notes: >
+  A pan-sauce recipe in the same family as the béchamel MVP: fat plus flour
+  cooked out, then liquid added and stirred continuously until smooth. If the
+  open rig can hold a stir through a roux-and-liquid thickening, this is a
+  natural second test after bechamel-sauce.
+
+  mode is manual — the chicken is fried and removed before the sauce is built
+  in the same pan, which no single CJ-A9U preset covers.

@@ -1,0 +1,211 @@
+id: garlic-butter-chicken-creamy-potatoes
+title: Garlic Butter Chicken & Creamy Garlic Herb Potatoes
+tags: [chicken, potatoes, meal-prep, high-protein, weeknight]
+servings: 4
+mode: manual
+
+source: "@jalalsamfit on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C9ngIBVoyZP/"
+  creator: "@jalalsamfit (Jalal)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/garlic-butter-chicken-creamy-potatoes/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Ingredient quantities are complete and unambiguous; the method is not.
+    The caption gives an ingredient list plus a short "Important Cooking
+    Notes" section rather than a full procedure, so several steps below are
+    reconstructed from fragments and two are missing outright. Needs a human
+    pass, ideally against the video, before promotion.
+
+    (1) The potatoes are never actually cooked in the source. The notes jump
+    from making the cream sauce to "then add the cooked potatoes in", with no
+    method, temperature or time for cooking them anywhere in the caption. The
+    potato phase below says only what the source says — that they are cut
+    small and end up cooked — and deliberately does not guess roast vs. pan
+    vs. boil, or a temperature. This is the single biggest gap.
+
+    (2) The potato seasonings (salt, parsley, chilli flakes, garlic powder,
+    onion powder, paprika, optional oil) are listed as ingredients but the
+    caption never says when they go in. Placed with the potatoes on the
+    assumption they season the potatoes themselves, which is what the
+    grouping implies, but the source does not state it.
+
+    (3) "25g Light Butter (For cooking + extra once cooked)" is one quantity
+    covering two uses and the split is not given. Left as a single 25g entry
+    rather than invented as two.
+
+    (4) The 2 tsp olive oil is listed under the chicken but never appears in
+    the notes. Placed at the start of the chicken sear as the only plausible
+    point, flagged here rather than silently.
+
+    (5) Chicken doneness is given as "6-8 mins" on medium-high "for it to get
+    golden brown", with no internal temperature. Kept as a range.
+
+    (6) Brands are named in the source (@saffron_alley chicken, Sainsbury's
+    evaporated milk, Philadelphia cream cheese) and are preserved in prep
+    fields as attribution, not as requirements.
+
+    (7) Macros are stated (551 kcal, 51g protein, 43g carbs, 18g fat per
+    serving of 4) but the schema has no field for them, so they are recorded
+    here only.
+
+ingredients:
+  - id: chicken
+    name: Chicken breast, raw
+    quantity: 800g
+    prep: cut into cubes (source uses @saffron_alley)
+  - id: chicken-salt
+    name: Salt
+    quantity: 1.5 tsp
+    prep: chicken seasoning
+  - id: chicken-parsley-dried
+    name: Parsley, dried
+    quantity: 2 tsp
+    prep: chicken seasoning
+  - id: chicken-chilli-flakes
+    name: Chilli flakes
+    quantity: 1 tsp
+    prep: chicken seasoning
+  - id: chicken-garlic-powder
+    name: Garlic powder
+    quantity: 2 tsp
+    prep: chicken seasoning
+  - id: chicken-onion-powder
+    name: Onion powder
+    quantity: 2 tsp
+    prep: chicken seasoning
+  - id: chicken-paprika
+    name: Paprika
+    quantity: 2 tsp
+    prep: chicken seasoning
+  - id: olive-oil
+    name: Olive oil
+    quantity: 2 tsp
+    prep: >
+      listed under the chicken in the source but never placed in the method
+      — see extraction_notes
+  - id: light-butter
+    name: Light butter
+    quantity: 25g
+    prep: >
+      source states "for cooking + extra once cooked" without splitting the
+      quantity — see extraction_notes
+  - id: minced-garlic
+    name: Garlic, minced
+    quantity: 1 tbsp
+    prep: added off-heat at the end of the chicken
+  - id: fresh-parsley
+    name: Parsley, fresh
+    quantity: 1 tbsp
+    prep: added off-heat at the end of the chicken
+  - id: potatoes
+    name: White potatoes
+    quantity: 800g
+    prep: cut into small cubes
+  - id: potato-salt
+    name: Salt
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-parsley
+    name: Parsley, dried
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-chilli-flakes
+    name: Chilli flakes
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-onion-powder
+    name: Onion powder
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-paprika
+    name: Paprika
+    quantity: 1 tsp
+    prep: potato seasoning
+  - id: potato-oil
+    name: Olive oil or cooking spray
+    prep: optional, quantity not given in source
+  - id: evaporated-milk
+    name: Light evaporated milk
+    quantity: 250ml
+    prep: source uses Sainsbury's
+  - id: cream-cheese
+    name: Garlic and herb cream cheese
+    quantity: 150g
+    prep: source uses Philadelphia
+
+phases:
+  - name: Season the chicken
+    instruction: >
+      Cube the chicken breast and toss with the salt, dried parsley, chilli
+      flakes, garlic powder, onion powder and paprika.
+    add_ingredients:
+      [
+        chicken,
+        chicken-salt,
+        chicken-parsley-dried,
+        chicken-chilli-flakes,
+        chicken-garlic-powder,
+        chicken-onion-powder,
+        chicken-paprika,
+      ]
+  - name: Sear the chicken
+    instruction: >
+      Cook the chicken over medium-high heat for 6-8 minutes, until golden
+      brown. The source gives no internal temperature.
+    add_ingredients: [olive-oil, light-butter]
+    heat_level: null
+    temp_c: null
+  - name: Finish the chicken off-heat
+    instruction: >
+      Lower the heat completely, then add the extra butter, the minced garlic
+      and the fresh parsley. Mix for about 1 minute, then set aside.
+    add_ingredients: [minced-garlic, fresh-parsley]
+    duration_sec: 60
+  - name: Cook the potatoes
+    instruction: >
+      Cook the cubed, seasoned potatoes until done. The source does not say
+      how — no method, temperature or time is given anywhere in the caption
+      (see extraction_notes). Optional olive oil or cooking spray.
+    add_ingredients:
+      [
+        potatoes,
+        potato-salt,
+        potato-parsley,
+        potato-chilli-flakes,
+        potato-garlic-powder,
+        potato-onion-powder,
+        potato-paprika,
+        potato-oil,
+      ]
+    heat_level: null
+    temp_c: null
+    notes: >
+      Missing from the source. Do not promote this recipe without filling
+      this phase in from the video or a test cook.
+  - name: Make the cream sauce
+    instruction: >
+      With the pan on medium-low heat, add the evaporated milk and the garlic
+      and herb cream cheese. Stir continuously for about 5 minutes, until it
+      bubbles a little and thickens.
+    add_ingredients: [evaporated-milk, cream-cheese]
+    duration_sec: 300
+  - name: Combine
+    instruction: >
+      Add the cooked potatoes to the thickened sauce and stir to coat. Serve
+      with the chicken.
+
+notes: >
+  Meal-prep recipe: the source states it keeps and reheats, either in a pan
+  on low heat for 4-5 minutes or microwaved for 5 minutes on a plate.
+
+  mode is manual rather than a CJ-A9U preset because the chicken, the
+  potatoes and the sauce are three separate tracks, and the potato method is
+  unknown in any case.

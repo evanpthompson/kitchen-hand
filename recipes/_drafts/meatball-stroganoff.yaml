@@ -1,0 +1,139 @@
+id: meatball-stroganoff
+title: Meatball Stroganoff
+tags: [beef, noodles, sauce, weeknight]
+mode: manual
+
+source: "Luke Brown, reposted by @carnivorefamilykitchen on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DBRIQXjtd6B/"
+  creator: "Luke Brown, via @carnivorefamilykitchen (Jennifer LaRose)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/meatball-stroganoff/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    **This draft is deliberately invalid: `servings` is absent because the
+    source never states it.** 1 1/2 lbs of meatballs and 12 oz of egg noodles
+    implies roughly 4-6, but the caption gives no yield, so the required
+    field is left out to fail validation rather than filled with a guess.
+
+    (1) Attribution needs checking before promotion. The caption is posted by
+    @carnivorefamilykitchen (Jennifer LaRose) but credits "By: Luke Brown" in
+    its second line. Luke Brown is @cookinginthemidwest, the creator of
+    creamy-pan-fried-chicken in this same collection, and the two captions
+    share a distinctive house style — "1/2 tsp each of salt and pepper",
+    "1 tsp each of Italian seasoning, garlic powder, and onion powder". So
+    this is very likely a repost of his recipe. Both are credited above; a
+    human should confirm which account originated it.
+
+    (2) The only time given is "about 30 minutes" for the whole dish. No
+    phase has its own timing except "let cook for at least one minute" for
+    the roux, which is recorded.
+
+    (3) The seasonings are stated as a group ("1 tsp each of Italian
+    seasoning, garlic powder, and onion powder") and split into separate
+    ingredient entries here so phases can reference them. The quantities are
+    unchanged.
+
+    (4) Egg noodles are cooked "according to the directions on the package",
+    which is not a method this file can record. Left as the source states it.
+
+    (5) Parsley is "fresh or dried" with no quantity.
+
+ingredients:
+  - id: meatballs
+    name: Precooked meatballs
+    quantity: 1 1/2 lbs
+    prep: frozen or thawed
+  - id: salt
+    name: Salt
+    quantity: 1/2 tsp
+  - id: pepper
+    name: Pepper
+    quantity: 1/2 tsp
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1 tsp
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+  - id: onion-powder
+    name: Onion powder
+    quantity: 1 tsp
+  - id: butter
+    name: Butter
+    quantity: 3 tbsp
+  - id: flour
+    name: Flour
+    quantity: 3 tbsp
+  - id: beef-broth
+    name: Beef broth
+    quantity: 2 cups
+  - id: worcestershire
+    name: Worcestershire sauce
+    quantity: 2 tbsp
+  - id: dijon
+    name: Dijon mustard
+    quantity: 1 tbsp
+  - id: sour-cream
+    name: Sour cream
+    quantity: 1 cup
+  - id: egg-noodles
+    name: Medium egg noodles
+    quantity: 12 oz
+  - id: parsley
+    name: Parsley, fresh or dried
+    prep: to garnish — quantity not given in source
+
+phases:
+  - name: Cook the noodles
+    instruction: >
+      Heat a large pot of water and cook the egg noodles according to the
+      directions on the package.
+    add_ingredients: [egg-noodles]
+  - name: Make the roux
+    instruction: >
+      Heat a large skillet over medium-high heat. Add the butter and, once
+      melted, the flour. Stir together and let cook for at least one minute.
+    add_ingredients: [butter, flour]
+    duration_sec: 60
+  - name: Build and season the sauce
+    instruction: >
+      Add the beef broth and stir well. Season with the salt, pepper, Italian
+      seasoning, garlic powder and onion powder. Keep cooking until it
+      thickens, then stir in the Dijon mustard and Worcestershire sauce.
+    add_ingredients:
+      [
+        beef-broth,
+        salt,
+        pepper,
+        italian-seasoning,
+        garlic-powder,
+        onion-powder,
+        dijon,
+        worcestershire,
+      ]
+  - name: Heat the meatballs
+    instruction: >
+      Add the meatballs, cover with a lid, and turn the heat down a little.
+      Cook until the meatballs are hot through.
+    add_ingredients: [meatballs]
+    lid: closed
+  - name: Finish off-heat
+    instruction: >
+      Remove the skillet from the heat and stir in the sour cream. Add the
+      cooked egg noodles and stir everything together well.
+    add_ingredients: [sour-cream]
+  - name: Serve
+    instruction: Top with fresh or dried parsley and serve.
+    add_ingredients: [parsley]
+
+notes: >
+  Another roux-then-liquid pan sauce, like creamy-pan-fried-chicken. The sour
+  cream goes in off the heat, which matters: added over heat it splits. That
+  is a hard constraint for any machine program — the stir has to continue
+  while the heat is already off.
+
+  mode is manual because the noodles are cooked in a separate pot and folded
+  in at the end.
