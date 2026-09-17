@@ -1,0 +1,120 @@
+id: crockpot-sausage-potato-casserole
+title: Crockpot Sausage and Potato Casserole
+tags: [pork, potatoes, cheese, slow-cooker]
+servings: 6
+mode: braise
+
+source: "@quotidianrecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/p/DX7RhUKjIFq/"
+  creator: "@quotidianrecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/crockpot-sausage-potato-casserole/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified, a fully ordered method, both cook
+    settings with their times, and servings stated. Nothing reconstructed.
+
+    (1) Two cook options are given - low for 6-7 hours or high for 3-4 - and
+    both are kept. duration_sec records the low setting, which the source
+    lists first and which the stated 6 hour total time assumes.
+
+    (2) The cheese goes on "during the last 20 minutes of cooking", which is
+    a relative time rather than a phase of its own duration. Recorded as its
+    own phase with that instruction intact.
+
+    (3) Dried parsley is marked optional.
+
+    (4) Calories are stated (520 per serving); the schema has no field for
+    them.
+
+    Sits alongside smoked-sausage-potato-bake from the same creator: the same
+    two main ingredients, one roasted on a tray in an hour and one slow-cooked
+    for six. Genuinely different recipes, both kept.
+
+ingredients:
+  - id: sausage
+    name: Smoked sausage
+    quantity: 1 1/2 pounds
+    prep: sliced
+  - id: potatoes
+    name: Potatoes
+    quantity: 2 pounds
+    prep: diced into bite-sized pieces
+  - id: onion
+    name: Onion, small
+    quantity: "1"
+    prep: diced
+  - id: cheddar
+    name: Cheddar cheese
+    quantity: 2 cups
+    prep: shredded
+  - id: cream
+    name: Heavy cream
+    quantity: 1 cup
+  - id: chicken-broth
+    name: Chicken broth
+    quantity: 1/2 cup
+  - id: butter
+    name: Butter
+    quantity: 2 tablespoons
+    prep: melted
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 1 teaspoon
+  - id: onion-powder
+    name: Onion powder
+    quantity: 1 teaspoon
+  - id: paprika
+    name: Paprika
+    quantity: 1 teaspoon
+  - id: salt
+    name: Salt
+    quantity: 1/2 teaspoon
+  - id: pepper
+    name: Black pepper
+    quantity: 1/2 teaspoon
+  - id: parsley
+    name: Dried parsley
+    quantity: 1 teaspoon
+    prep: optional
+
+phases:
+  - name: Layer the crockpot
+    instruction: >
+      Lightly grease the crockpot, add the diced potatoes and onion, then
+      layer the sliced sausage evenly over the top.
+    add_ingredients: [potatoes, onion, sausage]
+  - name: Mix and pour the sauce
+    instruction: >
+      Mix the heavy cream, chicken broth, melted butter, garlic powder, onion
+      powder, paprika, salt and pepper in a bowl, then pour it evenly over the
+      sausage and potatoes.
+    add_ingredients:
+      [cream, chicken-broth, butter, garlic-powder, onion-powder, paprika, salt, pepper]
+  - name: Slow cook
+    instruction: >
+      Cover and cook on low for 6-7 hours, or on high for 3-4 hours, until the
+      potatoes are tender.
+    duration_sec: 21600
+    lid: closed
+  - name: Melt the cheese
+    instruction: >
+      Sprinkle the shredded cheddar over the top during the last 20 minutes of
+      cooking. Cover again and let it melt completely.
+    add_ingredients: [cheddar]
+    duration_sec: 1200
+    lid: closed
+  - name: Serve
+    instruction: Garnish with parsley if desired and serve warm.
+    add_ingredients: [parsley]
+
+notes: >
+  Leftovers keep in the fridge up to 3 days, per the source.
+
+  mode is braise - the closest of the CJ-A9U presets to a covered, liquid,
+  long-hold cook, though six hours is far outside what that machine is built
+  for. Set for the shape rather than as a claim that the hardware could run
+  it.

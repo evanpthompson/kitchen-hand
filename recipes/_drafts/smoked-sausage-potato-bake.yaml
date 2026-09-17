@@ -1,0 +1,141 @@
+id: smoked-sausage-potato-bake
+title: One-Tray Smoked Sausage & Potato Bake
+tags: [pork, potatoes, baking, weeknight]
+servings: 6
+mode: manual
+
+source: "@quotidianrecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DcYCXa5gkGY/"
+  creator: "@quotidianrecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/smoked-sausage-potato-bake/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified, a fully ordered method, three
+    timed bake stages, temperature in both scales, and servings stated.
+    Nothing reconstructed.
+
+    (1) The staggered roast is the point and is kept explicit: potatoes go in
+    alone for 20 minutes to get a head start, then the sausage joins them for
+    20-25 more. Collapsing that into one bake would change the dish.
+
+    (2) Salt is "1/2 teaspoon, or to taste" - the quantity is recorded and the
+    latitude noted.
+
+    (3) Red pepper flakes and the finishing parsley are both marked optional
+    in the source.
+
+    (4) Calories are stated (about 520 per serving); the schema has no field
+    for them.
+
+ingredients:
+  - id: sausage
+    name: Smoked sausage
+    quantity: 1 1/2 lbs
+    prep: sliced into 1/2-inch rounds
+  - id: potatoes
+    name: Baby potatoes
+    quantity: 2 lbs
+    prep: halved or quartered
+  - id: olive-oil
+    name: Olive oil
+    quantity: 3 tablespoons
+  - id: garlic
+    name: Garlic cloves
+    quantity: "4"
+    prep: minced
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1 teaspoon
+  - id: dried-parsley
+    name: Dried parsley
+    quantity: 1 teaspoon
+  - id: paprika
+    name: Smoked paprika
+    quantity: 1/2 teaspoon
+  - id: onion-powder
+    name: Onion powder
+    quantity: 1/2 teaspoon
+  - id: salt
+    name: Salt
+    quantity: 1/2 teaspoon
+    prep: or to taste
+  - id: pepper
+    name: Black pepper
+    quantity: 1/4 teaspoon
+  - id: pepper-flakes
+    name: Red pepper flakes
+    quantity: 1/4 teaspoon
+    prep: optional
+  - id: parmesan
+    name: Parmesan cheese
+    quantity: 1/3 cup
+    prep: grated
+  - id: fresh-parsley
+    name: Fresh parsley
+    quantity: 2 tablespoons
+    prep: chopped, optional
+
+phases:
+  - name: Season the potatoes
+    instruction: >
+      Preheat the oven to 400°F (200°C) and lightly grease a large rimmed
+      baking sheet or a 9x13-inch dish. Toss the potatoes in a large bowl with
+      the olive oil, garlic, Italian seasoning, dried parsley, smoked paprika,
+      onion powder, salt, black pepper and red pepper flakes.
+    add_ingredients:
+      [
+        potatoes,
+        olive-oil,
+        garlic,
+        italian-seasoning,
+        dried-parsley,
+        paprika,
+        onion-powder,
+        salt,
+        pepper,
+        pepper-flakes,
+      ]
+    temp_c: 200
+  - name: Roast the potatoes alone
+    instruction: >
+      Spread the potatoes out in a single layer and roast for 20 minutes, so
+      they get a head start on becoming tender.
+    temp_c: 200
+    duration_sec: 1200
+  - name: Add the sausage
+    instruction: >
+      Take the tray out, add the sliced smoked sausage, and toss everything
+      together.
+    add_ingredients: [sausage]
+  - name: Roast together
+    instruction: >
+      Return the tray to the oven and bake for another 20-25 minutes,
+      stirring once halfway through, until the potatoes are fork-tender and
+      the sausage is browned at the edges.
+    temp_c: 200
+    duration_sec: 1200
+  - name: Finish with Parmesan
+    instruction: >
+      Sprinkle the Parmesan over the top and bake for another 3-5 minutes,
+      just until it melts slightly and clings.
+    add_ingredients: [parmesan]
+    temp_c: 200
+    duration_sec: 180
+  - name: Serve
+    instruction: >
+      Finish with fresh parsley if you like and serve hot. The source suggests
+      a simple salad, roasted vegetables or warm bread alongside.
+    add_ingredients: [fresh-parsley]
+
+notes: >
+  Total time about 1 hour per the source. Leftovers keep in an airtight
+  container up to 4 days; reheat in the oven or air fryer for the best
+  texture.
+
+  Sheet-pan oven recipe, so mode is manual. Related to
+  crockpot-sausage-potato-casserole - same two main ingredients, entirely
+  different method and result.

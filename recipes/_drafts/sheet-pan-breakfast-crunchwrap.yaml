@@ -1,0 +1,117 @@
+id: sheet-pan-breakfast-crunchwrap
+title: Sheet Pan Breakfast Crunchwrap
+tags: [breakfast, pork, egg, cheese, baking]
+mode: manual
+
+source: "@supermommyof123 on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C792tnjPSMW/"
+  creator: "@supermommyof123"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/sheet-pan-breakfast-crunchwrap/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Numbered method, and unusually the method comes before the ingredient list
+    in the caption. Every step is present and the bake is timed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield. It is a full
+    sheet pan cut into portions, so the count is the cook's choice in the same
+    way butter-swim-biscuits was.
+
+    (1) **Two components arrive already cooked and the source never cooks
+    them.** "8 cooked hash brown patties", "cooked eggs", "one pound of cooked
+    sausage or bacon" - all three are assumed done before step 1. No method,
+    temperature or time for any of them. The prep phase below says so rather
+    than inventing three sub-recipes.
+
+    (2) The eggs are "4-8 eggs", a range with no guidance on where in it to
+    land. Kept as a range.
+
+    (3) The tortilla layout points at a different post: "Lay 5 burrito
+    tortillas down with one in the middle and the edges hanging off. (video
+    before this for reference)". That reference is not captured and the
+    geometry matters - it is what makes the wrap fold shut. Worth capturing
+    that earlier video before promotion.
+
+    (4) The chipotle sauce is a named commercial product, Taco Bell chipotle
+    creamy sauce, with no quantity. Preserved as named with the gap noted.
+
+    (5) Cheese is "1 1/2-2 cups", a range.
+
+    (6) 8 tortillas are listed; the method uses 5 on the bottom and 3 on top,
+    which accounts for all of them.
+
+ingredients:
+  - id: tortillas-base
+    name: Burrito tortillas
+    quantity: "5"
+    prep: laid down with one in the middle and the edges hanging off the pan
+  - id: tortillas-top
+    name: Burrito tortillas
+    quantity: "3"
+    prep: laid on top, wrapped under a bit
+  - id: chipotle-sauce
+    name: Taco Bell chipotle creamy sauce
+    prep: quantity not given in source
+  - id: hash-browns
+    name: Hash brown patties
+    quantity: "8"
+    prep: cooked - the source does not say how
+  - id: eggs
+    name: Eggs
+    quantity: 4-8
+    prep: cooked - the source does not say how
+  - id: meat
+    name: Sausage or bacon
+    quantity: 1 pound
+    prep: cooked - the source does not say how
+  - id: cheese
+    name: Shredded cheese
+    quantity: 1 1/2-2 cups
+  - id: oil
+    name: Cooking oil spray
+    prep: for the pan and the top - quantity not given in source
+
+phases:
+  - name: Cook the fillings
+    instruction: >
+      Cook the hash brown patties, the eggs and the sausage or bacon. **The
+      source gives no method, temperature or time for any of the three** - it
+      assumes all are done before assembly. See extraction_notes.
+    add_ingredients: [hash-browns, eggs, meat]
+    heat_level: null
+    temp_c: null
+    notes: Three methods missing from the source.
+  - name: Lay the base
+    instruction: >
+      Spray a sheet pan with a little oil. Lay 5 burrito tortillas down, one
+      in the middle and the rest with their edges hanging off the pan. The
+      source refers to an earlier video for the layout, which is not captured.
+    add_ingredients: [oil, tortillas-base]
+  - name: Layer
+    instruction: >
+      Spread the chipotle creamy sauce over the tortillas. Add the hash brown
+      patties, then the cooked eggs, then the cooked sausage or bacon, then
+      the shredded cheese.
+    add_ingredients: [chipotle-sauce, cheese]
+  - name: Close the wrap
+    instruction: >
+      Lay 3 more burrito tortillas on top, wrapping them under a bit, then
+      fold the overhanging edges of the base tortillas in over the top. Spray
+      the top with oil.
+    add_ingredients: [tortillas-top]
+  - name: Press and bake
+    instruction: >
+      Lay another cookie sheet on top to press it, then bake at 450°F (232°C)
+      for 15-20 minutes.
+    temp_c: 232
+    duration_sec: 900
+
+notes: >
+  Oven-baked and assembled from pre-cooked components, so mode is manual and
+  neither hardware track applies.
+
+  The pressing sheet is the interesting detail: it is what turns a stack of
+  tortillas into a crunchwrap rather than a casserole.

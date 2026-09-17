@@ -1,0 +1,129 @@
+id: crockpot-chuck-roast-kalbi
+title: Crockpot Chuck Roast Kalbi
+cuisine: Korean
+tags: [beef, slow-cooker, sauce]
+mode: braise
+
+source: "@406_bbq on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DdUAT-KsyVA/"
+  creator: "@406_bbq"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/crockpot-chuck-roast-kalbi/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Numbered method, well explained, with the slow cook timed and a doneness
+    test given. Four issues in the ingredient list, none of them guessed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - a 2 lb chuck
+    roast.
+
+    (1) **The seasoning is listed twice and named neither time.** "Your
+    favorite beef seasoning" appears near the top and "Favorite seasoning"
+    again at the bottom. Almost certainly the same thing listed twice rather
+    than two seasonings, but the source does not say, and neither has a
+    quantity. Recorded once with the duplication noted.
+
+    (2) **The captured caption lost a line break**, jamming two ingredients
+    together: "2 tablespoons minced garlic 1/4 cup of water". Split on the
+    only reading that parses - 2 tbsp minced garlic, and 1/4 cup water. Worth
+    checking against the original post.
+
+    (3) **Butter is in the method and not the ingredient list.** Step 2 says
+    "add 2T butter" for the sear. Recorded as an ingredient at that quantity
+    since the method states it, and flagged here.
+
+    (4) "2 tablespoons Thai chili" gives no form - fresh, dried, paste or
+    sauce all measure differently by the tablespoon. Recorded as written.
+
+    (5) The sear is explicitly not about doneness: "We aren't cooking it to
+    temperature - we're just building flavor." Kept in the instruction so
+    nobody chases an internal temperature there.
+
+    (6) The slow cook is 4-6 hours on LOW with an explicit instruction to
+    judge by tenderness rather than the clock. duration_sec records the low
+    end of the range.
+
+ingredients:
+  - id: chuck-roast
+    name: Chuck roast
+    quantity: 2 lbs
+  - id: beef-seasoning
+    name: Beef seasoning
+    prep: >
+      "your favorite" - no quantity, and listed twice in the source, probably
+      the same thing. Go light on salt, since the shoyu brings plenty
+  - id: sear-butter
+    name: Butter
+    quantity: 2 tablespoons
+    prep: >
+      for the sear. Named in the method but absent from the source's
+      ingredient list - see extraction_notes
+  - id: shoyu
+    name: Shoyu
+    quantity: 1 cup
+  - id: brown-sugar
+    name: Brown sugar
+    quantity: 1 cup
+  - id: sesame-oil
+    name: Sesame oil
+    quantity: 2 tablespoons
+  - id: rice-vinegar
+    name: Rice vinegar
+    quantity: 2 tablespoons
+  - id: thai-chili
+    name: Thai chili
+    quantity: 2 tablespoons
+    prep: form not specified in source - fresh, dried, paste and sauce all differ
+  - id: ginger
+    name: Ginger
+    quantity: 2 tablespoons
+    prep: grated
+  - id: garlic
+    name: Garlic
+    quantity: 2 tablespoons
+    prep: minced
+  - id: water
+    name: Water
+    quantity: 1/4 cup
+  - id: asian-pear
+    name: Asian pear
+    quantity: 1 cup
+    prep: grated
+
+phases:
+  - name: Season the roast
+    instruction: >
+      Pat the chuck roast dry and season it on every side. Go light on the
+      salt - the shoyu will bring plenty.
+    add_ingredients: [chuck-roast, beef-seasoning]
+  - name: Sear
+    instruction: >
+      Heat a frying pan over medium-high heat and add the butter. Sear the
+      roast on all sides until you build a crust. This is not about cooking it
+      to temperature, only about building flavour.
+    add_ingredients: [sear-butter]
+  - name: Mix the kalbi marinade
+    instruction: >
+      Mix the shoyu, brown sugar, sesame oil, rice vinegar, Thai chili,
+      grated ginger, minced garlic, water and grated Asian pear.
+    add_ingredients:
+      [shoyu, brown-sugar, sesame-oil, rice-vinegar, thai-chili, ginger, garlic, water, asian-pear]
+  - name: Slow cook
+    instruction: >
+      Put the seared roast in the crockpot and pour the kalbi mixture over it.
+      Cover and cook on LOW for 4-6 hours, or until the meat pulls apart
+      easily. A thicker roast may need longer - let tenderness rather than the
+      clock decide.
+    duration_sec: 14400
+    lid: closed
+
+notes: >
+  Kalbi is normally short ribs; the source substitutes a cheaper chuck roast
+  and lets the slow cooker do the tenderising. The grated Asian pear is doing
+  real work there - it is enzymatic, not just sweet.
+
+  mode is braise, the closest CJ-A9U preset to a covered liquid cook, though
+  four to six hours is well outside what that machine is built for.

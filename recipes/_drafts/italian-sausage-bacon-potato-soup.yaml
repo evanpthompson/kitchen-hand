@@ -1,0 +1,118 @@
+id: italian-sausage-bacon-potato-soup
+title: Italian Sausage and Bacon Potato Soup
+tags: [soup, pork, potatoes, cheese]
+mode: soup
+
+source: "@janays_cookin on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DFbHlCmyEka/"
+  creator: "@janays_cookin"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/italian-sausage-bacon-potato-soup/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    A complete ordered method with every step present, and most timings
+    given. Nothing reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield. 1 lb of Italian
+    sausage, 4 slices of bacon, 4 medium potatoes and 4 cups of broth.
+
+    (1) The cheese is deliberately open: "Mozzarella and Provolone cheese.
+    (Use whatever you like)" - no quantity, no split, and the source explicitly
+    invites substitution. Recorded that way. It is also never placed in the
+    method, so the serve phase below is where it lands by elimination.
+
+    (2) "You can use a slurry to thicken" is optional, has no ingredients
+    behind it, and no quantities. Kept in the instruction text rather than
+    invented as a cornstarch entry.
+
+    (3) Salt and pepper are "to taste".
+
+    (4) The onion and garlic steps are both timed (5 minutes, then 2-3), and
+    the potatoes are "about 10-12 minutes". The final simmer is "a few more
+    minutes until heated through", which is not a number and is not made one.
+
+ingredients:
+  - id: bacon
+    name: Bacon
+    quantity: 4 slices
+    prep: chopped
+  - id: sausage
+    name: Italian sausage
+    quantity: 1 pound
+  - id: onion
+    name: Onion
+    quantity: "1"
+    prep: chopped
+  - id: garlic
+    name: Garlic cloves
+    quantity: "2"
+    prep: minced
+  - id: potatoes
+    name: Potatoes, medium
+    quantity: "4"
+    prep: peeled and diced
+  - id: broth
+    name: Chicken or vegetable broth
+    quantity: 4 cups
+  - id: cream
+    name: Heavy cream
+    quantity: 1 cup
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1 teaspoon
+  - id: seasoning
+    name: Salt and pepper
+    prep: to taste - quantity not given in source
+  - id: cheese
+    name: Mozzarella and provolone cheese
+    prep: >
+      the source says "use whatever you like" and gives no quantity, and never
+      places it in the method - see extraction_notes
+
+phases:
+  - name: Crisp the bacon
+    instruction: >
+      In a large pot or Dutch oven, cook the chopped bacon over medium heat
+      until crispy. Remove the bacon and set it aside.
+    add_ingredients: [bacon]
+  - name: Brown the sausage
+    instruction: >
+      Add the Italian sausage to the pot and cook until browned. Remove it and
+      set it aside with the bacon.
+    add_ingredients: [sausage]
+  - name: Soften the aromatics
+    instruction: >
+      In the same pot, add the chopped onion and saute until translucent,
+      about 5 minutes. Add the minced garlic and saute for 2-3 minutes.
+    add_ingredients: [onion, garlic]
+    duration_sec: 300
+  - name: Simmer the potatoes
+    instruction: >
+      Stir in the diced potatoes and pour in the broth. Bring to a boil, then
+      reduce to a simmer and cook until the potatoes are tender, about 10-12
+      minutes.
+    add_ingredients: [potatoes, broth]
+    duration_sec: 600
+  - name: Return the meat and enrich
+    instruction: >
+      Add the cooked sausage and bacon back to the pot. Stir in the Italian
+      seasoning and the heavy cream, and season with salt and pepper to taste.
+    add_ingredients: [cream, italian-seasoning, seasoning]
+  - name: Finish
+    instruction: >
+      Let the soup simmer a few more minutes until heated through. The source
+      notes you can use a slurry to thicken it, without saying what of.
+  - name: Serve
+    instruction: >
+      Serve topped with mozzarella and provolone, or whatever cheese you like.
+      The source never places the cheese in the method; this is where it
+      lands by elimination.
+    add_ingredients: [cheese]
+
+notes: >
+  mode is soup. One pot start to finish - render, brown, soften, simmer -
+  which makes it one of the better-shaped recipes in the collection for a
+  single machine program, alongside mongolian-beef-noodles.

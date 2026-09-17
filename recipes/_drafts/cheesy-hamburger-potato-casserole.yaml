@@ -1,0 +1,153 @@
+id: cheesy-hamburger-potato-casserole
+title: Cheesy Hamburger Potato Casserole
+tags: [beef, potatoes, cheese, baking]
+servings: 6
+mode: manual
+
+source: "@quotidianrecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/Dby5b9BDZQa/"
+  creator: "@quotidianrecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/cheesy-hamburger-potato-casserole/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete and metric throughout - the only capture in the corpus so far
+    written in grams and Celsius rather than cups and Fahrenheit, including
+    the potato thickness (3-4 mm) and the dish size (23 x 33 cm). No
+    conversion was needed anywhere, which removes the one inference most of
+    these files carry.
+
+    (1) Both bake stages are timed and conditional: 50-55 minutes covered
+    "until the potatoes are nearly tender", then 15-20 uncovered "until
+    fork-tender and the cheese is melted and golden". Ranges kept.
+
+    (2) The cheese is explicitly divided - 1/2 cup on each of the two layers,
+    the rest on top. Split into three entries so the phases reference the
+    right one, which matches the method rather than changing it.
+
+    (3) "Wash and peel the potatoes if desired" - peeling is optional in the
+    source and recorded as such.
+
+    (4) Calories are stated (about 520 per serving); the schema has no field
+    for them.
+
+ingredients:
+  - id: beef
+    name: Ground beef
+    quantity: 450 g
+  - id: potatoes
+    name: Potatoes
+    quantity: 900 g
+    prep: peeled if desired, sliced into thin even rounds about 3-4 mm thick
+  - id: onion
+    name: Onion, small
+    quantity: "1"
+    prep: diced
+  - id: garlic
+    name: Garlic cloves
+    quantity: "2"
+    prep: minced
+  - id: butter
+    name: Butter
+    quantity: 1 tbsp
+  - id: mushroom-soup
+    name: Cream of mushroom soup
+    quantity: 1 can
+  - id: milk
+    name: Milk
+    quantity: 3/4 cup
+  - id: worcestershire
+    name: Worcestershire sauce
+    quantity: 1 tsp
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+  - id: paprika
+    name: Paprika
+    quantity: 1/2 tsp
+  - id: thyme
+    name: Dried thyme
+    quantity: 1/2 tsp
+  - id: salt
+    name: Salt
+    quantity: 3/4 tsp
+  - id: pepper
+    name: Black pepper
+    quantity: 1/2 tsp
+  - id: cheddar-layer-1
+    name: Cheddar cheese
+    quantity: 1/2 cup
+    prep: shredded, on the first layer
+  - id: cheddar-layer-2
+    name: Cheddar cheese
+    quantity: 1/2 cup
+    prep: shredded, on the second layer
+  - id: cheddar-top
+    name: Cheddar cheese
+    quantity: 1 cup
+    prep: shredded, for the top
+  - id: parsley
+    name: Parsley
+    quantity: 1 tbsp
+    prep: chopped, optional
+
+phases:
+  - name: Prep
+    instruction: >
+      Preheat the oven to 190°C. Lightly grease a 23 x 33 cm baking dish. Wash
+      and peel the potatoes if desired, then slice them into thin, even rounds
+      about 3-4 mm thick. Dice the onion and mince the garlic.
+    add_ingredients: [potatoes, onion, garlic]
+    temp_c: 190
+  - name: Brown the beef
+    instruction: >
+      Heat a large skillet over medium-high heat. Add the ground beef and
+      onion and cook for 6-8 minutes, breaking the beef apart, until browned.
+      Drain excess grease.
+    add_ingredients: [beef, butter]
+    duration_sec: 360
+  - name: Season
+    instruction: >
+      Add the garlic, Worcestershire sauce, paprika, garlic powder, thyme,
+      salt and pepper. Cook for 1 minute.
+    add_ingredients: [worcestershire, paprika, garlic-powder, thyme, salt, pepper]
+    duration_sec: 60
+  - name: Make the sauce
+    instruction: Whisk the cream of mushroom soup and milk together until smooth.
+    add_ingredients: [mushroom-soup, milk]
+  - name: Layer
+    instruction: >
+      Arrange half the sliced potatoes across the bottom of the dish, slightly
+      overlapping. Spread half the beef mixture over them, spoon over half the
+      sauce and sprinkle with 1/2 cup cheddar. Repeat with the remaining
+      potatoes, beef and sauce, and the second 1/2 cup of cheddar.
+    add_ingredients: [cheddar-layer-1, cheddar-layer-2]
+  - name: Bake covered
+    instruction: >
+      Cover tightly with foil and bake for 50-55 minutes, until the potatoes
+      are nearly tender.
+    temp_c: 190
+    lid: closed
+  - name: Bake uncovered
+    instruction: >
+      Remove the foil, sprinkle the remaining cheese evenly over the top, and
+      bake uncovered for another 15-20 minutes, until the potatoes are
+      fork-tender and the cheese is melted and golden.
+    add_ingredients: [cheddar-top]
+    temp_c: 190
+    lid: open
+  - name: Rest and serve
+    instruction: >
+      Let the casserole rest for 10 minutes before serving. Sprinkle with
+      parsley if desired.
+    add_ingredients: [parsley]
+    duration_sec: 600
+
+notes: >
+  Total time about 1 hour 35 minutes per the source. Leftovers keep
+  refrigerated up to 3 days.
+
+  Oven casserole, so mode is manual and neither hardware track applies.

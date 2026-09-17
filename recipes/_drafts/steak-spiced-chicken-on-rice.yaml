@@ -1,0 +1,122 @@
+id: steak-spiced-chicken-on-rice
+title: Crispy Steak-Spiced Chicken on Rice
+tags: [chicken, weeknight]
+mode: manual
+
+source: "@afterdarkkitchen on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DSTa0zViECx/"
+  creator: "@afterdarkkitchen"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/steak-spiced-chicken-on-rice/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Short, complete and unambiguous: three numbered steps, every quantity
+    given, both times given. Nothing reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - 600 g of
+    boneless skinless chicken thighs, served over rice.
+
+    (1) **The spice blend makes far more than the recipe uses.** The chicken
+    takes 2-3 tsp; the blend as listed is about 7 tablespoons. It is a
+    make-a-jar recipe, and this file records it as its own phase with that
+    noted, rather than scaling it down to the amount used - scaling would
+    misrepresent the source and lose the jar.
+
+    (2) Four of the eight blend ingredients are marked optional in the source:
+    brown sugar, chilli flakes or cayenne, and dried thyme or rosemary. Each
+    is recorded as optional with the alternatives the source names.
+
+    (3) The rice is "Rice (jasmine or basmati)" with no quantity and no
+    method.
+
+    (4) Marinating is "30 min (or longer)", so duration_sec records 30 minutes
+    as the stated minimum.
+
+ingredients:
+  - id: chicken
+    name: Chicken thighs
+    quantity: 600 g
+    prep: boneless, skinless
+  - id: seasoning-used
+    name: Homemade steak seasoning
+    quantity: 2-3 tsp
+    prep: from the blend below, which makes considerably more
+  - id: oil
+    name: Oil
+    quantity: 1 tbsp
+  - id: rice
+    name: Rice
+    prep: jasmine or basmati - quantity not given in source
+  - id: blend-paprika
+    name: Smoked paprika
+    quantity: 2 tbsp
+    prep: in the spice blend
+  - id: blend-garlic-powder
+    name: Garlic powder
+    quantity: 1 tbsp
+    prep: in the spice blend
+  - id: blend-onion-powder
+    name: Onion powder
+    quantity: 1 tbsp
+    prep: in the spice blend
+  - id: blend-pepper
+    name: Black pepper
+    quantity: 1 tbsp
+    prep: in the spice blend
+  - id: blend-salt
+    name: Coarse salt
+    quantity: 1 tbsp
+    prep: in the spice blend
+  - id: blend-sugar
+    name: Brown sugar
+    quantity: 2 tsp
+    prep: in the spice blend, optional
+  - id: blend-heat
+    name: Chilli flakes or cayenne
+    quantity: 1 tsp
+    prep: in the spice blend, optional
+  - id: blend-herb
+    name: Dried thyme or rosemary
+    quantity: 1 tsp
+    prep: in the spice blend, optional
+
+phases:
+  - name: Mix the steak seasoning
+    instruction: >
+      Combine the smoked paprika, garlic powder, onion powder, black pepper
+      and coarse salt, plus the brown sugar, chilli flakes or cayenne, and
+      dried thyme or rosemary if using. This makes considerably more than one
+      batch of chicken needs - keep the rest.
+    add_ingredients:
+      [
+        blend-paprika,
+        blend-garlic-powder,
+        blend-onion-powder,
+        blend-pepper,
+        blend-salt,
+        blend-sugar,
+        blend-heat,
+        blend-herb,
+      ]
+  - name: Marinate
+    instruction: >
+      Rub the chicken with 2-3 tsp of the seasoning and the oil. Marinate for
+      30 minutes, or longer.
+    add_ingredients: [chicken, seasoning-used, oil]
+    duration_sec: 1800
+  - name: Sear
+    instruction: >
+      Hot pan, a little oil. Sear for 3-4 minutes per side until deep golden
+      and cooked through.
+    duration_sec: 420
+  - name: Rest and serve
+    instruction: Rest briefly, then serve over the rice.
+    add_ingredients: [rice]
+
+notes: >
+  mode is manual - a pan sear plus rice cooked separately. The sear itself is
+  simple enough that the open rig could plausibly run it once temperature hold
+  works, but the recipe as a whole is two vessels.

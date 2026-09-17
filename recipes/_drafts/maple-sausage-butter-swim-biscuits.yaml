@@ -1,0 +1,154 @@
+id: maple-sausage-butter-swim-biscuits
+title: Maple Sausage Butter Swim Biscuits
+tags: [baking, breakfast, pork, cheese]
+servings: 9
+mode: manual
+
+source: "@ameliaisnotachef on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DagautcJ_ca/"
+  creator: "@ameliaisnotachef (Amelia Sewell)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/maple-sausage-butter-swim-biscuits/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    The most complete capture in the corpus so far. Numbered method, every
+    ingredient quantified, oven temperature, both bake stages, and a yield
+    stated in the method itself - "score the dough into 9 squares" - so
+    servings is sourced rather than decided. Nothing here is reconstructed.
+
+    It also names a full recipe on the creator's own site,
+    ameliaisnotachef.com/recipes/maple-sausage-butter-swim-biscuits. Per
+    docs/ingestion.md a URL source outranks a caption, so that page is worth
+    capturing separately and cross-checking before promotion.
+
+    (1) **Variant, not a duplicate, of butter-swim-biscuits.** Same technique
+    and near-identical base dough - 2 1/2 cups flour, 4 tsp baking powder,
+    2 cups buttermilk, 450F. This one adds sausage, cheddar, sugar, pepper and
+    vanilla to the dough and a maple glaze on top; the other is plain and
+    built for breakfast sandwiches. Keep both.
+
+    This is also the capture that settled the butter question on that recipe.
+    Where @thebuttababe listed the butter ambiguously, this one is explicit:
+    "1/2 cup (1 stick) salted butter, sliced (for the pan)".
+
+    (2) Bake time is "25-35 minutes" with a note that the creator tented with
+    foil around 24 minutes and baked another 10. Kept as a range with the
+    tenting advice in the instruction rather than collapsed to one number.
+
+    (3) The 9x9 dish here supports the 9x8 in butter-swim-biscuits being a
+    typo, noted on that recipe.
+
+    (4) Butter appears three times for three jobs - 1/2 cup for the pan,
+    2 tbsp in the batter, 2 tbsp in the glaze. Split into three entries so the
+    phases reference the right one.
+
+ingredients:
+  - id: pan-butter
+    name: Salted butter
+    quantity: 1/2 cup (1 stick)
+    prep: sliced, for the pan
+  - id: flour
+    name: All-purpose flour
+    quantity: 2 1/2 cups
+  - id: baking-powder
+    name: Baking powder
+    quantity: 4 teaspoons
+  - id: salt
+    name: Kosher salt
+    quantity: 1 1/2 teaspoons
+  - id: sugar
+    name: Granulated sugar
+    quantity: 1/4 cup
+  - id: pepper
+    name: Black pepper
+    quantity: 1/2 teaspoon
+  - id: sausage
+    name: Breakfast sausage
+    quantity: 1 1/2 cups
+    prep: cooked, crumbled and cooled
+  - id: cheddar
+    name: Sharp cheddar cheese
+    quantity: 1 cup
+    prep: shredded - the source notes freshly shredded is best
+  - id: buttermilk
+    name: Buttermilk
+    quantity: 2 cups
+    prep: room temperature
+  - id: batter-butter
+    name: Salted butter
+    quantity: 2 tablespoons
+    prep: melted and slightly cooled, for the batter
+  - id: vanilla
+    name: Vanilla extract
+    quantity: 1 teaspoon
+  - id: glaze-butter
+    name: Salted butter
+    quantity: 2 tablespoons
+    prep: melted, for the glaze
+  - id: maple-syrup
+    name: Pure maple syrup
+    quantity: 3 tablespoons
+  - id: maldon
+    name: Maldon salt
+    prep: for topping, optional - quantity not given in source
+
+phases:
+  - name: Melt the butter in the dish
+    instruction: >
+      Preheat the oven to 450°F (232°C). Put the sliced butter in a 9x9-inch
+      glass baking dish and place it in the oven until melted, about 5-8
+      minutes. Carefully remove the pan.
+    add_ingredients: [pan-butter]
+    temp_c: 232
+    duration_sec: 300
+  - name: Mix the dry ingredients
+    instruction: >
+      Whisk the flour, baking powder, salt, sugar and black pepper together in
+      a large bowl.
+    add_ingredients: [flour, baking-powder, salt, sugar, pepper]
+  - name: Coat the sausage and cheese
+    instruction: >
+      Add the cooked sausage and shredded cheddar to the flour mixture and
+      toss until evenly coated.
+    add_ingredients: [sausage, cheddar]
+  - name: Mix the wet ingredients
+    instruction: >
+      Whisk the buttermilk, melted butter and vanilla extract together in a
+      large measuring cup.
+    add_ingredients: [buttermilk, batter-butter, vanilla]
+  - name: Combine
+    instruction: >
+      Pour the wet ingredients into the dry and stir just until combined. Do
+      not overmix.
+  - name: Spread and score
+    instruction: >
+      Spread the batter evenly over the melted butter in the baking dish.
+      Using a butter knife, score the dough into 9 squares.
+  - name: Bake
+    instruction: >
+      Bake for 25-35 minutes, until the centre is cooked through and the top
+      is golden brown. Put a lined pan underneath to catch spillage. Watch the
+      browning - the creator tented loosely with foil around 24 minutes, then
+      baked another 10 until the centre was done. Times vary by oven.
+    temp_c: 232
+  - name: Make the maple glaze
+    instruction: >
+      While the biscuits bake, whisk the melted butter and maple syrup
+      together.
+    add_ingredients: [glaze-butter, maple-syrup]
+  - name: Glaze and rest
+    instruction: >
+      Brush the maple butter glaze generously over the hot biscuits as soon as
+      they come out of the oven and sprinkle with Maldon salt. Let cool 5-10
+      minutes before serving.
+    add_ingredients: [maldon]
+
+notes: >
+  Variant of butter-swim-biscuits - same technique, dough enriched with
+  sausage and cheddar, finished with a maple glaze. Both are in the
+  collection deliberately.
+
+  Oven-baked, so mode is manual and neither hardware track applies.

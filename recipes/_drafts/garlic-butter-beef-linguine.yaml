@@ -1,0 +1,128 @@
+id: garlic-butter-beef-linguine
+title: Garlic Butter Beef Linguine with Creamy Parmesan Cheddar Sauce
+tags: [beef, pasta, sauce, cheese, weeknight]
+servings: 4
+mode: manual
+
+source: "@quotidianrecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DaLytYSCUB0/"
+  creator: "@quotidianrecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/garlic-butter-beef-linguine/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified, a fully ordered method, and prep,
+    cook and total times plus servings all stated. Nothing reconstructed.
+
+    One of four @quotidianrecipes captures in this batch, all in the same
+    house format - ingredients, numbered method, then "Prep Time | Cook Time |
+    Total Time | Servings | Calories". That consistency is worth knowing: this
+    creator's captures need no questions asked.
+
+    (1) Salt, black pepper and the optional red pepper flakes are "to taste"
+    or optional, recorded without quantities where the source gives none.
+
+    (2) Reserved pasta water is conditional - "a splash if the sauce is too
+    thick" - so it stays in the instruction rather than becoming an
+    ingredient.
+
+    (3) Calories are stated (about 680 per serving); the schema has no field
+    for them.
+
+ingredients:
+  - id: linguine
+    name: Linguine
+    quantity: 12 oz
+  - id: beef
+    name: Ground beef
+    quantity: 1 lb
+  - id: butter
+    name: Butter
+    quantity: 3 tbsp
+  - id: olive-oil
+    name: Olive oil
+    quantity: 1 tbsp
+  - id: garlic
+    name: Garlic cloves
+    quantity: "4"
+    prep: minced
+  - id: cream
+    name: Heavy cream
+    quantity: 1 cup
+  - id: beef-broth
+    name: Beef broth
+    quantity: 1/2 cup
+  - id: cheddar
+    name: Cheddar cheese
+    quantity: 1 cup
+    prep: shredded
+  - id: parmesan
+    name: Parmesan cheese
+    quantity: 1/2 cup
+    prep: grated
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1/2 tsp
+  - id: pepper-flakes
+    name: Red pepper flakes
+    quantity: 1/4 tsp
+    prep: optional
+  - id: seasoning
+    name: Salt and black pepper
+    prep: to taste - quantity not given in source
+  - id: parsley
+    name: Parsley
+    quantity: 2 tbsp
+    prep: chopped, to garnish
+
+phases:
+  - name: Cook the linguine
+    instruction: >
+      Cook the linguine in salted boiling water until al dente. Reserve 1/2
+      cup of the pasta water, then drain.
+    add_ingredients: [linguine]
+  - name: Brown the beef
+    instruction: >
+      Heat the olive oil in a large skillet over medium heat. Add the ground
+      beef and cook for 6-8 minutes until browned. Drain excess grease if
+      needed.
+    add_ingredients: [olive-oil, beef]
+    duration_sec: 360
+  - name: Garlic butter
+    instruction: >
+      Add the butter and garlic to the skillet and cook for 1 minute, until
+      fragrant.
+    add_ingredients: [butter, garlic]
+    duration_sec: 60
+  - name: Build the sauce
+    instruction: >
+      Pour in the beef broth and heavy cream. Stir well and simmer for 3-4
+      minutes.
+    add_ingredients: [beef-broth, cream]
+    duration_sec: 180
+  - name: Melt in the cheese
+    instruction: >
+      Add the cheddar, Parmesan, Italian seasoning, red pepper flakes if
+      using, and salt and black pepper. Stir until smooth and creamy.
+    add_ingredients:
+      [cheddar, parmesan, italian-seasoning, pepper-flakes, seasoning]
+  - name: Combine
+    instruction: >
+      Add the cooked linguine and toss until coated, adding a splash of the
+      reserved pasta water if the sauce is too thick. Cook for 1-2 minutes
+      until everything is hot and creamy.
+    duration_sec: 60
+  - name: Serve
+    instruction: Garnish with parsley and serve warm.
+    add_ingredients: [parsley]
+
+notes: >
+  Leftovers keep covered in the fridge up to 3 days, per the source.
+
+  mode is manual: pasta in one pot, sauce built in a skillet, combined at the
+  end. The sauce itself is another cream-and-cheese reduction rather than a
+  roux, so it is a simpler control problem than the four roux sauces already
+  in the collection.
