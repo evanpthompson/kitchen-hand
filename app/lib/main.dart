@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api/api_client.dart';
+import 'screens/capture_screen.dart';
 import 'screens/drafts_screen.dart';
 import 'screens/inbox_screen.dart';
 import 'screens/recipes_screen.dart';
@@ -15,15 +16,20 @@ class KitchenHandApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kitchen Hand',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+      ),
       home: const HomeShell(),
     );
   }
 }
 
-/// Navigation shell across the three v1 screens (docs/app-spec.md):
+/// Navigation shell across the four screens (docs/app-spec.md): capture,
 /// inbox queue, draft review, collection browser. Desktop-first, hence
 /// NavigationRail rather than a bottom nav bar.
+///
+/// Capture is first because it is the front of the pipeline and the only
+/// screen that is worked as a batch.
 class HomeShell extends StatefulWidget {
   const HomeShell({super.key});
 
@@ -65,6 +71,7 @@ class _HomeShellState extends State<HomeShell> {
   @override
   Widget build(BuildContext context) {
     final screens = [
+      CaptureScreen(api: _api, key: ValueKey('capture-${_api.baseUrl}')),
       InboxScreen(api: _api, key: ValueKey('inbox-${_api.baseUrl}')),
       DraftsScreen(api: _api, key: ValueKey('drafts-${_api.baseUrl}')),
       RecipesScreen(api: _api, key: ValueKey('recipes-${_api.baseUrl}')),
@@ -86,6 +93,11 @@ class _HomeShellState extends State<HomeShell> {
               ),
             ),
             destinations: const [
+              NavigationRailDestination(
+                icon: Icon(Icons.content_paste_outlined),
+                selectedIcon: Icon(Icons.content_paste),
+                label: Text('Capture'),
+              ),
               NavigationRailDestination(
                 icon: Icon(Icons.inbox_outlined),
                 selectedIcon: Icon(Icons.inbox),

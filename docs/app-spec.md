@@ -106,10 +106,32 @@ Nothing new — this app operates on what already exists:
 3. **Collection browser** — list/grid of `recipes/*.yaml`, filterable by
    tag/cuisine/mode, read-only detail view. Not a cooking mode — just a way
    to sanity-check what's already in the trusted collection.
-4. **Raw-paste capture** (stretch, not v1) — a form (slug, source type,
-   caption/transcript textarea, screenshot upload, handle, date) that posts
-   to `/inbox/{slug}/files`, so Instagram/TikTok/document/pasted-text
-   captures don't require manually creating folders and files by hand.
+4. **Raw-paste capture** (built) — slug, source type, the text box
+   (caption/transcript/raw, chosen by source type), an editable `meta.txt`
+   panel, and screenshot upload, posting to `/inbox/{slug}/files`. No more
+   creating folders and files by hand.
+
+   **Built as a queue worker, not a bare form.** It lists the captures still
+   missing their text, shows a progress count, opens the post in a browser,
+   and advances on "Save & next" — a form you navigate to fifty times is the
+   version that does not get finished.
+
+   *The batch it was built for turned out not to exist.* The plan was ~55
+   Instagram posts each needing a caption pasted; the export turned out to
+   carry the captions, so `tools/import_instagram_saved.py` writes
+   `caption.txt` directly and the queue came back empty on the first real
+   import. The screen still earns its place for what the export cannot give:
+   carousel posts whose steps are in the images, TikToks, documents, pasted
+   text, and correcting a caption the importer flagged as mis-encoded. Sizing
+   it as a queue rather than a form cost nothing and is what the remaining
+   sources need anyway.
+
+   **`meta.txt` is pre-loaded into an editable panel, not hidden.** The
+   importer writes the handle and permalink there, and a save whose meta box
+   never loaded would post an empty string over them. Blank is dropped on
+   both sides — the client omits it, and the backend treats blank as "not
+   provided" — so a failed load leaves the file alone instead of clearing
+   it. `test_blank_caption_does_not_erase_the_importers_meta` covers it.
 
 ## Build phases
 
@@ -120,9 +142,25 @@ Nothing new — this app operates on what already exists:
   terminal.
 - **Phase B — Flutter shell.** Screens 1–3 above, talking to the Phase A
   backend on `localhost`.
-- **Phase C — raw-paste capture screen.** Closes the loop on
+- **Phase C — raw-paste capture screen.** *Built.* Closes the loop on
   Instagram/TikTok/document/pasted-text capture without touching the
-  filesystem by hand.
+  filesystem by hand. Added two frontend dependencies, both free and
+  first-party-ish: `file_picker` (no cross-platform file dialog exists in
+  the Flutter SDK) and `url_launcher` (the "open the post" button, which
+  saves three manual actions per item across the whole batch).
+
+  Two backend fixes fell out of building it, both in
+  `POST /inbox/{slug}/files`:
+
+  - **The text fields were query parameters, not form fields.** A real
+    recipe caption runs to several KB and does not fit in a URL. They are
+    `Form()` now. This was latent from Phase A — nothing had posted a long
+    caption through it yet.
+  - **An upload filename could escape the capture folder.** The name came
+    straight from the client and was joined onto the inbox path, so an
+    upload called `../../recipes/<existing>.yaml` would have written through
+    the trusted collection. Names are reduced to a basename and checked
+    against an extension allow-list.
 - **Explicitly not in this app's scope, ever:** automated normalization
   (deferred by design, see Non-goals) and hardware control (separate
   roadmap phase).

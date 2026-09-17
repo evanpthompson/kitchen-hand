@@ -75,9 +75,50 @@ class ApiClient {
   String inboxFileUrl(String slug, String filename) =>
       '$baseUrl/inbox/$slug/files/$filename';
 
-  Future<Map<String, dynamic>> captureYoutube(String slug, String url) =>
-      _post('/inbox/$slug/youtube', body: {'url': url})
-          .then((v) => v as Map<String, dynamic>);
+  Future<Map<String, dynamic>> captureYoutube(String slug, String url) => _post(
+    '/inbox/$slug/youtube',
+    body: {'url': url},
+  ).then((v) => v as Map<String, dynamic>);
+
+  /// Manual capture (Phase C). Multipart, not JSON and not query params: a
+  /// recipe caption runs to several KB and does not fit in a URL.
+  ///
+  /// Blank fields are omitted rather than sent as empty strings, so a box that
+  /// failed to load cannot post over a meta.txt the importer wrote. The
+  /// backend enforces the same rule; this is the client half of it.
+  Future<Map<String, dynamic>> captureFiles(
+    String slug, {
+    String? caption,
+    String? transcript,
+    String? raw,
+    String? meta,
+    List<CaptureUpload> uploads = const [],
+  }) async {
+    final req = http.MultipartRequest('POST', _uri('/inbox/$slug/files'));
+    for (final entry in {
+      'caption': caption,
+      'transcript': transcript,
+      'raw': raw,
+      'meta': meta,
+    }.entries) {
+      final value = entry.value;
+      if (value != null && value.trim().isNotEmpty) {
+        req.fields[entry.key] = value;
+      }
+    }
+    for (final upload in uploads) {
+      req.files.add(
+        http.MultipartFile.fromBytes(
+          'uploads',
+          upload.bytes,
+          filename: upload.filename,
+        ),
+      );
+    }
+    final res = await http.Response.fromStream(await req.send());
+    _checkOk(res);
+    return jsonDecode(res.body) as Map<String, dynamic>;
+  }
 
   // --- Drafts ---
 
@@ -123,4 +164,12 @@ class ApiException implements Exception {
 
   @override
   String toString() => 'ApiException($statusCode): $detail';
+}
+
+/// One file to attach to a capture. Held as bytes rather than a path so the
+/// same call works on web, where there is no filesystem path to hand over.
+class CaptureUpload {
+  CaptureUpload({required this.filename, required this.bytes});
+  final String filename;
+  final List<int> bytes;
 }
