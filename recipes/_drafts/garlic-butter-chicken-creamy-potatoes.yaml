@@ -16,16 +16,22 @@ provenance:
   extraction_notes: >
     Ingredient quantities are complete and unambiguous; the method is not.
     The caption gives an ingredient list plus a short "Important Cooking
-    Notes" section rather than a full procedure, so several steps below are
-    reconstructed from fragments and two are missing outright. Needs a human
-    pass, ideally against the video, before promotion.
+    Notes" section rather than a full procedure, so several phases below are
+    reconstructed from fragments and one — cooking the potatoes — was absent
+    entirely and came from the reviewer. A review pass has happened; the only
+    thing still outstanding is the air fryer temperature and time in (1).
 
-    (1) The potatoes are never actually cooked in the source. The notes jump
-    from making the cream sauce to "then add the cooked potatoes in", with no
-    method, temperature or time for cooking them anywhere in the caption. The
-    potato phase below says only what the source says — that they are cut
-    small and end up cooked — and deliberately does not guess roast vs. pan
-    vs. boil, or a temperature. This is the single biggest gap.
+    (1) METHOD SUPPLIED BY REVIEWER. The caption never cooks the potatoes: it
+    jumps from making the cream sauce straight to "then add the cooked
+    potatoes in", with no method, temperature or time anywhere. Evan supplied
+    the method — air fryer, cooked through, then soaked in the sauce. That is
+    consistent with the caption listing "Optional Olive Oil or Cooking Spray"
+    for the potatoes, which is how you would dress them for an air fryer and
+    not how you would for a pan or a boil.
+
+    **Temperature and time are still unknown** and are deliberately not
+    guessed. Air fryers vary enough that a wrong number is worse than none.
+    Fill them in from a cook before this is worth handing to anyone else.
 
     (2) The potato seasonings (salt, parsley, chilli flakes, garlic powder,
     onion powder, paprika, optional oil) are listed as ingredients but the
@@ -169,11 +175,12 @@ phases:
       and the fresh parsley. Mix for about 1 minute, then set aside.
     add_ingredients: [minced-garlic, fresh-parsley]
     duration_sec: 60
-  - name: Cook the potatoes
+  - name: Air fry the potatoes
     instruction: >
-      Cook the cubed, seasoned potatoes until done. The source does not say
-      how — no method, temperature or time is given anywhere in the caption
-      (see extraction_notes). Optional olive oil or cooking spray.
+      Toss the cubed potatoes with the salt, parsley, chilli flakes, garlic
+      powder, onion powder and paprika, and optionally a little olive oil or
+      cooking spray. Air fry until cooked through. No temperature or time is
+      given — see extraction_notes.
     add_ingredients:
       [
         potatoes,
@@ -188,8 +195,8 @@ phases:
     heat_level: null
     temp_c: null
     notes: >
-      Missing from the source. Do not promote this recipe without filling
-      this phase in from the video or a test cook.
+      The air fryer is the reviewer's, not the caption's. Temperature and
+      time are still missing and need a cook to establish.
   - name: Make the cream sauce
     instruction: >
       With the pan on medium-low heat, add the evaporated milk and the garlic
@@ -199,13 +206,14 @@ phases:
     duration_sec: 300
   - name: Combine
     instruction: >
-      Add the cooked potatoes to the thickened sauce and stir to coat. Serve
-      with the chicken.
+      Add the air-fried potatoes to the thickened sauce and stir. They are
+      meant to sit in it and soak rather than just be coated. Serve with the
+      chicken.
 
 notes: >
   Meal-prep recipe: the source states it keeps and reheats, either in a pan
   on low heat for 4-5 minutes or microwaved for 5 minutes on a plate.
 
   mode is manual rather than a CJ-A9U preset because the chicken, the
-  potatoes and the sauce are three separate tracks, and the potato method is
-  unknown in any case.
+  potatoes and the sauce are three separate tracks, and one of them is an air
+  fryer — a second appliance neither hardware track covers.
