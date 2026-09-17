@@ -59,7 +59,8 @@ rewritten from scratch.
   text holds and sorts them into `strong` / `weak` / `food-no-text` /
   `not-food`. What makes a bulk import workable. A **report, never a gate**:
   it reads `inbox/` and writes nothing to it. `--bucket NAME` prints bare
-  slugs for piping; `--out DIR` writes one file per bucket.
+  slugs for piping; `--out DIR` writes one file per bucket; `--urls` adds
+  each capture's post link, for when you need to go and look at one.
 - `tools/import_instagram_saved.py` — turns an Instagram "Download Your
   Information" export into `inbox/<slug>/` captures: `url.txt`, `meta.txt`
   (handle, permalink, hashtags, dates) and `caption.txt`. No Meta API returns

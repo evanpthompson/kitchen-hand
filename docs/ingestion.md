@@ -134,9 +134,15 @@ not: sweeping a whole Instagram export put 549 folders in `inbox/`, of which
 
 ```bash
 uv run tools/triage_inbox.py                  # summary + the top of the list
+uv run tools/triage_inbox.py --urls           # ... with each post's link
 uv run tools/triage_inbox.py --bucket strong  # bare slugs, one per line
 uv run tools/triage_inbox.py --out /tmp/tri   # one file per bucket
 ```
+
+Use `--urls` whenever the output is going to a person rather than to `xargs`.
+Normalizing a capture nearly always raises a question only the original post
+can answer — a missing yield, an ambiguous unit, a method the caption skips —
+and a slug is not something you can open.
 
 Four buckets, in descending readiness:
 

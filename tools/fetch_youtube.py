@@ -7,6 +7,7 @@ step only — see docs/ingestion.md for normalize/review/promote.
 
 Usage: tools/fetch_youtube.py <slug> <youtube-url>
 """
+
 import sys
 from pathlib import Path
 

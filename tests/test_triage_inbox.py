@@ -43,7 +43,7 @@ def make_capture(
 ) -> Path:
     folder = tmp_path / slug
     folder.mkdir(parents=True)
-    (folder / "url.txt").write_text("https://www.instagram.com/p/AAA1/\n")
+    (folder / "url.txt").write_text(f"https://www.instagram.com/p/{slug}/\n")
     meta = [f"creator: {handle}", "input_type: instagram"]
     if hashtags:
         meta.append(f"hashtags: {hashtags}")
@@ -453,6 +453,58 @@ def test_bucket_output_is_bare_slugs_for_piping(inbox, capsys):
 
     assert mod.main(["--inbox", str(inbox), "--bucket", "not-food"]) == 0
     assert capsys.readouterr().out.split() == ["ig-b-bbb2"]
+
+
+def test_url_is_read_from_url_txt(inbox):
+    make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION, handle="@chef.mike")
+    ((_, _, capture),) = mod.triage(inbox)
+    assert capture.url == "https://www.instagram.com/p/ig-a-aaa1/"
+
+
+def test_url_falls_back_to_metas_source_url(inbox):
+    """A hand-made capture may have meta.txt and no url.txt."""
+    folder = make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION)
+    (folder / "url.txt").unlink()
+    (folder / "meta.txt").write_text(
+        "creator: @chef.mike\nsource_url: https://www.instagram.com/reel/XYZ/\n"
+    )
+    ((_, _, capture),) = mod.triage(inbox)
+    assert capture.url == "https://www.instagram.com/reel/XYZ/"
+
+
+def test_a_capture_with_no_url_at_all_does_not_crash(inbox, capsys):
+    folder = make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION)
+    (folder / "url.txt").unlink()
+    ((_, _, capture),) = mod.triage(inbox)
+    assert capture.url == ""
+
+    assert mod.main(["--inbox", str(inbox), "--urls"]) == 0
+    assert "(no url captured)" in capsys.readouterr().out
+
+
+def test_bucket_stays_pipeable_without_urls(inbox, capsys):
+    """--bucket feeds xargs. Adding a second column by default would break
+    every delete command in docs/ingestion.md."""
+    make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION, handle="@chef.mike")
+    assert mod.main(["--inbox", str(inbox), "--bucket", "strong"]) == 0
+    out = capsys.readouterr().out
+    assert out.splitlines() == ["ig-a-aaa1"]
+    assert "\t" not in out and "http" not in out
+
+
+def test_bucket_with_urls_adds_a_tab_separated_column(inbox, capsys):
+    make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION, handle="@chef.mike")
+    assert mod.main(["--inbox", str(inbox), "--bucket", "strong", "--urls"]) == 0
+    slug, url = capsys.readouterr().out.strip().split("\t")
+    assert slug == "ig-a-aaa1"
+    assert url == "https://www.instagram.com/p/ig-a-aaa1/"
+
+
+def test_urls_appear_in_the_table_and_the_bucket_files(inbox, tmp_path):
+    make_capture(inbox, "ig-a-aaa1", caption=RECIPE_CAPTION, handle="@chef.mike")
+    out = tmp_path / "triage"
+    assert mod.main(["--inbox", str(inbox), "--out", str(out), "--urls"]) == 0
+    assert "https://www.instagram.com/p/ig-a-aaa1/" in (out / "strong.txt").read_text()
 
 
 def test_out_writes_one_file_per_bucket(inbox, tmp_path):

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate every recipes/*.yaml file against schema/recipe-v1.schema.json."""
+
 import json
 import sys
 from pathlib import Path
@@ -14,7 +15,9 @@ def main():
     schema = json.loads((ROOT / "schema" / "recipe-v1.schema.json").read_text())
     validator = Draft202012Validator(schema)
 
-    target_dir = ROOT / "recipes" / "_drafts" if "--drafts" in sys.argv else ROOT / "recipes"
+    target_dir = (
+        ROOT / "recipes" / "_drafts" if "--drafts" in sys.argv else ROOT / "recipes"
+    )
 
     ok = True
     for recipe_path in sorted(target_dir.glob("*.yaml")):
@@ -28,7 +31,9 @@ def main():
                 print(f"  {loc}: {e.message}")
         elif data.get("id") != recipe_path.stem:
             ok = False
-            print(f"FAIL {recipe_path.name}: id '{data.get('id')}' does not match filename")
+            print(
+                f"FAIL {recipe_path.name}: id '{data.get('id')}' does not match filename"
+            )
         else:
             print(f"ok   {recipe_path.name}")
 

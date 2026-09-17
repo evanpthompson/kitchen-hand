@@ -9,8 +9,13 @@ else, and which are not food at all.
 
 Usage:
     tools/triage_inbox.py                      # summary + the top of the list
+    tools/triage_inbox.py --urls               # ... with each post's link
     tools/triage_inbox.py --bucket strong      # just slugs, one per line
     tools/triage_inbox.py --out /tmp/triage    # write one file per bucket
+
+--urls adds each capture's post link. Every question this tool raises is a
+question about a post somebody has to open, and a slug is not openable. It
+stays off by default because --bucket output is piped into xargs.
 
 **This is a report, not a gate. It never writes to or deletes from inbox/.**
 
@@ -133,6 +138,7 @@ class Capture:
     handle: str
     hashtags: str
     collection: str
+    url: str = ""
     in_pipeline: bool = False
 
     @property
@@ -175,12 +181,20 @@ def read_capture(folder: Path, in_pipeline: bool = False) -> Capture:
         return path.read_text(errors="replace") if path.is_file() else ""
 
     meta = text("meta.txt")
+    # url.txt is the importer's own record and the one the dedup keys on;
+    # meta.txt's source_url duplicates it, and a hand-made capture may have
+    # only one of the two.
+    url = next(
+        (ln.strip() for ln in text("url.txt").splitlines() if ln.strip()),
+        meta_field(meta, "source_url"),
+    )
     return Capture(
         slug=folder.name,
         caption="\n".join(filter(None, (text(n) for n in CONTENT_FILES))),
         handle=meta_field(meta, "creator"),
         hashtags=meta_field(meta, "hashtags"),
         collection=meta_field(meta, "collection"),
+        url=url,
         in_pipeline=in_pipeline,
     )
 
@@ -270,6 +284,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument(
         "--top", type=int, default=20, help="how many rows to show (default 20)"
     )
+    ap.add_argument(
+        "--urls",
+        action="store_true",
+        help=(
+            "show each capture's post URL. Every question this tool raises is a "
+            "question about a post someone has to open, so the slug alone is "
+            "rarely enough."
+        ),
+    )
     ap.add_argument("--inbox", type=Path, default=INBOX)
     args = ap.parse_args(argv)
 
@@ -280,8 +303,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.bucket:
         for _, bucket, capture in rows:
-            if bucket == args.bucket:
-                print(capture.slug)
+            if bucket != args.bucket:
+                continue
+            # Bare slugs by default so the output pipes into xargs; --urls
+            # adds a second column, which is for reading rather than piping.
+            print(f"{capture.slug}\t{capture.url}" if args.urls else capture.slug)
         return 0
 
     counts = {b: 0 for b in BUCKETS}
@@ -298,7 +324,11 @@ def main(argv: list[str] | None = None) -> int:
             path = args.out / f"{bucket}.txt"
             path.write_text(
                 "".join(
-                    f"{score:3}  {c.slug:48}  {c.handle:26}  {c.title}\n"
+                    (
+                        f"{score:3}  {c.slug:48}  {c.handle:26}  {c.url:48}  {c.title}\n"
+                        if args.urls
+                        else f"{score:3}  {c.slug:48}  {c.handle:26}  {c.title}\n"
+                    )
                     for score, b, c in rows
                     if b == bucket
                 )
@@ -307,7 +337,12 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"\ntop {args.top} by signal:")
     for score, bucket, capture in rows[: args.top]:
-        print(f"  {score:3}  {bucket:12}  {capture.handle:26}  {capture.title}")
+        if args.urls:
+            print(f"  {score:3}  {bucket:12}  {capture.handle:26}  {capture.title}")
+            print(f"       {capture.slug}")
+            print(f"       {capture.url or '(no url captured)'}")
+        else:
+            print(f"  {score:3}  {bucket:12}  {capture.handle:26}  {capture.title}")
 
     remaining = len(rows) - args.top
     if remaining > 0:
