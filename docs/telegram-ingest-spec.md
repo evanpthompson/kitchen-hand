@@ -61,7 +61,10 @@ a blocker for text that is already public, but neither is nothing.
 
 ## 3. Where the code lives
 
-**Decision: `kitchen-hand/tools/poll_telegram.py`.**
+**Decision: `kitchen-hand/tools/`, as two modules —
+`telegram_transport.py` and `poll_telegram.py`.** Not a separate repo
+yet; see "Why not its own repo, yet" below for the trigger that would
+change that.
 
 Not `voice-agent-input-hub`, despite that project's README describing almost
 exactly this ("captures voice, transcripts, files, images... routes those
@@ -79,20 +82,90 @@ bundles to agents, processes, harnesses, and services"). Three reasons:
    Reimplementing them elsewhere means reimplementing the bugs they have
    already had.
 
-### The seam
+### The seam: two modules, one import direction
 
-The tool does two separable things, and the file should keep them apart even
-though it is one file:
+The tool does two separable things, and they live in **two files**, not two
+halves of one:
 
-- **Transport** — poll `getUpdates`, download files via `getFile`, track the
-  offset. Knows nothing about recipes.
-- **Sink** — decide what a message means and write `inbox/<slug>/`. Knows
-  nothing about Telegram beyond the shape the transport hands it.
+| File | Knows about | Depends on |
+|---|---|---|
+| `tools/telegram_transport.py` | Telegram | stdlib only |
+| `tools/poll_telegram.py` | recipes, `inbox/` | the transport |
 
-Keep them as two groups of functions with a plain dict between them. **Do not
-build a plugin abstraction** — there is one consumer. But when the hub
-eventually wants Telegram, the transport half lifts out as-is, and this sink
-becomes one of its routing adapters. Document the seam; do not pre-build it.
+**`telegram_transport.py` must not import anything from kitchen-hand.** Not
+`write_capture`, not `INBOX`, not the slug rules, not `core`. It takes a
+token and an allow-list, and yields normalized message dicts. Everything that
+knows what a recipe is lives in `poll_telegram.py`.
+
+That constraint is the entire point and it costs nothing to honour today.
+Write a source-grep test for it, the same way `tests/test_transcribe_audio.py`
+pins the no-downloader rule:
+
+```python
+def test_the_transport_knows_nothing_about_kitchen_hand():
+    source = TRANSPORT.read_text()
+    for forbidden in ("write_capture", "INBOX", "provisional_slug", "from app"):
+        assert forbidden not in source
+```
+
+The normalized dict the transport yields:
+
+```python
+{
+    "message_id": 1234,
+    "sender_id": 987654321,
+    "date": "2026-09-17T21:04:00Z",
+    "text": "...",                  # "" if none
+    "urls": ["https://..."],        # entity-extracted, may be empty
+    "files": [                      # already downloaded to a temp dir
+        {"path": Path(...), "kind": "photo" | "voice" | "video" | "document",
+         "original_name": "IMG_1234.HEIC"},
+    ],
+    "forwarded_from": "..." or None,
+}
+```
+
+### Why not its own repo, yet
+
+The shareable surface is small and the project-specific surface is not:
+
+| Shared (transport) | ~lines | Project-specific (sink) |
+|---|---|---|
+| `getUpdates` + long poll | 15 | slug strategy |
+| offset persistence | 10 | which files to write |
+| allow-list check | 5 | `meta.txt` shape |
+| `getFile` + download | 20 | dedup rules |
+| normalize message to dict | 30 | fail-closed reporting |
+| **~80 lines** | | **the actual work** |
+
+Eighty lines of well-understood HTTP is below the line where a repo pays for
+itself. A repo costs a README, CI, tests, a release story, and a version
+coupling that breaks two projects when it rots. There is also **no existing
+shared-library pattern in `~/files` to slot into** — no project path-depends
+on another today — so extracting would mean establishing that pattern for
+eighty lines.
+
+Extract on the **second real consumer**, not the first and not a predicted
+one. Building shared infrastructure against one real use and one imagined use
+produces an abstraction shaped by the imagined one.
+
+> **Extraction trigger.** Move `telegram_transport.py` to its own repo when a
+> second project actually needs it. `throughline` is the likely candidate —
+> photograph a denial letter, send it to a bot, it becomes a case document is
+> the same transport with a different sink. At that point it becomes a `uv`
+> path dependency, and that is also the moment to decide whether you want a
+> shared-library pattern across `~/files` at all.
+>
+> Until then this is deliberately deferred, not overlooked. Do not re-litigate
+> it without a second consumer in hand.
+
+Because the import direction is enforced by a test rather than by discipline,
+extraction when the trigger fires is `git mv` plus a dependency line — not a
+rewrite. That asymmetry is what makes deferring strictly better than either
+committing now or foreclosing the option.
+
+**Do not build a plugin abstraction, a registry, or a sink interface.** There
+is one consumer. Two modules and an import rule is the whole design.
 
 ## 4. Non-goals
 
@@ -261,13 +334,19 @@ fixtures are cheap.
   export run, and a hand-corrected `caption.txt` survives it.
 - Source-grep, as in `tests/test_transcribe_audio.py`: the tool must not
   contain any fetch of an instagram.com or tiktok.com media URL.
+- Source-grep on the import direction: `telegram_transport.py` must contain
+  no reference to `write_capture`, `INBOX`, `provisional_slug` or `from app`.
+  That test is what keeps extraction cheap, so it is not optional.
 
 ## 13. Phases
 
-- **Phase 1 — text and URLs.** `getUpdates`, allow-list, offset, URL parsing,
-  `url.txt` / `caption.txt` / `meta.txt`. Plus the §10 backfill change, which
-  should land first and separately. This alone closes the 9pm-on-the-sofa
-  gap.
+- **Phase 0 — the backfill fix.** §10, on its own, before any Telegram code.
+  Without it the two-speed pipeline does not work and Phase 1 is worth less
+  than it looks.
+- **Phase 1 — text and URLs.** Both modules, with the import-direction test
+  from the start. `getUpdates`, allow-list, offset, URL parsing, and
+  `url.txt` / `caption.txt` / `meta.txt`. This alone closes the
+  9pm-on-the-sofa gap.
 - **Phase 2 — media.** Photos to `screenshot.png`, voice notes through
   `transcribe_audio.py`.
 - **Phase 3 — acknowledgement.** Reply to each message with the slug it
