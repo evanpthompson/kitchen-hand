@@ -16,8 +16,8 @@ provenance:
   transcribed: false
   extraction_notes: >
     The most complete of this batch — a full ingredient list with quantities
-    and a full ordered method. One ambiguity has been resolved by the reviewer
-    (1), three remain open (2-4):
+    and a full ordered method. Two points were settled by the reviewer (1, 3);
+    two remain open (2, 4):
 
     (1) RESOLVED BY REVIEWER, NOT BY THE SOURCE. The caption reads "½ green
     onions" with no unit. Checked against the canonical Tasty recipe and two
@@ -39,8 +39,9 @@ provenance:
     integer, so the lower bound is used. Nothing was invented: 6 is stated in
     the source, but the recipe may serve up to 8.
 
-    (3) The cheese is unspecified. "¾ cup cheese, chopped into small pieces"
-    gives neither a variety nor a form beyond chopped. Left as-is.
+    (3) CHOSEN BY REVIEWER. The source says only "¾ cup cheese, chopped into
+    small pieces" — no variety. Evan chose cheddar. The quantity and form are
+    the source's; the variety is not.
 
     (4) Frying oil and the two accompaniments (shredded green cabbage,
     tonkatsu sauce) are listed without quantities — "Oil, for frying" and "to
@@ -73,9 +74,11 @@ ingredients:
     quantity: 1 cup
     prep: chopped into small pieces
   - id: cheese
-    name: Cheese
+    name: Cheddar cheese
     quantity: 3/4 cup
-    prep: chopped into small pieces — variety not specified in source
+    prep: >
+      chopped into small pieces. Cheddar is the reviewer's choice — the source
+      says only "cheese", see extraction_notes
   - id: green-onions
     name: Green onions
     quantity: 1/2 bunch

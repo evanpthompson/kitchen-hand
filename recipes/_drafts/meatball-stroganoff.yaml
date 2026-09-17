@@ -1,6 +1,7 @@
 id: meatball-stroganoff
 title: Meatball Stroganoff
 tags: [beef, noodles, sauce, weeknight]
+servings: 4
 mode: manual
 
 source: "Luke Brown, reposted by @carnivorefamilykitchen on Instagram"
@@ -13,10 +14,11 @@ provenance:
   raw_capture_path: "inbox/meatball-stroganoff/caption.txt"
   transcribed: false
   extraction_notes: >
-    **This draft is deliberately invalid: `servings` is absent because the
-    source never states it.** 1 1/2 lbs of meatballs and 12 oz of egg noodles
-    implies roughly 4-6, but the caption gives no yield, so the required
-    field is left out to fail validation rather than filled with a guess.
+    SERVINGS SET BY REVIEWER. The caption gives no yield — 1 1/2 lbs of
+    meatballs and 12 oz of egg noodles, and nothing else. This draft was
+    first written with `servings` absent so schema validation would fail
+    rather than carry a guess; Evan set it to 4. A decision about the
+    recipe, not a fact recovered from the caption.
 
     (1) Attribution needs checking before promotion. The caption is posted by
     @carnivorefamilykitchen (Jennifer LaRose) but credits "By: Luke Brown" in

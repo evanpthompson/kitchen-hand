@@ -1,6 +1,7 @@
 id: creamy-pan-fried-chicken
 title: Creamy Pan Fried Chicken
 tags: [chicken, sauce, weeknight]
+servings: 4
 mode: manual
 
 source: "@cookinginthemidwest on Instagram"
@@ -13,11 +14,11 @@ provenance:
   raw_capture_path: "inbox/creamy-pan-fried-chicken/caption.txt"
   transcribed: false
   extraction_notes: >
-    **This draft is deliberately invalid: `servings` is absent because the
-    source never states it.** The caption gives 1 lb of chicken breast,
-    butterflied, and no yield. Rather than guess 2, 3 or 4, the required
-    field is left out so schema validation fails loudly and a human has to
-    decide. Fill it in before promoting.
+    SERVINGS SET BY REVIEWER. The source gives 1 lb of chicken breast,
+    butterflied, and states no yield anywhere. This draft was first written
+    with `servings` absent so that schema validation would fail rather than
+    carry a guess; Evan set it to 4. That is a human decision about the
+    recipe, not a fact recovered from the caption.
 
     Other gaps, none of them guessed:
 
