@@ -469,12 +469,18 @@ def main(argv: list[str] | None = None) -> int:
         missing[:] = sorted(in_collection - {p.url for p in result.posts})
 
     already = captured_urls()
-    created, skipped, collisions = [], [], []
+    created, backfilled, unchanged, collisions = [], [], [], []
     claimed: dict[str, SavedPost] = {}
 
     for post in posts:
         if post.url in already:
-            skipped.append(post)
+            # Already captured - but possibly not completely. Another ingest
+            # path may have created this folder from a bare URL, with no
+            # caption. write_capture never clobbers, so calling it against the
+            # existing folder fills the gaps and touches nothing else.
+            existing = already[post.url]
+            written = write_capture(post, existing, args.dry_run)
+            (backfilled if written else unchanged).append((existing, post, written))
             continue
         slug = provisional_slug(post)
         if slug in claimed and claimed[slug].url != post.url:
@@ -486,10 +492,17 @@ def main(argv: list[str] | None = None) -> int:
             created.append((slug, post, written))
 
     verb = "would create" if args.dry_run else "created"
+    backfill_verb = "would backfill" if args.dry_run else "backfilled"
     scope = f" in {args.collection!r}" if args.collection else ""
     print(f"saved posts in export{scope}: {len(posts)}")
-    print(f"already in inbox/: {len(skipped)}")
+    print(f"already complete in inbox/: {len(unchanged)}")
     print(f"{verb}: {len(created)}")
+    if backfilled:
+        print(f"{backfill_verb}: {len(backfilled)}")
+        for slug, _, written in backfilled[:20]:
+            print(f"  {slug}  (+{', '.join(written)})")
+        if len(backfilled) > 20:
+            print(f"  ... and {len(backfilled) - 20} more")
 
     if created:
         with_caption = sum(1 for _, p, _ in created if p.caption)

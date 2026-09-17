@@ -415,6 +415,89 @@ def test_folder_with_a_stale_url_keeps_its_hand_edits(tmp_path, inbox):
     assert (folder / "meta.txt").read_text() == "hand-written, do not touch"
 
 
+# --- backfill: the two ingest paths must complete each other ---------------
+#
+# A capture can arrive from somewhere other than the export - a link shared
+# from a phone, say - carrying a permalink and no caption. The export is the
+# only thing that has the caption. If a permalink the export already knows
+# about is skipped outright, that caption never lands and the fast path is
+# worth much less than it looks.
+
+
+def test_a_url_only_folder_is_backfilled_from_the_export(tmp_path, inbox):
+    """The whole point. A folder with just url.txt gains the caption."""
+    folder = inbox / "ig-chef-mike-c-ab3xy"
+    folder.mkdir()
+    (folder / "url.txt").write_text("https://www.instagram.com/p/C_aB3xy/\n")
+
+    archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
+    assert mod.main([str(archive)]) == 0
+
+    assert sorted(p.name for p in folder.iterdir()) == [
+        "caption.txt",
+        "meta.txt",
+        "url.txt",
+    ]
+    assert "2 eggs" in (folder / "caption.txt").read_text()
+    assert "creator: @chef.mike" in (folder / "meta.txt").read_text()
+    # No second folder was made under the export's own naming.
+    assert [p.name for p in inbox.iterdir()] == ["ig-chef-mike-c-ab3xy"]
+
+
+def test_backfill_reaches_a_folder_that_has_been_renamed(tmp_path, inbox):
+    """Dedup is on the permalink, so a folder already renamed to its dish
+    slug is still the one that gets completed."""
+    folder = inbox / "chengdu-tomato-egg-noodles"
+    folder.mkdir()
+    (folder / "url.txt").write_text("https://www.instagram.com/p/C_aB3xy/\n")
+
+    archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
+    assert mod.main([str(archive)]) == 0
+
+    assert (folder / "caption.txt").is_file()
+    assert [p.name for p in inbox.iterdir()] == ["chengdu-tomato-egg-noodles"]
+
+
+def test_backfill_never_overwrites_what_is_already_there(tmp_path, inbox):
+    """Filling gaps must not become clobbering. A caption corrected by hand
+    survives, and only the genuinely missing file is added."""
+    folder = inbox / "ig-chef-mike-c-ab3xy"
+    folder.mkdir()
+    (folder / "url.txt").write_text("https://www.instagram.com/p/C_aB3xy/\n")
+    (folder / "caption.txt").write_text("corrected: 2 tsp, not 2 tbsp")
+
+    archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
+    assert mod.main([str(archive)]) == 0
+
+    assert (folder / "caption.txt").read_text() == "corrected: 2 tsp, not 2 tbsp"
+    assert (folder / "meta.txt").is_file()
+
+
+def test_a_complete_folder_is_reported_complete_not_backfilled(tmp_path, inbox, capsys):
+    """The gate against noise: a re-run over a finished inbox must report
+    nothing to do, or the backfill line stops meaning anything."""
+    archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
+    assert mod.main([str(archive)]) == 0
+    capsys.readouterr()
+
+    assert mod.main([str(archive)]) == 0
+    out = capsys.readouterr().out
+    assert "already complete in inbox/: 1" in out
+    assert "backfilled" not in out
+
+
+def test_backfill_writes_nothing_on_a_dry_run(tmp_path, inbox, capsys):
+    folder = inbox / "ig-chef-mike-c-ab3xy"
+    folder.mkdir()
+    (folder / "url.txt").write_text("https://www.instagram.com/p/C_aB3xy/\n")
+
+    archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
+    assert mod.main([str(archive), "--dry-run"]) == 0
+
+    assert [p.name for p in folder.iterdir()] == ["url.txt"]
+    assert "would backfill: 1" in capsys.readouterr().out
+
+
 def test_dedups_on_url_so_a_renamed_folder_is_not_recreated(tmp_path, inbox):
     archive = write_export(tmp_path, [post_entry("chef.mike", "C_aB3xy")])
     assert mod.main([str(archive)]) == 0
