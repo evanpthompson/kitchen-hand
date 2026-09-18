@@ -37,6 +37,9 @@ rewritten from scratch.
 - `docs/ingestion.md` — how recipes get in: capture → normalize → draft →
   review → promote, across every input type (URL, document, Instagram,
   TikTok, pasted text), with the quality bar for promotion.
+- `docs/backlog.md` — what is left and what it is worth, with the measured
+  yield curve behind it. Six batches took the collection from 3 recipes to 43;
+  this records where the corpus stops paying and why.
 - `docs/telegram-ingest-spec.md` — spec for a one-tap phone capture path: a
   Telegram bot you share a Reel to, which becomes an `inbox/` capture. Not
   built. Chosen over WhatsApp because it needs no public webhook, and over an
