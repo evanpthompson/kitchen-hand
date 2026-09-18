@@ -68,6 +68,22 @@ def load_token() -> str:
     return token
 
 
+def configured_ids() -> set[int]:
+    """Whatever the allow-list env var currently holds, or an empty set.
+
+    Deliberately forgiving where load_config() is strict: this is used to
+    *compare* against what is queued, and a malformed value is itself worth
+    reporting rather than exiting over.
+    """
+    raw = os.environ.get(ENV_ALLOWED, "").strip()
+    out = set()
+    for part in raw.split(","):
+        part = part.strip()
+        if part.isdigit():
+            out.add(int(part))
+    return out
+
+
 def whoami(token: str) -> int:
     """Print the sender ids of whatever is queued, and write nothing.
 
@@ -75,6 +91,13 @@ def whoami(token: str) -> int:
     the tool will run, and the only way to learn your own numeric id is to
     read it off a getUpdates response. So this one path deliberately runs
     without an allow-list - it is the only path that does, and it is read-only.
+
+    It also compares what is queued against what is configured, because the
+    failure that mismatch produces is close to undebuggable from its symptom:
+    --once exits 0, prints "created: 0", and says nothing on stdout. The
+    natural conclusion is that the bot is not receiving anything, which sends
+    you after the token, the network, or Telegram. One line here turns a
+    silent zero into an obvious one.
     """
     result = tg.poll.call(token, "getUpdates", {"timeout": 0}) or []
     senders: dict[int, str] = {}
@@ -89,21 +112,59 @@ def whoami(token: str) -> int:
                 f"{name} (@{sender['username']})" if sender.get("username") else name
             )
 
+    configured = configured_ids()
     if not senders:
         print(
             "No messages queued. Send your bot any message, then run this "
             "again.\nIf you have already polled once, those updates are "
             "consumed - send another."
         )
+        if configured:
+            print(f"\n{ENV_ALLOWED} is currently: {sorted(configured)}")
         return 1
 
     print("Senders in the current update queue:\n")
     for sender_id, name in senders.items():
-        print(f"  {sender_id}  {name}")
-    print(
-        f"\nYours is almost certainly the only one. Then:\n\n"
-        f"    export {ENV_ALLOWED}={','.join(str(i) for i in senders)}\n"
-    )
+        mark = ""
+        if configured:
+            mark = (
+                "  <- on your allow-list"
+                if sender_id in configured
+                else "  <- NOT on your allow-list"
+            )
+        print(f"  {sender_id}  {name}{mark}")
+
+    if not configured:
+        print(
+            f"\n{ENV_ALLOWED} is not set. Yours is almost certainly the only "
+            f"id above. Then:\n\n"
+            f"    export {ENV_ALLOWED}={','.join(str(i) for i in senders)}\n"
+        )
+        return 0
+
+    missing = set(senders) - configured
+    if missing:
+        stale = configured - set(senders)
+        print(
+            f"\nMISMATCH. {ENV_ALLOWED} is {sorted(configured)}, which does "
+            f"not include {sorted(missing)}.",
+            file=sys.stderr,
+        )
+        if stale:
+            print(
+                f"It does include {sorted(stale)}, which sent nothing here - "
+                f"a placeholder or another account's id.",
+                file=sys.stderr,
+            )
+        print(
+            "Left as it is, --once will discard your messages and still exit "
+            "0 with 'created: 0'. Set it to:\n\n"
+            f"    export {ENV_ALLOWED}={','.join(str(i) for i in senders)}\n",
+            file=sys.stderr,
+        )
+        return 1
+
+    print(f"\n{ENV_ALLOWED} is set correctly. Nothing to change.")
     return 0
 
 

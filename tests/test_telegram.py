@@ -34,8 +34,12 @@ tg = _load(TRANSPORT, "telegram_transport")
 sink = _load(SINK, "poll_telegram")
 
 
-ME = 987654321
-STRANGER = 111111111
+# Obviously-synthetic ids. An earlier demo printed a plausible-looking one
+# and it got copied straight into a real .env, where it silently discarded
+# every message - so these are chosen to be unmistakable if they ever escape.
+ME = 10000000001
+STRANGER = 10000000002
+PLACEHOLDER = 10000000003  # in the allow-list, never sends anything
 
 
 def url_entity(text: str, url: str) -> dict:
@@ -483,6 +487,76 @@ def test_whoami_lists_senders_without_an_allow_list(monkeypatch, capsys, tmp_pat
     out = capsys.readouterr().out
     assert str(ME) in out
     assert f"export {sink.ENV_ALLOWED}={ME}" in out
+
+
+def test_whoami_flags_an_allow_list_that_does_not_match(monkeypatch, capsys):
+    """The failure this prevents is close to undebuggable from its symptom:
+    --once exits 0 and prints "created: 0" while discarding everything."""
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setenv(sink.ENV_ALLOWED, str(PLACEHOLDER))
+    monkeypatch.setattr(tg.poll, "call", lambda *a, **k: [update(1, "hi", sender=ME)])
+
+    assert sink.main(["--whoami"]) == 1
+    captured = capsys.readouterr()
+    assert "NOT on your allow-list" in captured.out
+    assert "MISMATCH" in captured.err
+    assert str(PLACEHOLDER) in captured.err and str(ME) in captured.err
+    assert "still exit 0" in captured.err
+
+
+def test_whoami_says_nothing_to_change_when_it_matches(monkeypatch, capsys):
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setenv(sink.ENV_ALLOWED, str(ME))
+    monkeypatch.setattr(tg.poll, "call", lambda *a, **k: [update(1, "hi", sender=ME)])
+
+    assert sink.main(["--whoami"]) == 0
+    captured = capsys.readouterr()
+    assert "on your allow-list" in captured.out
+    assert "set correctly" in captured.out
+    assert captured.err == ""
+
+
+def test_whoami_names_a_stale_id_that_sent_nothing(monkeypatch, capsys):
+    """A placeholder left in the allow-list is the specific thing that bit
+    here, so it gets named rather than merely implied."""
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setenv(sink.ENV_ALLOWED, str(PLACEHOLDER))
+    monkeypatch.setattr(tg.poll, "call", lambda *a, **k: [update(1, "hi", sender=ME)])
+
+    assert sink.main(["--whoami"]) == 1
+    assert "sent nothing here" in capsys.readouterr().err
+
+
+def test_whoami_reports_the_configured_ids_even_with_an_empty_queue(
+    monkeypatch, capsys
+):
+    monkeypatch.setenv(sink.ENV_TOKEN, "t")
+    monkeypatch.setenv(sink.ENV_ALLOWED, str(ME))
+    monkeypatch.setattr(tg.poll, "call", lambda *a, **k: [])
+
+    assert sink.main(["--whoami"]) == 1
+    assert str(ME) in capsys.readouterr().out
+
+
+@pytest.mark.parametrize(
+    "raw, expected",
+    [
+        ("123", {123}),
+        ("123,456", {123, 456}),
+        (" 123 , 456 ", {123, 456}),
+        ("", set()),
+        ("@evan", set()),
+        ("123,@evan", {123}),
+    ],
+)
+def test_configured_ids_is_forgiving_where_load_config_is_strict(
+    monkeypatch, raw, expected
+):
+    """load_config() exits on a malformed allow-list. This one parses what it
+    can, because a malformed value is itself worth reporting rather than
+    exiting over - the whole point is to explain a misconfiguration."""
+    monkeypatch.setenv(sink.ENV_ALLOWED, raw)
+    assert sink.configured_ids() == expected
 
 
 def test_whoami_writes_nothing(inbox, monkeypatch, tmp_path):

@@ -379,6 +379,21 @@ fixtures are cheap.
    way to learn your own id is to read it from a `getUpdates` response. So
    `--whoami` is the one path that deliberately runs without an allow-list.
    It is read-only, writes no captures, and does not advance the offset.
+
+   It also **compares what is queued against what is configured**, and exits
+   non-zero on a mismatch. That was added after a wrong id got into a real
+   `.env`, and the reason is the symptom: with an id that does not match,
+   `--once` exits **0** and prints `created: 0`, having discarded every
+   message. The only signal is one line on stderr. The natural conclusion is
+   that the bot is not receiving anything, which sends you after the token,
+   the network, or Telegram itself. A gate that silently drops your own
+   traffic needs a way to say so.
+
+   Where that wrong id came from is worth recording too: an example
+   `--whoami` output in conversation used a plausible-looking number, and it
+   was copied straight into the `.env`. Demo output that looks like real
+   output gets treated as real output. The test fixtures now use obviously
+   synthetic ids for the same reason.
 3. Put both in the environment.
 4. Add the bot to the phone's share sheet (it is a normal chat).
 5. `uv run tools/poll_telegram.py --once` on a cron, or leave it looping.
