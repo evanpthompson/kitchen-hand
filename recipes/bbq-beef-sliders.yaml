@@ -1,6 +1,7 @@
 id: bbq-beef-sliders
 title: BBQ Beef Sliders
 tags: [beef, cheese, bbq]
+servings: 4
 mode: manual
 
 source: "@burnt_pellet_bbq on Instagram"
@@ -18,8 +19,9 @@ provenance:
     ingredient list, as with the other barbecue captures in this collection, is
     thinner than the method.
 
-    QUESTION FOR REVIEW: servings. No yield, and the chuck roast has no weight,
-    so there is nothing to derive one from. The rolls are never counted either.
+    SERVINGS SET BY REVIEWER: 4, along with the two quantities the source
+    omitted entirely - a 2 lb chuck roast and a 12-count pack of Hawaiian
+    rolls. None of the three appears in the caption.
 
     (1) **The assembly line lists pepper jack twice.** As written it is
     "4 slices of pepper jack cheese, smoked bbq beef, crisp onions, 1 cup bbq
@@ -32,8 +34,9 @@ provenance:
     another cup in the assembly. Split into two entries; the source gives both
     quantities, so this one is not ambiguous.
 
-    (3) Four things have no quantity: the chuck roast, the rub, the rolls, the
-    crisp onions, and the butter brushed on top. Recorded bare.
+    (3) Three things still have no quantity: the rub, the crisp onions, and
+    the butter brushed on the tops. Recorded bare. The roast and the rolls
+    were in that list until the reviewer supplied them.
 
     (4) Yellow mustard is used as a binder, which is a barbecue convention -
     it holds the rub on and cooks away. No quantity given.
@@ -41,7 +44,10 @@ provenance:
 ingredients:
   - id: chuck-roast
     name: Chuck roast
-    prep: well marbled, cubed - weight not given in source
+    quantity: 2 lb
+    prep: >
+      well marbled, cubed. WEIGHT SUPPLIED BY REVIEWER - the source gives
+      none
   - id: mustard
     name: Yellow mustard
     prep: as a binder for the rub - quantity not given in source
@@ -61,8 +67,10 @@ ingredients:
     quantity: 1 cup
     prep: in the foil wrap - source uses @pucksbbq
   - id: rolls
-    name: Slider rolls
-    prep: quantity not given in source
+    name: Hawaiian slider rolls
+    quantity: "12"
+    prep: >
+      COUNT AND TYPE SUPPLIED BY REVIEWER - the source says only "sliders"
   - id: pepper-jack
     name: Pepper jack cheese
     quantity: 8 slices

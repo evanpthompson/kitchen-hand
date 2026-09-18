@@ -1,6 +1,7 @@
 id: freezer-breakfast-burritos
 title: Freezer Breakfast Burritos
 tags: [breakfast, meal-prep, egg, cheese]
+servings: 10
 mode: manual
 
 source: "@athomewithblake on Instagram"
@@ -17,15 +18,16 @@ provenance:
     reheating note. The quantities are the weak half: most are given as
     packages rather than weights.
 
-    QUESTION FOR REVIEW: servings. The source never says how many burritos
+    SERVINGS SET BY REVIEWER: 10. The source never says how many burritos
     this makes, which is unusual for a freezer batch - and it does say they
     are big enough that the creator and her children each eat half.
 
     (1) **Several quantities are packages, not amounts.** "whole package of
     sausage or half a pack of bacon", "burrito size tortillas" with no count,
     "Tater tots" with no amount beyond "about 4 tots per burrito". Recorded
-    as the source has them. The tots figure is per-burrito, so it becomes
-    usable the moment the burrito count is known.
+    as the source has them. The tots were the exception: "about 4 tots per
+    burrito" is per-unit, so once the yield was set at 10 it became about 40.
+    That figure is derived from the reviewer's answer rather than stated.
 
     (2) "egg makers 32oz (can use eggs or egg whites)" is a liquid egg
     product by weight, with fresh eggs offered as a substitution and no
@@ -64,7 +66,10 @@ ingredients:
     prep: for the eggs - quantities not given in source
   - id: tots
     name: Tater tots
-    prep: optional - about 4 per burrito
+    quantity: about 40
+    prep: >
+      optional - the source gives about 4 per burrito, which at 10 burritos
+      is roughly 40. Derived from the reviewer's yield, not stated
 
 phases:
   - name: Cook the tots

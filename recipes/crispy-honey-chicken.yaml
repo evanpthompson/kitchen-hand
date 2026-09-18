@@ -2,6 +2,7 @@ id: crispy-honey-chicken
 title: Crispy Honey Chicken
 cuisine: Chinese
 tags: [chicken, fried, sauce]
+servings: 4
 mode: fry
 
 source: "@victor.wokmanyama on Instagram"
@@ -19,12 +20,13 @@ provenance:
     when not to move the chicken, and an explanation of what the glaze does as
     it cools. Every batter and sauce quantity is in grams or millilitres.
 
-    QUESTION FOR REVIEW: servings. The source states no yield.
+    SERVINGS SET BY REVIEWER: 4. The source states no yield.
 
-    (1) **The chicken has no quantity.** The ingredient list opens with the
-    bare word "Chicken" and every other line is measured. Same gap as
-    honey-bbq-chicken-tenders had - the thing being cooked is the one thing
-    not weighed.
+    (1) **The chicken had no quantity and no cut; both come from the
+    reviewer: 1.5 lbs boneless skinless thighs.** The source's ingredient
+    list opens with the bare word "Chicken" while every other line is in
+    grams or millilitres - the same gap honey-bbq-chicken-tenders had, and
+    the thing being cooked was the one thing unweighed.
 
     (2) The source numbers two consecutive steps "6". Renumbered here without
     reordering; the second is a note about the glaze setting rather than an
@@ -41,10 +43,11 @@ provenance:
 
 ingredients:
   - id: chicken
-    name: Chicken
+    name: Chicken thighs
+    quantity: 1.5 lbs
     prep: >
-      cut into 1 cm pieces. **Quantity not given in source** - see
-      extraction_notes
+      boneless, skinless, cut into 1 cm pieces. QUANTITY AND CUT SUPPLIED
+      BY REVIEWER - the source lists only the bare word "Chicken"
   - id: marinade-salt
     name: Salt
     quantity: 1 tsp
