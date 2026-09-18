@@ -1,0 +1,153 @@
+id: jam-buttered-toast-cookies
+title: Jam & Buttered Toast Cookies
+tags: [baking, dessert]
+mode: manual
+
+source: "@lungisalwaysbaking on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DTqVg_PDdxa/"
+  creator: "@lungisalwaysbaking"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/jam-buttered-toast-cookies/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Almost everything in grams, a bake temperature and time, and a method the
+    creator calls a "snapshot recipe" - written as arrows rather than
+    sentences, but complete and ordered. Expanded into phases here without
+    adding a step.
+
+    QUESTION FOR REVIEW: servings. The source states no yield, and cookies are
+    scooped rather than cut, so nothing implies one.
+
+    (1) **The caption is explicitly an abridgement.** "the snapshot recipe is
+    below & the full version is on my Substack." The Substack is named but not
+    linked, so it was not fetched. Per docs/ingestion.md a URL outranks a
+    caption, and that fuller version is worth capturing before this is
+    promoted - it is the one case in this collection where the creator says
+    outright that what you are reading is incomplete.
+
+    (2) **Toast flakes are a sub-recipe made from a whole ingredient.** Three
+    slices of toasted sourdough, buttered and jammed, blitzed to crumbs. Only
+    60 g of the result goes into the dough; the rest coats the outside, and
+    the source does not say how much that is or what to do with any left over.
+
+    (3) Two of the toast-flake quantities are approximate in the source -
+    "~1 tbsp salted butter", "~1 tbsp raspberry conserve" - and kept as such.
+
+    (4) The conserve is specified by texture rather than brand: "Make sure
+    it's not too watery, you want a firm jam/conserve." That matters for the
+    marbling step and is kept in the instruction.
+
+    (5) The white chocolate says "save some for topping" without splitting the
+    240 g. Recorded as one entry with the split noted.
+
+    (6) Butter is used in three forms - 50 g cold, 80 g browned, and about a
+    tablespoon on the toast. Separate entries, since browning is a method not
+    a substitution.
+
+    (7) Chilling has no duration: "Scoop, coat in toast flakes, chill".
+
+ingredients:
+  - id: sourdough
+    name: Sourdough bread
+    quantity: 3 slices
+    prep: toasted
+  - id: toast-butter
+    name: Salted butter
+    quantity: ~1 tbsp
+    prep: for the toast
+  - id: toast-jam
+    name: Raspberry conserve
+    quantity: ~1 tbsp
+    prep: >
+      for the toast - the source warns it must be firm, not watery
+  - id: cold-butter
+    name: Unsalted butter
+    quantity: 50 g
+    prep: cold
+  - id: brown-butter
+    name: Brown butter
+    quantity: 80 g
+  - id: miso
+    name: White miso
+    quantity: 1 tsp
+  - id: white-sugar
+    name: White sugar
+    quantity: 165 g
+  - id: brown-sugar
+    name: Dark brown or muscovado sugar
+    quantity: 60 g
+  - id: egg
+    name: Egg
+    quantity: "1"
+  - id: yolk
+    name: Egg yolk
+    quantity: "1"
+  - id: vanilla
+    name: Vanilla
+    quantity: 1 tsp
+  - id: flour
+    name: Plain flour
+    quantity: 250 g
+  - id: bicarb
+    name: Bicarbonate of soda
+    quantity: 1/2 tsp
+  - id: baking-powder
+    name: Baking powder
+    quantity: 1/4 tsp
+  - id: salt
+    name: Salt
+    quantity: 1/4 tsp
+  - id: white-chocolate
+    name: White chocolate
+    quantity: 240 g
+    prep: some reserved for topping - the source does not split it
+  - id: swirl-jam
+    name: Raspberry conserve
+    quantity: 120 g
+    prep: for swirling through the dough
+
+phases:
+  - name: Make the toast flakes
+    instruction: >
+      Toast the sourdough, butter it and spread with the conserve, then blitz
+      into flakes. Use a firm conserve - a watery one will not work here.
+    add_ingredients: [sourdough, toast-butter, toast-jam]
+  - name: Cream the butters and sugars
+    instruction: >
+      Mix the cold butter and the brown butter with both sugars and the white
+      miso.
+    add_ingredients: [cold-butter, brown-butter, miso, white-sugar, brown-sugar]
+  - name: Add the eggs
+    instruction: Add the egg, the extra yolk and the vanilla.
+    add_ingredients: [egg, yolk, vanilla]
+  - name: Fold in the dry ingredients
+    instruction: >
+      Fold in the flour, bicarbonate of soda, baking powder and salt, then add
+      the white chocolate and 60 g of the toast flakes.
+    add_ingredients: [flour, bicarb, baking-powder, salt, white-chocolate]
+  - name: Marble the jam
+    instruction: >
+      Spoon the conserve over the dough to marble it. **Do not mix it in** -
+      the source is emphatic about this, and mixing would lose the ripples.
+    add_ingredients: [swirl-jam]
+  - name: Scoop, coat and chill
+    instruction: >
+      Scoop the dough, coat each one in the remaining toast flakes, and chill.
+      No chilling time is given.
+  - name: Bake
+    instruction: Bake at 190°C for 9-11 minutes.
+    temp_c: 190
+    duration_sec: 540
+  - name: Finish
+    instruction: >
+      Top with extra white chocolate and cool slightly before eating.
+
+notes: >
+  Oven-baked, so mode is manual and out of scope for both hardware tracks.
+
+  The miso is the interesting choice: a teaspoon of it in a sweet dough is
+  doing what salt does, plus glutamate, which is why the cookie reads as
+  savoury-adjacent rather than simply sweet. Worth not substituting away.

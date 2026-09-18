@@ -1,0 +1,89 @@
+id: crispy-potato-omelet
+title: Crispy Potato Omelet
+tags: [breakfast, potatoes, egg, cheese]
+servings: 1
+mode: manual
+
+source: "@cravewithayesha on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DcolxBVC-MS/"
+  creator: "@cravewithayesha"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/crispy-potato-omelet/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Small, complete and unambiguous: five ingredients, an ordered method, a
+    time on the one step that needs one, and doneness cues for the rest.
+    Nothing reconstructed.
+
+    SERVINGS: 1, and this is the one recipe in the collection where that is
+    effectively sourced rather than decided. Two eggs and two small potatoes
+    folded into a single omelet in one pan is one person's breakfast by
+    construction - there is no way to read it as more.
+
+    (1) Two quantities are approximate in the source and kept as such: "About
+    1/4 cup shredded mozzarella" and "About 2 tbsp oil".
+
+    (2) Salt and black pepper have no quantities.
+
+    (3) **The potatoes are sliced with a vegetable peeler directly into the
+    pan**, which is the whole technique - peeler-thin slices crisp in 5-7
+    minutes where diced potato would not. Kept explicit in the instruction
+    rather than reduced to "thinly sliced".
+
+    (4) The pan is named as a sponsor mention (@hexclad) but the recipe only
+    requires it to be non-stick, which the method states independently.
+
+ingredients:
+  - id: potatoes
+    name: Potatoes, small
+    quantity: "2"
+    prep: sliced thinly with a vegetable peeler, straight into the pan
+  - id: eggs
+    name: Eggs
+    quantity: "2"
+    prep: beaten
+  - id: mozzarella
+    name: Mozzarella
+    quantity: about 1/4 cup
+    prep: shredded
+  - id: oil
+    name: Oil
+    quantity: about 2 tbsp
+  - id: seasoning
+    name: Salt and black pepper
+    prep: quantity not given in source
+
+phases:
+  - name: Layer the potatoes
+    instruction: >
+      Add the oil to a non-stick pan. Using a vegetable peeler, slice the
+      potatoes thinly directly into the pan and arrange them in an even layer.
+      Season with salt and pepper.
+    add_ingredients: [oil, potatoes, seasoning]
+  - name: Crisp
+    instruction: >
+      Cook over medium-low heat for 5-7 minutes, until golden and crispy
+      underneath.
+    duration_sec: 300
+  - name: Add the eggs
+    instruction: >
+      Carefully flip the potato layer, then pour the beaten eggs over. Cook
+      until the eggs are mostly set.
+    add_ingredients: [eggs]
+  - name: Cheese and fold
+    instruction: >
+      Add the mozzarella, fold the omelet in half, and continue cooking until
+      the cheese has melted.
+    add_ingredients: [mozzarella]
+
+notes: >
+  One pan, four steps, five ingredients - the smallest recipe in the
+  collection and one of the few that is complete without a single flagged gap.
+
+  mode is manual, but this is a genuine open-rig candidate: a flat pan held at
+  medium-low for a timed interval, one flip, then a second timed stage. No
+  stirring, no liquid, no judgement call except the flip. If the rig can hold a
+  temperature and time two stages, it can cook this.
