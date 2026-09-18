@@ -1,6 +1,7 @@
 id: honey-bbq-chicken-tenders
 title: Honey BBQ Chicken Tenders
 tags: [chicken, fried, bbq]
+servings: 4
 mode: fry
 
 source: "@g_bque on Instagram"
@@ -16,9 +17,12 @@ provenance:
     An ordered method with a fry temperature and time, and a marinade and
     dredge both fully quantified. One large gap and two small ones.
 
-    QUESTION FOR REVIEW: servings. The source states no yield.
+    SERVINGS SET BY REVIEWER: 4. The source states no yield.
 
-    (1) **The chicken has no quantity at all.** Every supporting component is
+    (1) **The chicken had no quantity at all, and now has one from the
+    reviewer: 2 pounds.** Everything around it is measured in the source -
+    2 cups buttermilk, 3 cups flour - but the thing being cooked was only
+    "your chicken". The weight below is Evan's, not the creator's. Every supporting component is
     measured - 2 cups buttermilk, 3 cups flour - but the thing being cooked
     is only "your chicken". The marinade and dredge amounts imply a
     substantial batch, but implying is not stating, and no weight or count is
@@ -40,9 +44,11 @@ provenance:
 ingredients:
   - id: chicken
     name: Chicken tenders
+    quantity: 2 pounds
     prep: >
-      **quantity not given in source** - the only unmeasured component, see
-      extraction_notes
+      QUANTITY SUPPLIED BY REVIEWER. The source measures everything around
+      the chicken - 2 cups buttermilk, 3 cups flour - but never the chicken
+      itself, so this is Evan's figure and not the creator's
   - id: rub
     name: Seasoning rub
     prep: "\"your favorite rub\" - unspecified, applied before the marinade"

@@ -1,6 +1,7 @@
 id: poor-mans-burnt-ends
 title: Poor Man's Burnt Ends
 tags: [beef, bbq]
+servings: 6
 mode: manual
 
 source: "@headcountrybbq on Instagram"
@@ -17,14 +18,15 @@ provenance:
     ingredient list that is barely quantified at all. The two halves of this
     capture are of very different quality.
 
-    QUESTION FOR REVIEW: servings. No yield is stated, and the chuck roast
+    SERVINGS SET BY REVIEWER: 6. No yield is stated, and the chuck roast
     has no weight either, so there is nothing to derive one from.
 
-    (1) **Four of six ingredients have no quantity.** "1 Chuck Roast" with no
-    weight, "Brown sugar" bare, "Brisket or SPG Rub" bare, and "1 bottle Head
-    Country Original BBQ Sauce" - a bottle is a real unit only if you know
-    which bottle. Only the butter is measured, at half a stick. All recorded
-    as the source has them.
+    (1) **Four of six ingredients had no quantity; the roast now has one from
+    the reviewer, 2 lb.** The other three are still bare in the source:
+    "Brown sugar", "Brisket or SPG Rub", and "1 bottle Head Country
+    Original BBQ Sauce" - a bottle is a real unit only if you know which
+    bottle. Only the butter was measured, at half a stick. The three that are
+    still bare are recorded as the source has them.
 
     (2) **The temperatures, by contrast, are the most precise in the
     collection**: smoke at 250-275°F, and finish when the cubes reach an
@@ -42,8 +44,9 @@ provenance:
 ingredients:
   - id: chuck-roast
     name: Chuck roast
-    quantity: "1"
-    prep: weight not given in source
+    quantity: 2 lb
+    prep: >
+      WEIGHT SUPPLIED BY REVIEWER - the source says only "1 Chuck Roast"
   - id: rub
     name: Brisket or SPG rub
     prep: quantity not given in source

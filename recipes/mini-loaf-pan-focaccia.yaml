@@ -1,6 +1,7 @@
 id: mini-loaf-pan-focaccia
 title: Mini Loaf Pan Focaccia
 tags: [baking]
+servings: 1
 mode: manual
 
 source: "The Practical Kitchen (thepracticalkitchen.com), found via @the.practical.kitchen on Instagram"
@@ -26,7 +27,7 @@ provenance:
     Claude-specific block, wildcard allows. Both the Instagram post and the
     fetched page are kept in inbox/, so the chain is auditable.
 
-    QUESTION FOR REVIEW: servings. The yield is stated as "1 loaf", which is
+    SERVINGS SET BY REVIEWER: 1. The yield is stated as "1 loaf", which is
     a definite amount of bread but not a number of people. The schema wants
     an integer.
 
