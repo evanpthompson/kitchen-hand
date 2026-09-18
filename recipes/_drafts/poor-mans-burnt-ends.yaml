@@ -1,0 +1,98 @@
+id: poor-mans-burnt-ends
+title: Poor Man's Burnt Ends
+tags: [beef, bbq]
+mode: manual
+
+source: "@headcountrybbq on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DXfduIIDmoq/"
+  creator: "@headcountrybbq"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/poor-mans-burnt-ends/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    A complete and well-ordered method with every temperature stated, and an
+    ingredient list that is barely quantified at all. The two halves of this
+    capture are of very different quality.
+
+    QUESTION FOR REVIEW: servings. No yield is stated, and the chuck roast
+    has no weight either, so there is nothing to derive one from.
+
+    (1) **Four of six ingredients have no quantity.** "1 Chuck Roast" with no
+    weight, "Brown sugar" bare, "Brisket or SPG Rub" bare, and "1 bottle Head
+    Country Original BBQ Sauce" - a bottle is a real unit only if you know
+    which bottle. Only the butter is measured, at half a stick. All recorded
+    as the source has them.
+
+    (2) **The temperatures, by contrast, are the most precise in the
+    collection**: smoke at 250-275°F, and finish when the cubes reach an
+    internal 205-210°F. That second number is the one that matters - it is
+    the collagen-breakdown window, and it is why this works on a cheap cut.
+    Kept explicit in the instruction rather than reduced to a duration.
+
+    (3) **No times are given anywhere**, and that is correct rather than
+    missing: both stages end on a condition, bark colour and then internal
+    temperature. duration_sec is deliberately absent throughout.
+
+    (4) "Let it sit for about 15 minutes" after seasoning is the one stated
+    interval.
+
+ingredients:
+  - id: chuck-roast
+    name: Chuck roast
+    quantity: "1"
+    prep: weight not given in source
+  - id: rub
+    name: Brisket or SPG rub
+    prep: quantity not given in source
+  - id: bbq-sauce
+    name: BBQ sauce
+    quantity: 1 bottle
+    prep: >
+      source uses Head Country Original - bottle size not given
+  - id: brown-sugar
+    name: Brown sugar
+    prep: quantity not given in source
+  - id: butter
+    name: Butter
+    quantity: half a stick
+
+phases:
+  - name: Set up the smoker
+    instruction: >
+      Set up to cook over indirect heat at around 250-275°F (121-135°C).
+    temp_c: 121
+  - name: Season and rest
+    instruction: >
+      Season the chuck roast generously with the rub and let it sit for about
+      15 minutes.
+    add_ingredients: [chuck-roast, rub]
+    duration_sec: 900
+  - name: Smoke
+    instruction: >
+      Smoke until you have the colour and bark you are looking for. No time is
+      given - this stage ends on appearance.
+    temp_c: 121
+  - name: Cube and sauce
+    instruction: >
+      Cube the roast and put the cubes in a pan with the BBQ sauce, brown
+      sugar and butter. Wrap the pan with foil.
+    add_ingredients: [bbq-sauce, brown-sugar, butter]
+    lid: closed
+  - name: Finish to temperature
+    instruction: >
+      Return the pan to the smoker and cook until the cubes reach an internal
+      temperature of 205-210°F (96-99°C). That window is what breaks the
+      collagen down, and it is why this works on a cheap cut - it is a
+      doneness target, not a time.
+    temp_c: 121
+    lid: closed
+
+notes: >
+  mode is manual - a smoker, which neither hardware track covers.
+
+  Worth keeping for the temperature discipline even though the quantities are
+  thin. Every other barbecue recipe in the collection can be checked against
+  this one's 205-210°F finish.

@@ -1,0 +1,134 @@
+id: honey-bbq-chicken-tenders
+title: Honey BBQ Chicken Tenders
+tags: [chicken, fried, bbq]
+mode: fry
+
+source: "@g_bque on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/C-jPMPlgEi2/"
+  creator: "@g_bque"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/honey-bbq-chicken-tenders/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    An ordered method with a fry temperature and time, and a marinade and
+    dredge both fully quantified. One large gap and two small ones.
+
+    QUESTION FOR REVIEW: servings. The source states no yield.
+
+    (1) **The chicken has no quantity at all.** Every supporting component is
+    measured - 2 cups buttermilk, 3 cups flour - but the thing being cooked
+    is only "your chicken". The marinade and dredge amounts imply a
+    substantial batch, but implying is not stating, and no weight or count is
+    written in. This is the gap to close first.
+
+    (2) The seasoning is "your favorite rub", named neither as a product nor
+    a blend, and used before the marinade rather than in it.
+
+    (3) The finishing sauce is a specific commercial product,
+    @fyrstarter Honey FYR sauce, with no quantity. Kept as attribution.
+
+    (4) "2 tsp garlic" in the dredge does not say powder, though everything
+    around it is a dry seasoning and the marinade separately specifies garlic
+    powder. Recorded as the source wrote it rather than corrected.
+
+    (5) The marinade time is a range with a wide top end - "30 minutes up to
+    overnight" - kept as stated. duration_sec records the stated minimum.
+
+ingredients:
+  - id: chicken
+    name: Chicken tenders
+    prep: >
+      **quantity not given in source** - the only unmeasured component, see
+      extraction_notes
+  - id: rub
+    name: Seasoning rub
+    prep: "\"your favorite rub\" - unspecified, applied before the marinade"
+  - id: buttermilk
+    name: Buttermilk
+    quantity: 2 cups
+    prep: marinade
+  - id: marinade-salt
+    name: Salt
+    quantity: 1 tbsp
+    prep: marinade
+  - id: marinade-garlic-powder
+    name: Garlic powder
+    quantity: 1/2 tbsp
+    prep: marinade
+  - id: hot-sauce
+    name: Hot sauce
+    quantity: 2 tbsp
+    prep: marinade
+  - id: marinade-paprika
+    name: Paprika
+    quantity: 1 tsp
+    prep: marinade
+  - id: flour
+    name: Flour
+    quantity: 3 cups
+    prep: dredge
+  - id: potato-starch
+    name: Potato starch
+    quantity: 1/3 cup
+    prep: dredge - cornstarch works per the source
+  - id: dredge-garlic
+    name: Garlic
+    quantity: 2 tsp
+    prep: dredge - the source does not say powder, see extraction_notes
+  - id: dredge-paprika
+    name: Paprika
+    quantity: 2 tsp
+    prep: dredge
+  - id: dredge-salt
+    name: Salt
+    quantity: 2 tsp
+    prep: dredge
+  - id: dredge-pepper
+    name: Black pepper
+    quantity: 2 tsp
+    prep: dredge
+  - id: frying-oil
+    name: Oil
+    prep: for frying - quantity not given in source
+  - id: honey-sauce
+    name: Honey BBQ sauce
+    prep: >
+      source uses @fyrstarter Honey FYR - quantity not given
+
+phases:
+  - name: Season
+    instruction: Season the chicken with your rub of choice.
+    add_ingredients: [chicken, rub]
+  - name: Marinate
+    instruction: >
+      Mix the buttermilk, salt, garlic powder, hot sauce and paprika, and
+      marinate the chicken for 30 minutes, up to overnight.
+    add_ingredients:
+      [buttermilk, marinade-salt, marinade-garlic-powder, hot-sauce, marinade-paprika]
+    duration_sec: 1800
+  - name: Dredge
+    instruction: >
+      Mix the flour, potato starch, garlic, paprika, salt and pepper. Remove
+      the chicken from the marinade and cover it in the dredge, making sure
+      every part is coated.
+    add_ingredients:
+      [flour, potato-starch, dredge-garlic, dredge-paprika, dredge-salt, dredge-pepper]
+  - name: Fry
+    instruction: >
+      Fry at 350°F (177°C) for 5-6 minutes, until golden brown.
+    add_ingredients: [frying-oil]
+    temp_c: 177
+    duration_sec: 300
+  - name: Sauce
+    instruction: Coat the fried chicken in the honey BBQ sauce and serve.
+    add_ingredients: [honey-sauce]
+
+notes: >
+  mode is fry. Along with ham-cheese-korokke this is one of only two recipes
+  here whose main heat step is a held oil temperature - 177°C for 5-6 minutes
+  - which is the kind of thing a temperature-holding appliance does better
+  than a person watching a pan. Worth grouping with the korokke as Phase 1
+  temperature-hold test cases.

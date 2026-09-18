@@ -1,0 +1,119 @@
+id: crockpot-italian-chicken-and-rice
+title: Crockpot Italian Chicken & Rice
+tags: [chicken, slow-cooker, high-protein, meal-prep]
+servings: 10
+mode: braise
+
+source: "@rileysstupidrecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DPAFIrGkflK/"
+  creator: "@rileysstupidrecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/crockpot-italian-chicken-and-rice/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Servings are sourced and specific: "10 large servings", alongside macros
+    per serving. Every ingredient is quantified.
+
+    (1) **The rice is deliberately open in the source** and that is not a
+    gap to fill in. "I used five cups of cooked jasmine but you can do as
+    much as your heart desires" - the 5 cups is recorded as the creator's
+    amount, with the latitude noted. It is also cooked separately and added
+    at the end, so it is not part of the slow cook.
+
+    (2) The method is one compressed line - "Cook on high 4 hrs, shred
+    chicken, add cooked rice, let cook 30 more mins to soak up all that
+    flavor" - but it is complete and ordered. Split into phases without
+    adding anything.
+
+    (3) No low-setting alternative is given, unlike the other two crockpot
+    recipes in this collection. Only high, 4 hours.
+
+    (4) "1 block cream cheese" has no weight. Blocks are conventionally 8 oz
+    in the US but the source does not say so, and it is not written in.
+
+    (5) Olive Garden Italian dressing is a named commercial product, kept as
+    attribution rather than a requirement.
+
+ingredients:
+  - id: thighs
+    name: Chicken thighs
+    quantity: 2 lbs
+    prep: boneless, skinless
+  - id: breasts
+    name: Chicken breasts
+    quantity: 2 lbs
+    prep: boneless, skinless
+  - id: broth
+    name: Chicken bone broth
+    quantity: 2 cups
+  - id: cream-cheese
+    name: Cream cheese
+    quantity: 1 block
+    prep: weight not given in source
+  - id: parmesan
+    name: Parmesan
+    quantity: 1/2 cup
+    prep: grated
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1 tbsp
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+  - id: red-pepper
+    name: Crushed red pepper
+    quantity: 1 tbsp
+  - id: dressing
+    name: Italian dressing
+    quantity: 1/2 cup
+    prep: source uses Olive Garden
+  - id: rice
+    name: Cooked jasmine rice
+    quantity: 5 cups
+    prep: >
+      cooked separately. The source is explicit that this is its own amount
+      and yours can differ - "as much as your heart desires"
+
+phases:
+  - name: Load the crockpot
+    instruction: >
+      Put the chicken thighs and breasts in the crockpot with the bone broth,
+      cream cheese, parmesan, Italian seasoning, garlic powder, crushed red
+      pepper and Italian dressing.
+    add_ingredients:
+      [
+        thighs,
+        breasts,
+        broth,
+        cream-cheese,
+        parmesan,
+        italian-seasoning,
+        garlic-powder,
+        red-pepper,
+        dressing,
+      ]
+  - name: Slow cook
+    instruction: >
+      Cook on high for 4 hours. The source gives no low-setting alternative.
+    duration_sec: 14400
+    lid: closed
+  - name: Shred
+    instruction: Shred the chicken in the pot.
+  - name: Add the rice and finish
+    instruction: >
+      Stir in the cooked rice and cook for 30 minutes more, to let it soak up
+      the sauce.
+    add_ingredients: [rice]
+    duration_sec: 1800
+    lid: closed
+
+notes: >
+  Stated macros: 420 cal, 45g protein, 24g carbs, 15g fat per serving across
+  10 servings.
+
+  mode is braise, the nearest CJ-A9U preset to a covered liquid cook, though
+  four and a half hours is far outside what that machine is built for. Set
+  for the shape, not as a claim the hardware could run it.

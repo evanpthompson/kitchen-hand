@@ -1,0 +1,109 @@
+id: roasted-garlic-butter-chicken
+title: Easy Roasted Garlic Butter Chicken
+tags: [chicken, weeknight]
+servings: 5
+mode: manual
+
+source: "Simple Home Edit (simplehomeedit.com), found via @simple.home.edit on Instagram"
+
+provenance:
+  input_type: url
+  source_url: "https://simplehomeedit.com/recipe/roasted-garlic-butter-chicken/"
+  creator: "@simple.home.edit"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/roasted-garlic-butter-chicken/recipe-page.md"
+  transcribed: false
+  extraction_notes: >
+    **Sourced from the creator's own site, not from the Instagram caption.**
+    The saved post carries no recipe at all - a description, a link, and
+    "comment RECIPE and I'll send you the link". A URL is the highest-trust
+    capture type in docs/ingestion.md precisely because the site authored it
+    as structured data, and this page proves the point: it states a yield, a
+    prep time, a cook time, both oven temperatures fan and conventional, and
+    every quantity in metric with imperial in brackets. Nothing here is
+    inferred, converted or guessed.
+
+    robots.txt for simplehomeedit.com was checked before fetching: no
+    Claude-specific block, wildcard allows. The Instagram post is kept in
+    inbox/ as url.txt and caption.txt, and the fetched page as
+    recipe-page.md, so the chain from saved post to recipe is auditable.
+
+    (1) Fan-forced is given as an alternative, 180C rather than 200C. temp_c
+    records the conventional setting the source lists first; the fan figure
+    is in the instruction text.
+
+    (2) The accompaniments - mashed potatoes, steamed asparagus or greens -
+    are serving suggestions with no quantities, recorded as such.
+
+ingredients:
+  - id: butter
+    name: Unsalted butter
+    quantity: 80 g
+    prep: room temperature
+  - id: salt
+    name: Sea salt flakes
+    quantity: 1 1/2 tsp
+  - id: pepper
+    name: Black pepper
+    quantity: 1/4 tsp
+    prep: freshly cracked, plus extra to serve
+  - id: garlic
+    name: Garlic
+    quantity: 1 tbsp
+    prep: freshly minced
+  - id: honey
+    name: Honey
+    quantity: 1 tbsp
+  - id: thyme
+    name: Thyme leaves
+    quantity: 2 tsp
+    prep: plus extra to garnish
+  - id: chicken
+    name: Chicken thigh cutlets
+    quantity: 1.25 kg
+    prep: bone-in, skin-on
+  - id: stock
+    name: Chicken stock
+    quantity: 125 ml
+  - id: mash
+    name: Mashed potatoes
+    prep: to serve - quantity not given in source
+  - id: greens
+    name: Steamed asparagus or greens
+    prep: to serve - quantity not given in source
+
+phases:
+  - name: Heat the oven
+    instruction: >
+      Preheat the oven to 200°C (400°F), or 180°C (350°F) fan-forced.
+    temp_c: 200
+  - name: Make the garlic butter
+    instruction: >
+      Combine the butter, salt, black pepper, garlic, honey and thyme in a
+      small bowl.
+    add_ingredients: [butter, salt, pepper, garlic, honey, thyme]
+  - name: Coat the chicken
+    instruction: >
+      Arrange the chicken thighs skin-side up on a baking tray with sides.
+      Spread the butter mixture all over them with your hands, concentrating
+      on the skin. Pour the chicken stock around the chicken, not over it.
+    add_ingredients: [chicken, stock]
+  - name: Roast
+    instruction: >
+      Roast for 55-60 minutes, until golden and cooked through, basting once
+      halfway.
+    temp_c: 200
+    duration_sec: 3300
+  - name: Serve
+    instruction: >
+      Serve with mashed potatoes and steamed asparagus, drizzled with the tray
+      juices. Garnish with extra thyme and a little more black pepper.
+    add_ingredients: [mash, greens]
+
+notes: >
+  Oven roast, so mode is manual and neither hardware track applies.
+
+  Worth noting what the stock is doing: poured around rather than over, it
+  keeps the thighs moist while leaving the skin dry enough to brown, and
+  becomes the sauce. A machine program that submerged the chicken would
+  produce a different dish.

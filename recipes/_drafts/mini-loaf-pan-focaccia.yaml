@@ -1,0 +1,147 @@
+id: mini-loaf-pan-focaccia
+title: Mini Loaf Pan Focaccia
+tags: [baking]
+mode: manual
+
+source: "The Practical Kitchen (thepracticalkitchen.com), found via @the.practical.kitchen on Instagram"
+
+provenance:
+  input_type: url
+  source_url: "https://thepracticalkitchen.com/mini-loaf-pan-focaccia-scaled-down-recipe/"
+  creator: "@the.practical.kitchen"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/mini-loaf-pan-focaccia/recipe-page.md"
+  transcribed: false
+  extraction_notes: >
+    **Sourced from the creator's own site, not from the Instagram caption.**
+    The saved post is a note that this was the site's most popular recipe of
+    the year, plus a link. No quantities, no method.
+
+    The page itself is the best-specified recipe in this collection so far:
+    every ingredient in grams *with* a volume equivalent in brackets, water
+    given at a temperature, four separate rest intervals, and an oven rack
+    position. Nothing here is inferred or converted.
+
+    robots.txt for thepracticalkitchen.com was checked before fetching: no
+    Claude-specific block, wildcard allows. Both the Instagram post and the
+    fetched page are kept in inbox/, so the chain is auditable.
+
+    QUESTION FOR REVIEW: servings. The yield is stated as "1 loaf", which is
+    a definite amount of bread but not a number of people. The schema wants
+    an integer.
+
+    (1) **Gram weights are the real quantities here and the volumes are the
+    approximation**, which is the reverse of every other recipe in this
+    collection. The source says so explicitly - "1 cup, aerated and loosely
+    scooped" and "*1 cup, measure by weight for best results". Both are
+    recorded, grams first.
+
+    (2) Salt is brand-specific: Diamond Crystal Kosher, whose crystals are
+    less dense than other kosher salts, so 5 g is the number that transfers
+    and the teaspoon figure is not. Kept as the source gives it.
+
+    (3) The pan oil is a range, 6-12 g, split across greasing and drizzling
+    without the source dividing it. Left as a range.
+
+    (4) Rest and rise intervals are 15, 15, 15, about 60, and 15-20 minutes.
+    All recorded; the final rise ends on a visual cue - dimples filling
+    slightly - rather than on the clock.
+
+ingredients:
+  - id: flour
+    name: All-purpose flour
+    quantity: 120 g
+    prep: >
+      1 cup aerated and loosely scooped, plus more for dusting. The source is
+      explicit that weight is the accurate measure
+  - id: salt
+    name: Diamond Crystal kosher salt
+    quantity: 5 g
+    prep: >
+      1 teaspoon plus a heaping 1/2 teaspoon. Brand matters - crystal density
+      differs between kosher salts
+  - id: sugar
+    name: Sugar
+    quantity: 5 g
+    prep: 1 1/4 teaspoons
+  - id: yeast
+    name: Instant yeast
+    quantity: 3 g
+    prep: 1 teaspoon
+  - id: olive-oil
+    name: Extra virgin olive oil
+    quantity: 10 g
+    prep: 2 1/2 teaspoons, in the dough
+  - id: water
+    name: Warm water
+    quantity: 90 g
+    prep: at 90°F (32°C) - 1/3 cup plus 2 teaspoons
+  - id: pan-oil
+    name: Olive oil
+    quantity: 6-12 g
+    prep: >
+      1 1/2 to 3 teaspoons, for the pan and for drizzling on top - the source
+      does not split it
+  - id: topping
+    name: Salt and/or herbs
+    prep: for topping - quantity not given in source
+
+phases:
+  - name: Mix
+    instruction: >
+      Whisk the flour, salt, sugar and yeast together in a medium bowl. Make a
+      well in the centre and add the warm water and olive oil. Stir the
+      liquid, slowly drawing in flour from the sides until a sticky dough
+      forms. Fold the dough over itself, rotating the bowl, until it is lumpy
+      and cohesive with no dry flour left. Gather it into a messy ball, cover,
+      and rest 15 minutes.
+    add_ingredients: [flour, salt, sugar, yeast, water, olive-oil]
+    duration_sec: 900
+  - name: First fold
+    instruction: >
+      Slap-and-fold in the bowl with a damp hand 4-6 times, until the dough
+      tightens slightly. Cover and rest 15 minutes.
+    duration_sec: 900
+  - name: Second fold
+    instruction: >
+      Repeat the slap-and-fold until the dough tightens. Cover and rest 15
+      minutes.
+    duration_sec: 900
+  - name: Pre-shape and rise
+    instruction: >
+      Spray a loaf pan with cooking spray and drizzle in about 1 tablespoon of
+      olive oil. Transfer the dough to the pan and gently stretch it into a
+      loose rectangle. Cover and rise at room temperature until doubled, about
+      1 hour.
+    add_ingredients: [pan-oil]
+    duration_sec: 3600
+  - name: Dimple and top
+    instruction: >
+      Drizzle the top with olive oil and dimple it with oiled fingers. Cover
+      and rise 15-20 minutes, until the dimples fill in slightly.
+    add_ingredients: [topping]
+    duration_sec: 900
+  - name: Preheat
+    instruction: >
+      During the last 30 minutes of the rise, preheat the oven to 400°F
+      (204°C) with a rack in the centre position.
+    temp_c: 204
+  - name: Bake
+    instruction: Bake until golden brown on top, 20-25 minutes.
+    temp_c: 204
+    duration_sec: 1200
+  - name: Cool
+    instruction: >
+      Turn out onto a wire rack immediately. Cool at least 10 minutes before
+      slicing.
+    duration_sec: 600
+
+notes: >
+  Oven-baked bread, so mode is manual and out of scope for both hardware
+  tracks - the open rig is a hob and a stirrer, and the CJ-A9U is a stir-fry
+  vessel.
+
+  Kept partly as a reference for how a well-specified recipe reads. Compared
+  with the Instagram captures in this collection it gives weights as the
+  primary measure, a water temperature, an oven rack position and four
+  separate rest intervals, none of which any caption here does.

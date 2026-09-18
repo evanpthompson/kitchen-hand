@@ -1,0 +1,136 @@
+id: steakhouse-cheeseburger-mac
+title: Steakhouse Cheeseburger Mac
+tags: [beef, pasta, cheese, weeknight]
+mode: manual
+
+source: "@cookinginthemidwest on Instagram (sponsored by Texas Roadhouse)"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DbIxaDkRcHQ/"
+  creator: "@cookinginthemidwest (Luke Brown)"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/steakhouse-cheeseburger-mac/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete ingredient list and a fully ordered method. The pasta cooks in
+    the sauce rather than separately, which is the point of the dish - one
+    pan start to finish.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - 1 lb of
+    ground beef and 2 1/2 cups of macaroni.
+
+    (1) Third recipe in the collection from this creator, after
+    creamy-pan-fried-chicken and the reposted meatball-stroganoff. Same house
+    format: "1 tsp each of ..." grouping, which is split into separate
+    ingredient entries here so phases can reference them, quantities
+    unchanged.
+
+    (2) The seasoning line groups four things at 1 tsp each - onion powder,
+    garlic powder, smoked paprika and steak seasoning - and the steak
+    seasoning is itself an unspecified blend.
+
+    (3) **Sponsored post.** Texas Roadhouse Classic Steak Sauce is named and
+    the partnership disclosed. Kept as attribution; any steak sauce is the
+    obvious substitution but the source does not offer one, so none is
+    written in.
+
+    (4) Dried parsley has no quantity.
+
+ingredients:
+  - id: beef
+    name: Ground beef
+    quantity: 1 lb
+  - id: onion
+    name: Onion
+    quantity: "1"
+    prep: chopped
+  - id: ground-mustard
+    name: Ground mustard
+    quantity: 1/2 tsp
+  - id: onion-powder
+    name: Onion powder
+    quantity: 1 tsp
+  - id: garlic-powder
+    name: Garlic powder
+    quantity: 1 tsp
+  - id: smoked-paprika
+    name: Smoked paprika
+    quantity: 1 tsp
+  - id: steak-seasoning
+    name: Steak seasoning
+    quantity: 1 tsp
+    prep: blend not specified in source
+  - id: minced-garlic
+    name: Garlic
+    quantity: 1 tbsp
+    prep: minced
+  - id: steak-sauce
+    name: Steak sauce
+    quantity: 1/4 cup
+    prep: source uses Texas Roadhouse Classic
+  - id: worcestershire
+    name: Worcestershire sauce
+    quantity: 1 tbsp
+  - id: macaroni
+    name: Elbow macaroni
+    quantity: 2 1/2 cups
+    prep: uncooked - cooks in the sauce
+  - id: beef-broth
+    name: Beef broth
+    quantity: 3 cups
+  - id: cheese
+    name: Colby Jack cheese
+    quantity: 8 oz
+    prep: shredded
+  - id: milk
+    name: Milk
+    quantity: 1/3 cup
+  - id: parsley
+    name: Dried parsley
+    prep: to top - quantity not given in source
+
+phases:
+  - name: Brown the beef
+    instruction: >
+      Heat a large skillet over medium-high heat. Brown the ground beef with
+      the chopped onion, seasoning with the ground mustard, onion powder,
+      garlic powder, smoked paprika and steak seasoning. Drain any extra
+      grease.
+    add_ingredients:
+      [
+        beef,
+        onion,
+        ground-mustard,
+        onion-powder,
+        garlic-powder,
+        smoked-paprika,
+        steak-seasoning,
+      ]
+  - name: Add the sauces
+    instruction: >
+      Add the minced garlic, steak sauce and Worcestershire sauce, and stir
+      well.
+    add_ingredients: [minced-garlic, steak-sauce, worcestershire]
+  - name: Cook the pasta in the pan
+    instruction: >
+      Add the uncooked macaroni and the beef broth. Bring to a quick boil,
+      then turn the heat down to medium-low, cover, and cook for about 10-15
+      minutes, stirring once or twice so the pasta does not stick.
+    add_ingredients: [macaroni, beef-broth]
+    duration_sec: 600
+    lid: closed
+  - name: Finish
+    instruction: >
+      Once the pasta is cooked, add the shredded cheese and the milk. Stir
+      everything together well and top with dried parsley.
+    add_ingredients: [cheese, milk, parsley]
+
+notes: >
+  The first one-pan pasta in the collection: the macaroni cooks in the broth
+  it will be sauced by, rather than being boiled separately and folded in.
+
+  That makes it a better machine candidate than it looks - brown, add liquid,
+  covered simmer with intermittent stir, finish off heat - and the only
+  reason mode is manual rather than braise is the uncovered browning at the
+  start. Worth revisiting during Phase 1.

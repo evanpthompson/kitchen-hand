@@ -1,0 +1,115 @@
+id: asian-style-garlic-noodles
+title: Asian Style Garlic Noodles
+tags: [noodles, sauce, weeknight]
+mode: manual
+
+source: "@alissanguyen_ on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DBrfHThRQRC/"
+  creator: "@alissanguyen_"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/asian-style-garlic-noodles/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    A full numbered method and a separately listed sauce, all quantified.
+    Nothing reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - 1 lb of
+    pasta.
+
+    (1) Four ingredients have no quantity and are marked as such rather than
+    estimated: the dark soy sauce is "for color" and optional per step 4,
+    and the parmesan, scallion and cooking oil are all listed bare.
+
+    (2) The dish is deliberately a hybrid - Italian pasta with an Asian
+    sauce - and the source says so in its second line. Not an error to
+    normalise away.
+
+    (3) Bouillon is "mushroom or chicken", an either/or kept as written.
+
+ingredients:
+  - id: noodles
+    name: Noodles or pasta
+    quantity: 1 lb
+    prep: source used fettuccine
+  - id: butter
+    name: Butter
+    quantity: 4 tbsp
+  - id: garlic
+    name: Garlic
+    quantity: 4 tbsp
+    prep: minced
+  - id: oil
+    name: Oil
+    prep: for cooking - quantity not given in source
+  - id: brown-sugar
+    name: Brown sugar
+    quantity: 2 tbsp
+    prep: in the sauce
+  - id: oyster-sauce
+    name: Oyster sauce
+    quantity: 2 tbsp
+    prep: in the sauce
+  - id: fish-sauce
+    name: Fish sauce
+    quantity: 1 tbsp
+    prep: in the sauce
+  - id: soy-sauce
+    name: Soy sauce
+    quantity: 1/2 tbsp
+    prep: in the sauce
+  - id: bouillon
+    name: Mushroom or chicken bouillon
+    quantity: 1/2 tsp
+    prep: in the sauce
+  - id: black-pepper
+    name: Black pepper
+    quantity: 1/2 tsp
+    prep: in the sauce
+  - id: dark-soy
+    name: Dark soy sauce
+    prep: optional, for colour - quantity not given in source
+  - id: parmesan
+    name: Parmesan cheese
+    prep: to top - quantity not given in source
+  - id: scallion
+    name: Scallion
+    prep: chopped, to top - quantity not given in source
+
+phases:
+  - name: Cook the noodles
+    instruction: >
+      Cook the noodles or pasta according to the package, drain and set
+      aside.
+    add_ingredients: [noodles]
+  - name: Mix the sauce
+    instruction: >
+      Mix the brown sugar, oyster sauce, fish sauce, soy sauce, bouillon and
+      black pepper together in a bowl. The source prefers this to adding them
+      to the pan one at a time.
+    add_ingredients:
+      [brown-sugar, oyster-sauce, fish-sauce, soy-sauce, bouillon, black-pepper]
+  - name: Fry the garlic
+    instruction: >
+      Heat some oil in a pan or wok and add the butter. Once it melts, add the
+      minced garlic.
+    add_ingredients: [oil, butter, garlic]
+  - name: Add the sauce
+    instruction: >
+      Once the garlic is fragrant, pour in the mixed sauce all at once.
+  - name: Combine
+    instruction: >
+      When the sauce starts to bubble, add the noodles and combine well.
+      Optionally drizzle in a little dark soy sauce for colour.
+    add_ingredients: [dark-soy]
+  - name: Serve
+    instruction: Top with parmesan cheese and chopped scallion.
+    add_ingredients: [parmesan, scallion]
+
+notes: >
+  One pan after the noodles are boiled - garlic, sauce, combine - which is
+  close to the shape mongolian-beef-noodles has. mode is manual rather than
+  stir-fry only because the noodles need their own pot; the pan portion alone
+  would be a reasonable machine program.

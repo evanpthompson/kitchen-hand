@@ -1,0 +1,102 @@
+id: mcgriddle-breakfast-cake
+title: McGriddle Breakfast Cake
+tags: [breakfast, baking, pork, cheese, high-protein]
+mode: manual
+
+source: "@forgetthetakeout on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DVOnrdojSvC/"
+  creator: "@forgetthetakeout"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/mcgriddle-breakfast-cake/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified, a numbered method, oven
+    temperature and bake time both given, plus a doneness test. Nothing
+    reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - an 8x8 dish,
+    sliced.
+
+    (1) The caption heads both of its lists "Ingredients"; the second is
+    plainly the method. Recorded as the method it is, and noted here rather
+    than silently corrected.
+
+    (2) The maple syrup appears twice for two jobs - 1/3 cup in the batter,
+    and more "for serving" with no quantity. Split into two entries.
+
+    (3) Flour is "1 cup flour (sub gluten-free)", a substitution the source
+    offers and which is kept on the ingredient.
+
+    (4) Doneness is given two ways, "slightly browned" and a clean toothpick,
+    both kept - the bake range is 35-40 minutes and the toothpick is what
+    decides within it.
+
+ingredients:
+  - id: flour
+    name: Flour
+    quantity: 1 cup
+    prep: gluten-free works per the source
+  - id: baking-powder
+    name: Baking powder
+    quantity: 1 tablespoon
+  - id: eggs
+    name: Eggs
+    quantity: "2"
+  - id: cottage-cheese
+    name: Cottage cheese
+    quantity: 1/2 cup
+  - id: maple-batter
+    name: Maple syrup
+    quantity: 1/3 cup
+    prep: in the batter
+  - id: milk
+    name: Milk
+    quantity: 3/4 cup
+  - id: sausage
+    name: Ground breakfast sausage
+    quantity: 1/2 lb
+  - id: cheddar
+    name: Cheddar cheese
+    quantity: 1 cup
+    prep: shredded
+  - id: maple-serving
+    name: Maple syrup
+    prep: for serving - quantity not given in source
+
+phases:
+  - name: Heat the oven and prepare the dish
+    instruction: >
+      Preheat the oven to 375°F (191°C). Grease an 8x8 inch baking dish and
+      line it with parchment paper.
+    temp_c: 191
+  - name: Brown the sausage
+    instruction: >
+      Heat a large skillet, add the sausage and cook until browned, breaking
+      it into small pieces. Set aside.
+    add_ingredients: [sausage]
+  - name: Mix the batter
+    instruction: >
+      In a large mixing bowl, combine the flour, baking powder, eggs, cottage
+      cheese, milk and maple syrup. Mix well, then fold in the cooked sausage
+      and the shredded cheddar.
+    add_ingredients:
+      [flour, baking-powder, eggs, cottage-cheese, milk, maple-batter, cheddar]
+  - name: Bake
+    instruction: >
+      Pour the batter into the dish and spread it evenly. Bake for 35-40
+      minutes, until slightly browned and a toothpick inserted in the centre
+      comes out clean.
+    temp_c: 191
+  - name: Serve
+    instruction: Slice and serve with extra maple syrup.
+    add_ingredients: [maple-serving]
+
+notes: >
+  Oven-baked, so mode is manual and neither hardware track applies.
+
+  Structurally a savoury-sweet batter bake rather than a bread: the cottage
+  cheese is doing the work of both fat and protein, which is why it holds
+  together at only 1 cup of flour for an 8x8 dish.
