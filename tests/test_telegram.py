@@ -62,6 +62,7 @@ def update(
     photo: bool = False,
     voice: bool = False,
     forward: str | None = None,
+    reply_to: dict | None = None,
 ) -> dict:
     message = {
         "message_id": update_id * 10,
@@ -80,6 +81,8 @@ def update(
         message["voice"] = {"file_id": "voice-1", "duration": 12}
     if forward:
         message["forward_origin"] = {"type": "user", "sender_user_name": forward}
+    if reply_to is not None:
+        message["reply_to_message"] = reply_to["message"]
     return {"update_id": update_id, "message": message}
 
 
@@ -367,6 +370,75 @@ def test_a_link_with_no_other_text_writes_no_caption(inbox, api):
 
     folder = inbox / "ig-abc123"
     assert sorted(p.name for p in folder.iterdir()) == ["meta.txt", "url.txt"]
+
+
+# --- reply threading ------------------------------------------------------
+
+
+def test_a_reply_inherits_the_parent_messages_url(inbox, api):
+    """The natural gesture: share the link, then reply to it with the caption
+    you copied. The caption has no link of its own."""
+    link = update(1, "https://www.instagram.com/reel/ABC123/")
+    api([link])
+    sink.handle(tg.poll("t", {ME}), dry_run=False)
+
+    api([update(2, "2 eggs\n1 tbsp soy sauce", reply_to=link)])
+    summary = sink.handle(tg.poll("t", {ME}), dry_run=False)
+
+    assert [p.name for p in inbox.iterdir()] == ["ig-abc123"]
+    assert "2 eggs" in (inbox / "ig-abc123" / "caption.txt").read_text()
+    assert len(summary["backfilled"]) == 1
+    assert not summary["orphans"]
+
+
+def test_a_reply_is_classified_by_the_parents_platform(inbox, api):
+    """caption.txt rather than raw.txt - the reply is an Instagram capture
+    because the post it answers is."""
+    link = update(1, "https://www.instagram.com/reel/ABC123/")
+    api([link])
+    sink.handle(tg.poll("t", {ME}), dry_run=False)
+
+    api([update(2, "steps here", reply_to=link)])
+    sink.handle(tg.poll("t", {ME}), dry_run=False)
+    assert (inbox / "ig-abc123" / "caption.txt").is_file()
+    assert not (inbox / "ig-abc123" / "raw.txt").exists()
+
+
+def test_the_messages_own_url_wins_over_its_parents(inbox, api):
+    """Replying to one post while pasting a different link is about the link
+    you pasted, not the one you happened to reply to."""
+    link = update(1, "https://www.instagram.com/reel/PARENT/")
+    api([link])
+    sink.handle(tg.poll("t", {ME}), dry_run=False)
+
+    api([update(2, "https://www.instagram.com/reel/OWN1/ notes", reply_to=link)])
+    sink.handle(tg.poll("t", {ME}), dry_run=False)
+    assert (inbox / "ig-own1" / "url.txt").is_file()
+
+
+def test_a_reply_to_a_message_with_no_url_is_still_an_orphan(inbox, api, capsys):
+    plain = update(1, "hello")
+    api([update(2, "2 eggs", reply_to=plain)])
+    summary = sink.handle(tg.poll("t", {ME}), dry_run=False)
+    assert len(summary["orphans"]) == 1
+
+
+def test_an_unattached_caption_is_reported_not_filed_silently(inbox, api, capsys):
+    """Filing a caption away from its recipe leaves two half-captures of one
+    dish, and nothing says so."""
+    api([update(1, "2 eggs\n1 tbsp soy sauce")])
+    summary = sink.handle(tg.poll("t", {ME}), dry_run=False)
+    sink.report(summary, dry_run=False)
+
+    out = capsys.readouterr().out
+    assert "had no link and did not reply to one" in out
+    assert "reply to the message carrying its link" in out
+
+
+def test_a_link_only_message_is_not_an_orphan(inbox, api):
+    """The gate must not fire on the ordinary case, or it becomes noise."""
+    api([update(1, "https://www.instagram.com/reel/ABC123/")])
+    assert not sink.handle(tg.poll("t", {ME}), dry_run=False)["orphans"]
 
 
 def test_a_message_with_no_url_is_still_a_capture(inbox, api):

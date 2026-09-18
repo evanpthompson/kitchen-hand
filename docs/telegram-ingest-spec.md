@@ -197,6 +197,25 @@ contributes several files to the same folder.
 | Voice note or audio | `<file>.ogg` + `transcript.txt` | via `transcribe_audio.py` |
 | Video note / video | saved, then transcribed | same path as audio |
 | Forwarded message | same as above | `forwarded_from` recorded in `meta.txt` |
+| **Reply to a message carrying a link** | joins that link's capture | see below |
+
+**Replying is how a caption attaches to a post.** The natural gesture is to
+share the link, then reply to it with the caption you copied - and a caption
+on its own has no permalink to join on. A reply carries `reply_to_message`,
+so the parent's URL becomes the join key. The message's own URL still wins if
+it has one: replying to one post while pasting a different link is about the
+link you pasted.
+
+A time window was considered for this and rejected. Attaching a caption to
+whatever URL arrived most recently silently binds text to the wrong recipe
+the moment you send a batch, and in this pipeline a wrong quantity reads
+exactly like a right one. A reply is something you said explicitly; a
+timestamp is a guess.
+
+Text with no link and no reply to one is still captured, as `note-<stamp>`,
+and **reported as unattached** with the folder it became. Filing a caption
+away from its recipe leaves two half-captures of one dish, and the run should
+say so rather than look clean.
 
 `meta.txt` is written in the same format `import_instagram_saved.py` uses, so
 the triage tool, the capture screen and the draft workflow all read it

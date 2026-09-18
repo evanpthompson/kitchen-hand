@@ -222,8 +222,16 @@ def classify(url: str) -> tuple[str, str]:
 
 
 def slug_for(message: tg.Message) -> tuple[str, str, str | None]:
-    """(input_type, slug, url). A message with no URL is still a capture."""
-    for url in message.urls:
+    """(input_type, slug, url). A message with no URL is still a capture.
+
+    A reply inherits its parent's URL. That is what lets the natural gesture
+    work: share the link, then reply to it with the caption you copied. The
+    caption has nothing joinable of its own, and guessing from arrival time
+    would attach text to the wrong recipe the moment you send a batch - so
+    the join has to be something you said explicitly, and a reply is exactly
+    that.
+    """
+    for url in (*message.urls, *message.reply_urls):
         input_type, slug = classify(url)
         return input_type, slug, url
     stamp = message.date.replace("-", "").replace(":", "")[:13].replace("T", "-")
@@ -315,6 +323,7 @@ def handle(poll_result: tg.Poll, dry_run: bool) -> dict:
         "created": [],
         "backfilled": [],
         "unchanged": [],
+        "orphans": [],
         "pending_media": 0,
         "rejected": poll_result.rejected,
         "unparsable": poll_result.unparsable,
@@ -330,6 +339,12 @@ def handle(poll_result: tg.Poll, dry_run: bool) -> dict:
             summary["pending_media"] += 1
 
         entry = (folder_name, message, written)
+        if input_type == "pasted-text" and message.text and not message.attachments:
+            # Text with no URL and no reply to one. It is captured, but it is
+            # not attached to anything, and that is worth saying out loud -
+            # silently filing a caption away from its recipe is how you end up
+            # with two half-captures of one dish.
+            summary["orphans"].append(entry)
         if not written:
             summary["unchanged"].append(entry)
         elif existed:
@@ -350,6 +365,19 @@ def report(summary: dict, dry_run: bool) -> None:
             print(f"  {slug}  (+{', '.join(written)})")
     if summary["unchanged"]:
         print(f"already complete: {len(summary['unchanged'])}")
+    if summary["orphans"]:
+        print(
+            f"\n{len(summary['orphans'])} message(s) had no link and did not "
+            "reply to one, so they are captures of their own rather than part "
+            "of a recipe:"
+        )
+        for slug, _, _ in summary["orphans"]:
+            print(f"  {slug}")
+        print(
+            "  To attach a caption to a post, reply to the message carrying "
+            "its link rather than sending it separately."
+        )
+
     if summary["pending_media"]:
         print(
             f"\n{summary['pending_media']} message(s) carried media, which "

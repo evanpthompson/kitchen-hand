@@ -68,6 +68,11 @@ class Message:
     urls: tuple[str, ...] = ()
     attachments: tuple[Attachment, ...] = ()
     forwarded_from: str | None = None
+    # URLs from the message this one replies to. A caption sent as a reply to
+    # a shared link has nothing joinable of its own, and the parent is where
+    # the link is - so the reply carries it forward rather than the caller
+    # having to keep its own history.
+    reply_urls: tuple[str, ...] = ()
     raw: dict = field(default_factory=dict, repr=False, compare=False)
 
 
@@ -182,6 +187,7 @@ def parse_message(message: dict) -> Message:
         if isinstance(epoch, int)
         else datetime.now(tz=timezone.utc).isoformat()
     )
+    parent = message.get("reply_to_message")
     return Message(
         message_id=message.get("message_id", 0),
         sender_id=sender.get("id", 0),
@@ -190,6 +196,7 @@ def parse_message(message: dict) -> Message:
         urls=extract_urls(message),
         attachments=extract_attachments(message),
         forwarded_from=forwarded_from(message),
+        reply_urls=extract_urls(parent) if isinstance(parent, dict) else (),
         raw=message,
     )
 
