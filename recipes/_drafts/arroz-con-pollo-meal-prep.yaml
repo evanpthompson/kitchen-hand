@@ -1,0 +1,112 @@
+id: arroz-con-pollo-meal-prep
+title: Arroz Con Pollo Meal Prep
+tags: [chicken, cheese, meal-prep]
+servings: 6
+mode: manual
+
+source: "@dtdinners on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DHFEmN9ttPd/"
+  creator: "@dtdinners"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/arroz-con-pollo-meal-prep/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Servings are sourced: "makes six servings", stated as part of a cost
+    breakdown rather than a yield line. Every ingredient carries a price,
+    which is unusual and worth keeping - the post is about cost as much as
+    about food.
+
+    (1) **One of three components has no method.** The chicken sear is given
+    and the cheese sauce is given, but the Spanish rice says only "Full Recipe
+    In my last video" - which is not captured. Its ingredients are listed
+    (2 cups rice, 4 cups water plus 1 1/2 later, 8 oz tomato sauce, 2 tbsp
+    bouillon) but nothing says how they come together, and the "plus 1 & 1/2
+    later" strongly implies a two-stage method that is not described. **This
+    is the gap to close before cooking it.**
+
+    (2) The chicken is "8 to 10 boneless skinless chicken thighs", a range,
+    kept as stated.
+
+    (3) The jalapenos or green chiles have no quantity, only a price.
+
+    (4) Prices are recorded in the notes rather than on ingredients - the
+    schema has no field for them, and they are the creator's local prices in
+    any case.
+
+ingredients:
+  - id: chicken
+    name: Chicken thighs
+    quantity: 8-10
+    prep: boneless, skinless, cut into thin strips
+  - id: fajita-seasoning
+    name: Fajita seasoning
+    quantity: 1 packet
+  - id: oil
+    name: Oil
+    quantity: 2 TBSP
+  - id: rice
+    name: White rice
+    quantity: 2 cups
+  - id: rice-water
+    name: Water
+    quantity: 4 cups
+    prep: >
+      plus another 1 1/2 cups later, per the source - the two-stage method is
+      not described, see extraction_notes
+  - id: tomato-sauce
+    name: Tomato sauce
+    quantity: 8 oz
+  - id: bouillon
+    name: Chicken bouillon powder
+    quantity: 2 TBSP
+  - id: evaporated-milk
+    name: Evaporated milk
+    quantity: 1 can
+  - id: american-cheese
+    name: White American cheese
+    quantity: 1 lb
+  - id: pepper-jack
+    name: Pepper jack cheese
+    quantity: 8 oz
+  - id: chiles
+    name: Jalapenos or green chiles
+    prep: chopped - quantity not given in source
+
+phases:
+  - name: Sear the chicken
+    instruction: >
+      Cut the chicken into thin strips and toss with the oil and the fajita
+      seasoning packet. Sear in small batches over high heat until golden
+      brown with crispy edges.
+    add_ingredients: [chicken, oil, fajita-seasoning]
+  - name: Make the Spanish rice
+    instruction: >
+      Cook the rice with the water, tomato sauce and chicken bouillon powder.
+      **The source gives no method** - it refers to an earlier video that is
+      not captured, and notes an extra 1 1/2 cups of water added later, which
+      implies a two-stage cook it never describes. See extraction_notes.
+    add_ingredients: [rice, rice-water, tomato-sauce, bouillon]
+    heat_level: null
+    temp_c: null
+    notes: Method missing from the source. Needs the earlier video or a test cook.
+  - name: Make the cheese sauce
+    instruction: >
+      Melt the evaporated milk, white American cheese, pepper jack and chopped
+      jalapenos or green chiles together in a saucepan, low and slow, stirring
+      constantly until fully melted.
+    add_ingredients: [evaporated-milk, american-cheese, pepper-jack, chiles]
+  - name: Assemble
+    instruction: >
+      Divide the rice, chicken and cheese sauce between six meal-prep
+      containers.
+
+notes: >
+  The source prices the whole thing at $24-26 for six servings, about $4.50
+  each, with the white American cheese at $10-11 the single largest cost.
+  Recorded here because the post is explicitly a budget recipe and the
+  schema has nowhere to put prices.
+
+  mode is manual: three components, three vessels.

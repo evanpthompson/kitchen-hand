@@ -1,0 +1,93 @@
+id: white-country-gravy
+title: White Country Gravy
+tags: [sauce, mother-sauce, breakfast]
+mode: manual
+
+source: "@tori_and_nessa on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DVTqhbsjTEX/"
+  creator: "@tori_and_nessa"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/white-country-gravy/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    **The post is titled "Fried Chicken & Country Gravy" and only the gravy is
+    a recipe.** The caption says so itself - "**Gravy Recipe below" - and no
+    quantity, temperature or method for the chicken appears anywhere. Titled
+    as the gravy it is, rather than carrying a chicken recipe that does not
+    exist.
+
+    Within that scope it is complete: four numbered steps, every quantity
+    given, and a thickening time.
+
+    QUESTION FOR REVIEW: servings. The source states no yield. 4 cups of milk
+    makes a large quantity of gravy.
+
+    (1) Salt and black pepper are "season to taste" with no quantities.
+
+    (2) The fat is "3 Tbsp grease drippings (or more butter)" - an either/or
+    the source offers, kept on the ingredient. Drippings are what make this a
+    country gravy rather than a plain white sauce, so the substitution changes
+    the dish rather than just the fat.
+
+ingredients:
+  - id: butter
+    name: Butter
+    quantity: 2 Tbsp
+  - id: drippings
+    name: Grease drippings
+    quantity: 3 Tbsp
+    prep: >
+      or more butter, per the source - the drippings are what make this a
+      country gravy rather than a plain white sauce
+  - id: flour
+    name: All-purpose flour
+    quantity: 1/2 cup
+  - id: milk
+    name: Milk
+    quantity: 4 cups
+  - id: seasoning
+    name: Salt and black pepper
+    prep: to taste - quantity not given in source
+
+phases:
+  - name: Melt the fat
+    instruction: >
+      In a large skillet, heat the butter and the grease drippings over medium
+      heat.
+    add_ingredients: [butter, drippings]
+  - name: Cook the roux
+    instruction: >
+      Once melted, add the flour and stir for 1-2 minutes, until fully
+      combined and slightly browned.
+    add_ingredients: [flour]
+    duration_sec: 60
+  - name: Add the milk
+    instruction: >
+      Slowly pour in the milk while stirring.
+    add_ingredients: [milk]
+  - name: Thicken
+    instruction: >
+      Continue stirring occasionally until it reaches the thickness you want.
+      Takes 5-10 minutes.
+    duration_sec: 300
+  - name: Season
+    instruction: Season to taste with salt and pepper.
+    add_ingredients: [seasoning]
+
+notes: >
+  **This is a bechamel with drippings in it**, and tagging it mother-sauce is
+  deliberate. Fat plus flour cooked out, milk added gradually with a constant
+  stir, thickened to a target - the same control problem as
+  bechamel-sauce, which is the MVP target in docs/mvp-bechamel.md.
+
+  That makes it the fifth member of a family already in this collection,
+  alongside creamy-pan-fried-chicken, meatball-stroganoff and
+  garlic-butter-chicken-mac-and-cheese. Five recipes, one machine program,
+  five sets of parameters - and this one is the plainest of them, which makes
+  it a better second test than any of the others.
+
+  mode is manual only because nothing here is a CJ-A9U preset; the open rig
+  is the relevant track.

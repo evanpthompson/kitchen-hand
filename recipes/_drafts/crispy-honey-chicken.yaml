@@ -1,0 +1,166 @@
+id: crispy-honey-chicken
+title: Crispy Honey Chicken
+cuisine: Chinese
+tags: [chicken, fried, sauce]
+mode: fry
+
+source: "@victor.wokmanyama on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DZuFCewyS17/"
+  creator: "@victor.wokmanyama"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/crispy-honey-chicken/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    The most technically specified frying in the collection. A double fry with
+    both oil temperatures given, a batter consistency test, a warning about
+    when not to move the chicken, and an explanation of what the glaze does as
+    it cools. Every batter and sauce quantity is in grams or millilitres.
+
+    QUESTION FOR REVIEW: servings. The source states no yield.
+
+    (1) **The chicken has no quantity.** The ingredient list opens with the
+    bare word "Chicken" and every other line is measured. Same gap as
+    honey-bbq-chicken-tenders had - the thing being cooked is the one thing
+    not weighed.
+
+    (2) The source numbers two consecutive steps "6". Renumbered here without
+    reordering; the second is a note about the glaze setting rather than an
+    action.
+
+    (3) The batter has a consistency test rather than a target: "thin enough
+    to lightly coat your finger". Kept verbatim - it is more useful than any
+    ratio, since flour absorbs differently.
+
+    (4) "1 tsp chicken powder" is bouillon powder, unspecified by brand.
+
+    (5) The vermicelli garnish is explicitly optional and for plating, with no
+    quantity.
+
+ingredients:
+  - id: chicken
+    name: Chicken
+    prep: >
+      cut into 1 cm pieces. **Quantity not given in source** - see
+      extraction_notes
+  - id: marinade-salt
+    name: Salt
+    quantity: 1 tsp
+    prep: marinade
+  - id: chicken-powder
+    name: Chicken powder
+    quantity: 1 tsp
+    prep: marinade - bouillon powder, brand not specified
+  - id: baking-soda
+    name: Baking soda
+    quantity: 1 tsp
+    prep: marinade - tenderiser
+  - id: marinade-cornstarch
+    name: Corn starch
+    quantity: 1/2 tbsp
+    prep: marinade
+  - id: mirin
+    name: Mirin or cooking sake
+    quantity: 1 tbsp
+    prep: marinade
+  - id: flour
+    name: Plain flour
+    quantity: 100 g
+    prep: batter
+  - id: batter-cornstarch
+    name: Corn starch
+    quantity: 50 g
+    prep: batter
+  - id: batter-oil
+    name: Oil
+    quantity: 30 g
+    prep: batter
+  - id: water
+    name: Water
+    quantity: 200 ml
+    prep: batter
+  - id: baking-powder
+    name: Baking powder
+    quantity: 1 tsp
+    prep: batter - added last
+  - id: frying-oil
+    name: Oil
+    prep: for deep frying - quantity not given in source
+  - id: honey
+    name: Honey
+    quantity: 2 tbsp
+    prep: glaze
+  - id: sugar
+    name: Sugar
+    quantity: 4 tbsp
+    prep: glaze
+  - id: rice-vinegar
+    name: Rice vinegar
+    quantity: 2 tbsp
+    prep: glaze
+  - id: sesame-seeds
+    name: Toasted sesame seeds
+    prep: to finish - quantity not given in source
+  - id: vermicelli
+    name: Vermicelli noodles
+    prep: optional, for plating - quantity not given in source
+
+phases:
+  - name: Marinate
+    instruction: >
+      Cut the chicken into 1 cm pieces. Add the salt, chicken powder, baking
+      soda, corn starch and mirin. Mix well and marinate for 10 minutes.
+    add_ingredients:
+      [chicken, marinade-salt, chicken-powder, baking-soda, marinade-cornstarch, mirin]
+    duration_sec: 600
+  - name: Make the batter
+    instruction: >
+      Mix the plain flour, corn starch and oil first. Add the water and stir
+      until smooth, then add the baking powder and mix again. The batter should
+      be thin enough to lightly coat your finger.
+    add_ingredients: [flour, batter-cornstarch, batter-oil, water, baking-powder]
+  - name: Coat
+    instruction: Add the chicken to the batter and mix until every piece is coated.
+  - name: First fry
+    instruction: >
+      Heat the oil to 180°C. Add the chicken pieces one by one. Do not move
+      them for at least a minute or the batter may fall off. Fry for about 3
+      minutes, until golden.
+    add_ingredients: [frying-oil]
+    temp_c: 180
+    duration_sec: 180
+  - name: Second fry
+    instruction: >
+      Raise the oil to 190-200°C and fry again for about 15 seconds. Remove and
+      drain.
+    temp_c: 195
+    duration_sec: 15
+  - name: Make the glaze
+    instruction: >
+      Pour out the oil. Add the honey, sugar and rice vinegar to the wok and
+      cook over medium-high heat until the sugar melts and the syrup bubbles.
+    add_ingredients: [honey, sugar, rice-vinegar]
+  - name: Coat and set
+    instruction: >
+      Add the fried chicken and toss quickly until coated. As it cools
+      slightly the glaze forms a thin crunchy honey shell.
+  - name: Plate
+    instruction: >
+      For restaurant-style plating, fry a handful of vermicelli noodles until
+      puffed, sit the honey chicken on top, and finish with toasted sesame
+      seeds.
+    add_ingredients: [vermicelli, sesame-seeds]
+
+notes: >
+  mode is fry, and this is the best machine candidate for a temperature-hold
+  test in the collection - better than ham-cheese-korokke or
+  honey-bbq-chicken-tenders, because it needs two held temperatures in
+  sequence with a short interval between them. 180°C for three minutes, then
+  190-200°C for fifteen seconds, is precisely the kind of control a person
+  does badly and a thermostat does well.
+
+  The glaze phase is the opposite: sugar, honey and vinegar cooked to the
+  point the syrup bubbles, judged by eye and finished in seconds. Worth
+  keeping the two apart when Phase 1 gets to this.

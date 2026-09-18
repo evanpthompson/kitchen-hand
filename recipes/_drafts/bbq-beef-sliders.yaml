@@ -1,0 +1,123 @@
+id: bbq-beef-sliders
+title: BBQ Beef Sliders
+tags: [beef, cheese, bbq]
+mode: manual
+
+source: "@burnt_pellet_bbq on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DT8grR_EgzR/"
+  creator: "@burnt_pellet_bbq"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/bbq-beef-sliders/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Every stage is timed and every temperature given, which is rare here - 250°F
+    for 3 hours, another 2 hours wrapped, then 325°F for 20 minutes. The
+    ingredient list, as with the other barbecue captures in this collection, is
+    thinner than the method.
+
+    QUESTION FOR REVIEW: servings. No yield, and the chuck roast has no weight,
+    so there is nothing to derive one from. The rolls are never counted either.
+
+    (1) **The assembly line lists pepper jack twice.** As written it is
+    "4 slices of pepper jack cheese, smoked bbq beef, crisp onions, 1 cup bbq
+    sauce, 4 slices of pepper jack cheese" - cheese below and above the beef,
+    8 slices in total. That is a plausible way to build a slider and it is
+    also a plausible copy-paste error. Recorded as written, at 8 slices, and
+    flagged rather than quietly halved.
+
+    (2) **BBQ sauce appears twice for two jobs**, 1 cup in the foil wrap and
+    another cup in the assembly. Split into two entries; the source gives both
+    quantities, so this one is not ambiguous.
+
+    (3) Four things have no quantity: the chuck roast, the rub, the rolls, the
+    crisp onions, and the butter brushed on top. Recorded bare.
+
+    (4) Yellow mustard is used as a binder, which is a barbecue convention -
+    it holds the rub on and cooks away. No quantity given.
+
+ingredients:
+  - id: chuck-roast
+    name: Chuck roast
+    prep: well marbled, cubed - weight not given in source
+  - id: mustard
+    name: Yellow mustard
+    prep: as a binder for the rub - quantity not given in source
+  - id: rub
+    name: BBQ rub
+    prep: '"your favorite" - quantity not given in source'
+  - id: wrap-butter
+    name: Butter
+    quantity: 3 tbsp
+    prep: in the foil wrap
+  - id: dr-pepper
+    name: Dr Pepper
+    quantity: 1/4 cup
+    prep: in the foil wrap
+  - id: wrap-sauce
+    name: BBQ sauce
+    quantity: 1 cup
+    prep: in the foil wrap - source uses @pucksbbq
+  - id: rolls
+    name: Slider rolls
+    prep: quantity not given in source
+  - id: pepper-jack
+    name: Pepper jack cheese
+    quantity: 8 slices
+    prep: >
+      4 below the beef and 4 above, as the source lists it - see
+      extraction_notes
+  - id: onions
+    name: Crisp onions
+    prep: quantity not given in source
+  - id: assembly-sauce
+    name: BBQ sauce
+    quantity: 1 cup
+    prep: in the assembly
+  - id: top-butter
+    name: Butter
+    prep: brushed on the tops - quantity not given in source
+  - id: everything-seasoning
+    name: Everything bagel seasoning
+    prep: on the tops - quantity not given in source
+
+phases:
+  - name: Season the beef
+    instruction: >
+      Cube a well marbled chuck roast, use yellow mustard as a binder, and
+      season on all sides with your BBQ rub.
+    add_ingredients: [chuck-roast, mustard, rub]
+  - name: Smoke
+    instruction: Smoke the meat at 250°F (121°C) for 3 hours.
+    temp_c: 121
+    duration_sec: 10800
+  - name: Wrap and finish
+    instruction: >
+      Wrap in foil with the butter, Dr Pepper and a cup of BBQ sauce, and put
+      it back on the smoker for another 2 hours, until fall-apart tender.
+    add_ingredients: [wrap-butter, dr-pepper, wrap-sauce]
+    temp_c: 121
+    duration_sec: 7200
+    lid: closed
+  - name: Assemble
+    instruction: >
+      Build the sliders: 4 slices of pepper jack, the smoked BBQ beef, crisp
+      onions, a cup of BBQ sauce, then 4 more slices of pepper jack.
+    add_ingredients: [rolls, pepper-jack, onions, assembly-sauce]
+  - name: Top and bake
+    instruction: >
+      Put the tops back on, brush with butter and sprinkle with everything
+      bagel seasoning. Bake at 325°F (163°C) for 20 minutes.
+    add_ingredients: [top-butter, everything-seasoning]
+    temp_c: 163
+    duration_sec: 1200
+
+notes: >
+  Second slider recipe in the collection after shredded-beef-cheese-sliders,
+  and genuinely different: that one smokes to an internal temperature then
+  braises in a pan with onions and broth, this one smokes on the clock then
+  wraps with Dr Pepper and sauce. Same cut, different route.
+
+  mode is manual - a smoker then an oven, which neither hardware track covers.

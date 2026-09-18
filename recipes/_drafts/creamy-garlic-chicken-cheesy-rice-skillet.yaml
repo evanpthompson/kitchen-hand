@@ -1,0 +1,112 @@
+id: creamy-garlic-chicken-cheesy-rice-skillet
+title: Creamy Garlic Chicken and Cheesy Rice Skillet
+tags: [chicken, cheese, sauce, weeknight]
+mode: manual
+
+source: "@twelverecipes on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/p/DX0uzs2ArEC/"
+  creator: "@twelverecipes"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/creamy-garlic-chicken-cheesy-rice-skillet/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified, an ordered eight-step method, a
+    total cooking time and a calorie figure. Nothing reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source gives calories "per serving"
+    but never says how many servings - which is an odd omission, since the
+    figure is meaningless without it.
+
+    (1) The rice arrives already cooked, 2 cups of it, and the source gives no
+    method for cooking it. Unlike the potato gap in
+    garlic-butter-chicken-creamy-potatoes this is inconsequential: white rice
+    to packet instructions is not a method anyone needs told.
+
+    (2) Salt and pepper are "to taste", parsley has no quantity.
+
+    (3) One of two @twelverecipes captures in this batch, both in the same
+    house format - ingredients, "Step-by-step:", then cooking time and
+    calories. Both needed the same question asked.
+
+ingredients:
+  - id: rice
+    name: White rice
+    quantity: 2 cups
+    prep: cooked - no method given in source
+  - id: chicken
+    name: Chicken breast
+    quantity: 1 lb
+    prep: cut into bite-sized cubes
+  - id: cream
+    name: Heavy cream
+    quantity: 1 1/2 cups
+  - id: mozzarella
+    name: Mozzarella cheese
+    quantity: 1 cup
+    prep: shredded
+  - id: parmesan
+    name: Parmesan cheese
+    quantity: 1/2 cup
+    prep: grated
+  - id: garlic
+    name: Garlic cloves
+    quantity: "3"
+    prep: minced
+  - id: butter
+    name: Butter
+    quantity: 2 tbsp
+  - id: olive-oil
+    name: Olive oil
+    quantity: 1 tbsp
+  - id: italian-seasoning
+    name: Italian seasoning
+    quantity: 1 tsp
+  - id: paprika
+    name: Paprika
+    quantity: 1/2 tsp
+  - id: seasoning
+    name: Salt and pepper
+    prep: to taste - quantity not given in source
+  - id: parsley
+    name: Fresh parsley
+    prep: chopped, to garnish - quantity not given in source
+
+phases:
+  - name: Cook the chicken
+    instruction: >
+      Heat the olive oil in a pan and cook the chicken pieces until golden and
+      fully cooked. Season with the paprika, salt, pepper and Italian
+      seasoning.
+    add_ingredients: [olive-oil, chicken, paprika, seasoning, italian-seasoning]
+  - name: Garlic butter
+    instruction: >
+      Add the butter and garlic and saute for 1-2 minutes, until fragrant.
+    add_ingredients: [butter, garlic]
+    duration_sec: 60
+  - name: Simmer the cream
+    instruction: Pour in the heavy cream and let it simmer for 2-3 minutes.
+    add_ingredients: [cream]
+    duration_sec: 120
+  - name: Melt the cheese
+    instruction: >
+      Stir in the mozzarella and Parmesan until melted and creamy.
+    add_ingredients: [mozzarella, parmesan]
+  - name: Add the rice
+    instruction: >
+      Add the cooked rice and mix well until fully coated. Cook for another 2-3
+      minutes, until heated through.
+    add_ingredients: [rice]
+    duration_sec: 120
+  - name: Serve
+    instruction: Garnish with parsley and serve hot.
+    add_ingredients: [parsley]
+
+notes: >
+  Stated cooking time 30 minutes, about 620 kcal per serving.
+
+  A cream-and-cheese reduction rather than a roux, so a simpler control
+  problem than the five roux sauces in this collection: no flour to cook out,
+  just a held simmer and a melt.

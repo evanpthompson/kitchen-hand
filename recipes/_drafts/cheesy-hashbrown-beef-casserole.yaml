@@ -1,0 +1,108 @@
+id: cheesy-hashbrown-beef-casserole
+title: Cheesy Crispy Hashbrown Beef Casserole
+tags: [beef, potatoes, cheese, baking]
+mode: manual
+
+source: "@unclejoerecipeshack on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DaaeE0bAkZG/"
+  creator: "@unclejoerecipeshack"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/cheesy-hashbrown-beef-casserole/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    Complete: every ingredient quantified with pack sizes, a six-step method,
+    oven temperature in both scales, a bake time and a doneness cue. Nothing
+    reconstructed.
+
+    QUESTION FOR REVIEW: servings. The source states no yield - a 9x13 inch
+    dish.
+
+    (1) The cheese is explicitly divided, 1.5 cups into the mix and the
+    remaining 0.5 cup on top. Split into two entries so the phases reference
+    the right one, which matches the method rather than changing it.
+
+    (2) Salt, pepper and garlic powder are "to taste" with no quantities.
+
+    (3) The hashbrowns must be thawed, which the source states and which
+    matters - frozen ones would water the casserole down.
+
+ingredients:
+  - id: beef
+    name: Ground beef
+    quantity: 1 lb
+  - id: onion
+    name: Onion, small
+    quantity: "1"
+    prep: diced
+  - id: garlic
+    name: Garlic cloves
+    quantity: "2"
+    prep: minced
+  - id: mushroom-soup
+    name: Cream of mushroom soup
+    quantity: 1 can (10.5 oz)
+  - id: sour-cream
+    name: Sour cream
+    quantity: 1 cup
+  - id: cheddar-mix
+    name: Cheddar cheese
+    quantity: 1 1/2 cups
+    prep: shredded, into the mixture
+  - id: cheddar-top
+    name: Cheddar cheese
+    quantity: 1/2 cup
+    prep: shredded, for the top
+  - id: hashbrowns
+    name: Frozen shredded hashbrowns
+    quantity: 1 package (30 oz)
+    prep: thawed - the source is explicit
+  - id: butter
+    name: Butter
+    quantity: 4 tbsp
+    prep: melted
+  - id: seasoning
+    name: Salt, pepper and garlic powder
+    prep: to taste - quantity not given in source
+
+phases:
+  - name: Heat the oven
+    instruction: >
+      Preheat the oven to 400°F (200°C) and grease a 9x13 inch baking dish.
+    temp_c: 200
+  - name: Brown the beef
+    instruction: >
+      In a skillet, brown the ground beef with the diced onion and garlic over
+      medium-high heat. Drain the excess grease and season with salt, pepper
+      and garlic powder.
+    add_ingredients: [beef, onion, garlic, seasoning]
+  - name: Mix the base
+    instruction: >
+      In a large bowl, mix the cream of mushroom soup, sour cream and 1 1/2
+      cups of the cheddar. Stir in the cooked ground beef.
+    add_ingredients: [mushroom-soup, sour-cream, cheddar-mix]
+  - name: Fold in the hashbrowns
+    instruction: >
+      Gently fold in the thawed hashbrowns and the melted butter until well
+      combined.
+    add_ingredients: [hashbrowns, butter]
+  - name: Assemble
+    instruction: >
+      Spread the mixture evenly into the dish and top with the remaining 1/2
+      cup of cheddar.
+    add_ingredients: [cheddar-top]
+  - name: Bake
+    instruction: >
+      Bake for 35-40 minutes, until the top is golden brown and crispy. Let
+      cool slightly before serving.
+    temp_c: 200
+
+notes: >
+  Oven casserole, so mode is manual and neither hardware track applies.
+
+  Close in shape to cheesy-hamburger-potato-casserole already in the
+  collection - browned beef, a creamy binder, potatoes, cheese, baked - but
+  built on thawed shredded hashbrowns rather than sliced potatoes, and
+  assembled as one mixture rather than layered. Different enough to keep both.

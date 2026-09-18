@@ -1,0 +1,101 @@
+id: freezer-breakfast-burritos
+title: Freezer Breakfast Burritos
+tags: [breakfast, meal-prep, egg, cheese]
+mode: manual
+
+source: "@athomewithblake on Instagram"
+
+provenance:
+  input_type: instagram
+  source_url: "https://www.instagram.com/reel/DcWJQw6Ogjg/"
+  creator: "@athomewithblake"
+  captured_date: "2026-09-17"
+  raw_capture_path: "inbox/freezer-breakfast-burritos/caption.txt"
+  transcribed: false
+  extraction_notes: >
+    A complete method in prose, with a genuinely useful freezing and
+    reheating note. The quantities are the weak half: most are given as
+    packages rather than weights.
+
+    QUESTION FOR REVIEW: servings. The source never says how many burritos
+    this makes, which is unusual for a freezer batch - and it does say they
+    are big enough that the creator and her children each eat half.
+
+    (1) **Several quantities are packages, not amounts.** "whole package of
+    sausage or half a pack of bacon", "burrito size tortillas" with no count,
+    "Tater tots" with no amount beyond "about 4 tots per burrito". Recorded
+    as the source has them. The tots figure is per-burrito, so it becomes
+    usable the moment the burrito count is known.
+
+    (2) "egg makers 32oz (can use eggs or egg whites)" is a liquid egg
+    product by weight, with fresh eggs offered as a substitution and no
+    equivalent given.
+
+    (3) The 1 cup of sour cream, Greek yogurt or cottage cheese is a
+    three-way either/or, and the source marks it optional - "I think it adds
+    a bit more flavor and/or protein".
+
+    (4) The skillet-crisping step before freezing is explicitly optional and
+    was skipped by the creator, who reheats in an air fryer instead. Both are
+    kept.
+
+ingredients:
+  - id: meat
+    name: Sausage or bacon
+    prep: >
+      a whole package of sausage, or half a pack of bacon - no weight given
+  - id: tortillas
+    name: Burrito-size tortillas
+    prep: count not given in source
+  - id: eggs
+    name: Liquid egg product
+    quantity: 32 oz
+    prep: fresh eggs or egg whites work per the source, with no equivalent given
+  - id: dairy
+    name: Sour cream, Greek yogurt or cottage cheese
+    quantity: 1 cup
+    prep: optional - the source adds it for flavour and protein
+  - id: cheddar
+    name: Cheddar cheese
+    quantity: 1/2 cup
+    prep: shredded
+  - id: seasoning
+    name: Salt, pepper, garlic powder and onion powder
+    prep: for the eggs - quantities not given in source
+  - id: tots
+    name: Tater tots
+    prep: optional - about 4 per burrito
+
+phases:
+  - name: Cook the tots
+    instruction: >
+      Cook the tater tots to the package instructions. The source uses about 4
+      per burrito.
+    add_ingredients: [tots]
+  - name: Cook the meat
+    instruction: Cook the sausage or bacon thoroughly.
+    add_ingredients: [meat]
+  - name: Scramble the eggs
+    instruction: >
+      Cook the eggs on the stovetop, seasoning with salt, pepper, garlic
+      powder and onion powder. Stir in the cup of sour cream, Greek yogurt or
+      cottage cheese if using.
+    add_ingredients: [eggs, seasoning, dairy]
+  - name: Combine
+    instruction: Combine the eggs and the cooked meat.
+  - name: Roll
+    instruction: >
+      Layer into the tortillas with the shredded cheese, the tots and the
+      egg and meat mixture, and roll.
+    add_ingredients: [tortillas, cheddar]
+  - name: Crisp and freeze
+    instruction: >
+      Optionally put them in a skillet to crisp the tortilla before freezing.
+      The source skips this and reheats in an air fryer instead.
+
+notes: >
+  Freezer meal prep. The source is clear that these are large - half a burrito
+  is a portion for her and for her children - which is worth knowing before
+  deciding the yield.
+
+  mode is manual: three components cooked separately, then assembled cold.
