@@ -43,34 +43,86 @@ def test_tags_include_chicken():
     assert "chicken" in r.json()
 
 
-def test_list_drafts_includes_chengdu_noodles():
-    r = client.get("/drafts")
-    slugs = {item["slug"] for item in r.json()}
-    assert "chengdu-tomato-egg-noodles" in slugs
+# These read-path tests used to name chengdu-tomato-egg-noodles, the only
+# draft that existed when they were written. It has since been reviewed and
+# promoted, which broke all four - correctly, since the module tests real repo
+# state on purpose. The lesson is that curation state is not a fixture: any
+# named draft is one review away from being a recipe. They now supply their
+# own draft and assert the real state generically.
 
 
-def test_draft_summary_flags_extraction_notes():
-    r = client.get("/drafts")
-    by_slug = {item["slug"]: item for item in r.json()}
-    assert by_slug["chengdu-tomato-egg-noodles"]["has_extraction_notes"] is True
-    assert by_slug["chengdu-tomato-egg-noodles"]["valid"] is True
+@pytest.fixture
+def a_draft():
+    """A draft that exists for the duration of one test, then does not."""
+    from app import core
+
+    slug = "test-fixture-draft"
+    path = core.DRAFTS_DIR / f"{slug}.yaml"
+    core.dump_recipe_yaml(
+        {
+            "id": slug,
+            "title": "Fixture Dish",
+            "servings": 2,
+            "mode": "manual",
+            "provenance": {
+                "input_type": "pasted-text",
+                "creator": "test",
+                "captured_date": "2026-09-17",
+                "extraction_notes": "something was ambiguous",
+            },
+            "ingredients": [{"id": "salt", "name": "Salt", "quantity": "1 tsp"}],
+            "phases": [{"name": "Season", "instruction": "Add the salt."}],
+        },
+        path,
+    )
+    yield slug
+    path.unlink(missing_ok=True)
 
 
-def test_get_draft_full():
-    r = client.get("/drafts/chengdu-tomato-egg-noodles")
+def test_list_drafts_includes_a_draft_that_exists(a_draft):
+    slugs = {item["slug"] for item in client.get("/drafts").json()}
+    assert a_draft in slugs
+
+
+def test_draft_summary_flags_extraction_notes(a_draft):
+    by_slug = {item["slug"]: item for item in client.get("/drafts").json()}
+    assert by_slug[a_draft]["has_extraction_notes"] is True
+    assert by_slug[a_draft]["valid"] is True
+
+
+def test_get_draft_full(a_draft):
+    r = client.get(f"/drafts/{a_draft}")
     assert r.status_code == 200
     body = r.json()
     assert body["errors"] == []
     assert body["data"]["mode"] == "manual"
 
 
-def test_inbox_lists_youtube_capture():
+def test_every_draft_in_the_collection_is_listed_and_summarised():
+    """The real-state half, without naming anything: whatever is in _drafts/
+    is what /drafts reports."""
+    from app import core
+
+    on_disk = {p.stem for p in core.DRAFTS_DIR.glob("*.yaml")}
+    listed = {item["slug"] for item in client.get("/drafts").json()}
+    assert listed == on_disk
+
+
+def test_inbox_lists_the_youtube_capture():
     r = client.get("/inbox")
     by_slug = {item["slug"]: item for item in r.json()}
     assert "chengdu-tomato-egg-noodles" in by_slug
-    entry = by_slug["chengdu-tomato-egg-noodles"]
-    assert entry["source_type_guess"] == "youtube"
-    assert entry["has_draft"] is True
+    assert by_slug["chengdu-tomato-egg-noodles"]["source_type_guess"] == "youtube"
+
+
+def test_has_draft_matches_what_is_actually_in_drafts():
+    """has_draft is a claim about the filesystem, so check it against the
+    filesystem rather than against a slug that was true once."""
+    from app import core
+
+    drafts = {p.stem for p in core.DRAFTS_DIR.glob("*.yaml")}
+    for entry in client.get("/inbox").json():
+        assert entry["has_draft"] is (entry["slug"] in drafts), entry["slug"]
 
 
 def test_inbox_capture_contents():
