@@ -63,6 +63,7 @@ def a_draft():
             "id": slug,
             "title": "Fixture Dish",
             "servings": 2,
+            "source": "Test fixture - not a real recipe.",
             "mode": "manual",
             "provenance": {
                 "input_type": "pasted-text",
@@ -137,6 +138,7 @@ def test_draft_lifecycle_create_validate_discard():
         "id": slug,
         "title": "Test Lifecycle Recipe",
         "servings": 2,
+        "source": "Test fixture - not a real recipe.",
         "ingredients": [{"id": "water", "name": "Water"}],
         "phases": [{"name": "Boil", "instruction": "Boil the water."}],
     }
@@ -174,6 +176,7 @@ def test_promote_flags_dedup_against_kung_pao():
         "id": slug,
         "title": "Kung Pao Chicken",
         "servings": 3,
+        "source": "Test fixture - not a real recipe.",
         "ingredients": [
             {"id": "chicken", "name": "Boneless chicken thigh"},
             {"id": "peanuts", "name": "Roasted peanuts"},
@@ -198,6 +201,7 @@ def test_promote_succeeds_for_novel_recipe_then_cleanup():
         "id": slug,
         "title": "Completely Unrelated Test Dish",
         "servings": 1,
+        "source": "Test fixture - not a real recipe.",
         "ingredients": [{"id": "salt", "name": "Salt"}],
         "phases": [{"name": "Season", "instruction": "Add salt."}],
     }

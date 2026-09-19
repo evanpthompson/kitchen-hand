@@ -1,3 +1,8 @@
+Scope: the MIT terms below cover the code, the schema and the recipe file
+structure. They do NOT cover the recipe content in recipes/ or the captures
+in inbox/, most of which originate with other creators and are included with
+attribution. See NOTICE.md.
+
 MIT License
 
 Copyright (c) 2026 Evan Thompson

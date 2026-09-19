@@ -140,3 +140,13 @@ the ingestion pipeline retain whatever attribution/rights apply to their
 original source (see each recipe's `provenance`/`source` field and
 `docs/data-sources.md`) — MIT on this repo doesn't relicense someone else's
 recipe or transcript as your own.
+
+## Attribution and licensing
+
+40 of the 43 recipes here come from named creators, and every one records its
+`source`, `source_url` and creator. `source` is a required schema field, so a
+recipe without attribution fails validation.
+
+The MIT `LICENSE` covers the code, schema and file structure — not the recipe
+content. See `NOTICE.md`, which also explains how a creator can have their
+recipe removed.

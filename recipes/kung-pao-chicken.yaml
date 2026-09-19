@@ -5,6 +5,8 @@ tags: [chicken, spicy, weeknight]
 servings: 3
 mode: stir-fry
 
+source: "Original example recipe — written to exercise the v1 schema, not adapted from a single source."
+
 ingredients:
   - id: chicken
     name: Boneless chicken thigh

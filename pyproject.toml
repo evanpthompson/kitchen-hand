@@ -20,3 +20,10 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.15.20",
 ]
+
+[tool.pytest.ini_options]
+# service/ has its own pyproject and its own environment - fastapi is not in
+# this one. Without this, root `uv run pytest` walks into service/tests/ and
+# dies collecting it, which is the command CONTRIBUTING tells people to run.
+# Run the service suite from service/.
+testpaths = ["tests"]

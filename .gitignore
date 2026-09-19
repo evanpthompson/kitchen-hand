@@ -292,3 +292,8 @@ pip-selfcheck.json
 ### Kitchen Hand ###
 # Telegram getUpdates cursor - local state, not shared
 .telegram-offset
+
+# The [Ss]cripts rule above is boilerplate for virtualenv Scripts/ directories.
+# This repo's own root scripts/ holds doctor.sh and must be tracked.
+!/scripts/
+!/scripts/**
